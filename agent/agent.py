@@ -394,7 +394,7 @@ def search_products(
     return result
 
 
-@function_tool
+@function_tool(strict_mode=False)
 def list_my_orders(wrapper: RunContextWrapper[AuthContext]) -> dict[str, Any]:
     """List the caller's recent orders (shopper) or their store's recent orders (merchant)."""
     return _call(wrapper, "list_my_orders", hw_tools.list_my_orders)
