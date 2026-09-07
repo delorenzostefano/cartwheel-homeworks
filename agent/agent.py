@@ -415,6 +415,33 @@ def find_order(
     """Search your orders by product name (fuzzy match)."""
     return _call(wrapper, "find_order", hw_tools.find_order, query)
 
+@function_tool
+def check_return_eligibility(
+    wrapper: RunContextWrapper[AuthContext], order_id: int
+) -> dict[str, Any]:
+    """Check whether an order is still inside a return window and what restocking fee may apply."""
+    return _call(wrapper, "check_return_eligibility", hw_tools.check_return_eligibility, order_id)
+
+@function_tool
+def track_shipment(
+    wrapper: RunContextWrapper[AuthContext], order_id: int
+) -> dict[str, Any]:
+    """Track an order's shipment: stage, ship and delivery dates, and whether it's late"""
+    return _call(wrapper, "track_shipment", hw_tools.track_shipment, order_id)
+
+@function_tool
+def order_history_summary(
+    wrapper: RunContextWrapper[AuthContext]
+) -> dict[str, Any]:
+    """Summarize the caller's recent orders (or the merchant's store orders: count by status, total spent, first and last order dates)"""
+    return _call(wrapper, "order_history_summary", hw_tools.order_history_summary)
+
+@function_tool
+def get_store_info(
+    wrapper: RunContextWrapper[AuthContext], store: str
+) -> dict[str, Any]:
+    """Look up a store by name or slug: category, return window, restocking fee, and its policy id"""
+    return _call(wrapper, "get_store_info", hw_tools.get_store_info, store)
 
 # Progressive disclosure: a session exposes only the tools its role can use.
 # Fewer tools mean fewer wrong choices and cleaner evals. At dev scale the
@@ -428,10 +455,13 @@ _COMMON_TOOLS = [
     issue_refund,
     cancel_order,
     escalate_to_human,
+    check_return_eligibility,
+    track_shipment,
+    get_store_info,
 ]
 TOOLS_BY_ROLE = {
-    "shopper": _COMMON_TOOLS + [list_my_orders, find_order],
-    "merchant": _COMMON_TOOLS + [list_my_orders, find_order],
+    "shopper": _COMMON_TOOLS + [list_my_orders, find_order, order_history_summary],
+    "merchant": _COMMON_TOOLS + [list_my_orders, find_order, order_history_summary],
     "support": _COMMON_TOOLS + [find_order],
 }
 

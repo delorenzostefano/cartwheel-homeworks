@@ -21,9 +21,12 @@ from __future__ import annotations
 from typing import Any
 
 from agent import db
-from agent.auth import AuthContext, can_cancel_order, permission_denied
+from agent.auth import AuthContext, can_cancel_order, permission_denied, can_view_order
 from agent.helpcenter import load_policy_docs
 from agent.killswitch import kill_switch
+from agent.config import load_facts
+from datetime import timedelta
+from seed.eligibility import effective_return_window_days, is_refund_eligible
 
 MAX_SEARCH_LIMIT = 25
 DEFAULT_ORDER_LIMIT = 20
@@ -259,7 +262,7 @@ def cancel_order(ctx: AuthContext, order_id: int, reason: str) -> dict[str, Any]
                 "error": "not_found",
                 "reason": f"No order with id {order_id}"
             }
-        if not can_cancel_order(conn, order.user_id, order.store_id):
+        if not can_cancel_order(ctx, order.user_id, order.store_id):
             return permission_denied (
                 f"{ctx.role} {ctx.user_id} may not cancel order {order_id}"
             )
@@ -346,4 +349,171 @@ def find_order(ctx: AuthContext, query: str) -> dict[str, Any]:
         "ok": True,
         "orders": matches
     }
-    
+
+
+def check_return_eligibility(ctx: AuthContext, order_id: int) -> dict[str, Any]:
+    """Say whether an order can still be returned for a refund. Risk tier: read."""
+    conn = db.connect()
+    try:
+        order = db.get_order(conn, order_id)
+        if order is None:
+            return {
+                "ok": False,
+                "error": "not_found",
+                "reason": f"No order with id {order_id}"
+            }
+        if not can_view_order(ctx, order.user_id, order.store_id):
+            return permission_denied(
+                f"{ctx.role} {ctx.user_id} may not view order {order_id}"
+            )
+        store = db.get_store(conn, order.store_id)
+        today = db.world_asof(conn)
+    finally:
+        conn.close()
+
+    facts = load_facts()
+    window = effective_return_window_days(
+        facts["return_window_days"],
+        store.return_window_days_override if store else None
+    )
+    eligible = is_refund_eligible(
+        status=order.status,
+        delivered_at=order.delivered_at,
+        as_of=today,
+        return_window_days=window
+    )
+    window_ends = None
+    days_left = None
+    if order.delivered_at is not None:
+        window_ends = order.delivered_at + timedelta(days=window)
+        days_left = (window_ends - today).days
+    fee_pct = facts["restocking_fee_max_percent"] if (store and store.restocking_fee_opt_in) else 0
+    return {
+        "ok": True,
+        "order_id": order_id,
+        "eligible": eligible,
+        "status": order.status,
+        "delivered_at": order.delivered_at.isoformat() if order.delivered_at else None,
+        "return_window_days": window,
+        "window_ends": window_ends.isoformat() if window_ends else None,
+        "days_left": days_left,
+        "restocking_fee_max_percent": fee_pct,
+        "restocking_fee_opened_items_only": facts["restocking_fee_opened_items_only"],
+    }
+
+
+def track_shipment(ctx: AuthContext, order_id: int) -> dict[str, Any]:
+    """Report shipment status and expected dates for an order. Risk tier: read."""
+    conn = db.connect()
+    try:
+        order = db.get_order(conn, order_id)
+        if order is None:
+            return {
+                "ok": False,
+                "error": "not_found",
+                "reason": f"No order with id {order_id}"
+            }
+        if not can_view_order(ctx, order.user_id, order.store_id):
+            return permission_denied(
+                f"{ctx.role} {ctx.user_id} may not view order {order_id}"
+            )
+        
+        today = db.world_asof(conn)
+    finally:
+        conn.close()
+
+    facts = load_facts()
+    ship_by = order.ordered_at + timedelta(days=facts["shipping_handling_days_max"])
+    deliver_by = ship_by + timedelta(days=facts["shipping_transit_days_max"])
+
+    if order.status == "cancelled":
+        stage = "cancelled"
+    elif order.delivered_at is not None:
+        stage = "delivered"
+    elif order.shipped_at is not None:
+        stage = "in_transit"
+    else:
+        stage = "awaiting_shipment"
+
+    late = False
+    if stage == "awaiting_shipment" and today > ship_by:
+        late = True
+    elif stage == "in_transit" and today > deliver_by:
+        late = True
+
+    return {
+        "ok": True,
+        "order_id": order_id,
+        "stage": stage,
+        "status": order.status,
+        "ordered_at": order.ordered_at.isoformat(),
+        "shipped_at": order.shipped_at.isoformat() if order.shipped_at else None,
+        "delivered_at": order.delivered_at.isoformat() if order.delivered_at else None,
+        "ship_by": ship_by.isoformat(),
+        "deliver_by": deliver_by.isoformat(),
+        "late": late,
+        "as_of": today.isoformat()
+    }
+
+def get_store_info(ctx: AuthContext, store: str) -> dict[str, Any]:
+    """Public store profile plus any policy overrides. Risk tier: read."""
+    conn = db.connect()
+    try:
+        found = db.get_store_by_name(conn, store)
+    finally:
+        conn.close()
+    if found is None:
+        return {
+            "ok": False,
+            "error": "not_found",
+            "reason": f"No store matches {store!r}"
+        }
+    facts = load_facts()
+    window = effective_return_window_days(
+        facts["return_window_days"],
+        found.return_window_days_override
+    )
+    return {
+        "ok": True,
+        "store_id": found.id,
+        "name": found.name,
+        "slug": found.slug,
+        "category": found.category,
+        "return_window_days": window,
+        "return_window_is_override": found.return_window_days_override is not None,
+        "restocking_fee_opt_in": found.restocking_fee_opt_in,
+        "restocking_fee_max_percent": facts["restocking_fee_max_percent"] if found.restocking_fee_opt_in else 0
+    }
+
+def order_history_summary(ctx: AuthContext) -> dict[str, Any]:
+    """Aggregate the caller's (or their store's) recent orders. Risk tier: read."""
+    if ctx.role == "support":
+        return {
+            "ok": False,
+            "error": "invalid_argument",
+            "reason": "support staff have no orders of their own; use get_order"
+        }
+    conn = db.connect()
+    try:
+        if ctx.role == "shopper":
+            orders = db.list_orders_for_user(conn, ctx.user_id, DEFAULT_ORDER_LIMIT)
+        else:
+            orders = db.list_orders_for_store(conn, ctx.store_id, DEFAULT_ORDER_LIMIT)
+    finally:
+        conn.close()
+    by_status: dict[str, int] = {}
+    total_cents = 0
+    for o in orders:
+        by_status[o.status] = by_status.get(o.status, 0) + 1
+        if o.status != "cancelled":
+            total_cents += o.total_cents
+    return {
+        "ok": True,
+        "scope": "user" if ctx.role == "shopper" else "store",
+        "order_count": len(orders),
+        "by_status": by_status,
+        "total_spent_usd": total_cents / 100,
+        "first_order_at": orders[-1].ordered_at.isoformat() if orders else None,
+        "last_order_at": orders[0].ordered_at.isoformat() if orders else None,
+        "refund_eligible_count": sum(1 for o in orders if o.refund_eligible),
+    }
