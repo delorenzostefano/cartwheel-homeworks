@@ -348,7 +348,7 @@ def find_order(ctx: AuthContext, query: str) -> dict[str, Any]:
         title = row["product_title"].lower()
         if all(t in title for t in tokens):
             order = db._order_from_row(row)
-            matches.append({"id": order.id, **order.to_public_dict()})
+            matches.append(order.to_public_dict())
         if len(matches) == 5:
             break
     return {

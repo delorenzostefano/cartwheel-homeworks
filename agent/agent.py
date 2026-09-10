@@ -413,42 +413,42 @@ def check_return_eligibility(
     wrapper: RunContextWrapper[AuthContext], order_id: int
 ) -> dict[str, Any]:
     """Check whether an order is still inside a return window and what restocking fee may apply."""
-    return _call(wrapper, "check_return_eligibility", hw_tools.check_return_eligibility, order_id)
+    return _call(wrapper, hw_tools.check_return_eligibility, order_id)
 
 @function_tool
 def track_shipment(
     wrapper: RunContextWrapper[AuthContext], order_id: int
 ) -> dict[str, Any]:
     """Track an order's shipment: stage, ship and delivery dates, and whether it's late"""
-    return _call(wrapper, "track_shipment", hw_tools.track_shipment, order_id)
+    return _call(wrapper, hw_tools.track_shipment, order_id)
 
 @function_tool
 def order_history_summary(
     wrapper: RunContextWrapper[AuthContext]
 ) -> dict[str, Any]:
     """Summarize the caller's recent orders (or the merchant's store orders: count by status, total spent, first and last order dates)"""
-    return _call(wrapper, "order_history_summary", hw_tools.order_history_summary)
+    return _call(wrapper, hw_tools.order_history_summary)
 
 @function_tool
 def get_store_info(
     wrapper: RunContextWrapper[AuthContext], store: str
 ) -> dict[str, Any]:
     """Look up a store by name or slug: category, return window, restocking fee, and its policy id"""
-    return _call(wrapper, "get_store_info", hw_tools.get_store_info, store)
+    return _call(wrapper, hw_tools.get_store_info, store)
 
 @function_tool
 def get_product(
     wrapper: RunContextWrapper[AuthContext], product_id: int
 ) -> dict[str, Any]:
     """Fetch one product by id: description, category, price, and the store that sells it."""
-    return _call(wrapper, "get_product", hw_tools.get_product, product_id)
+    return _call(wrapper, hw_tools.get_product, product_id)
 
 @function_tool
 def dispute_window(
     wrapper: RunContextWrapper[AuthContext], order_id: int
 ) -> dict[str, Any]:
     """Say whether an order's charge can still be disputed and when the dispute window closes."""
-    return _call(wrapper, "dispute_window", hw_tools.dispute_window, order_id)
+    return _call(wrapper, hw_tools.dispute_window, order_id)
 
 
 # Progressive disclosure: a session exposes only the tools its role can use.
