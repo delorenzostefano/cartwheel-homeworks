@@ -62,17 +62,33 @@ The threshold is `refund_auto_approve_threshold_usd` in `facts.yaml` ($100).
 
 ## 4. Tools
 
-| ID | Tool | Inputs | Outputs | Side effects | Risk |
-| --- | --- | --- | --- | --- | --- |
-| TOOL-1 | `search_help_center` | query | top policy documents with identifiers | none | read |
-| TOOL-2 | `get_policy` | policy identifier | full policy document | none | read |
-| TOOL-3 | `search_products` | store, query, filters | matching products | none | read |
-| TOOL-4 | `get_order` | order identifier | accessible order record, including refund eligibility | none | read |
-| TOOL-5 | `list_my_orders` | none | shopper orders or merchant store orders | none | read |
-| TOOL-6 | `find_order` | natural-language query | matching orders by product name (fuzzy) | none | read |
-| TOOL-7 | `issue_refund` | order identifier, amount, reason | refund status | creates a refund and may mark an order refunded | write |
-| TOOL-8 | `cancel_order` | order identifier, reason | cancellation confirmation | marks an order cancelled | write |
-| TOOL-9 | `escalate_to_human` | summary, context | ticket identifier | creates an escalation | write |
+Successful results contain `ok: true` and the result fields. Expected failures contain `ok: false`, an `error` code, and a human-readable `reason`. Unexpected execution failures raise exceptions.
+
+| ID | Tool | Inputs | Side effects | Risk |
+| --- | --- | --- | --- | --- |
+| TOOL-1 | `search_help_center` | query | none | read |
+| TOOL-2 | `get_policy` | policy identifier | none | read |
+| TOOL-3 | `search_products` | query, optional store and price ceiling, result limit | none | read |
+| TOOL-4 | `get_order` | order identifier | none | read |
+| TOOL-5 | `list_my_orders` | none | none | read |
+| TOOL-6 | `find_order` | natural-language product description | none | read |
+| TOOL-7 | `issue_refund` | order identifier, amount, reason | creates a refund record; marks the order refunded only for an automatically approved refund | write |
+| TOOL-8 | `cancel_order` | order identifier, reason | marks an eligible order cancelled | write |
+| TOOL-9 | `escalate_to_human` | summary, context | creates a support ticket | write |
+
+### Success and failure contracts
+
+| Tool | On success | On failure |
+| --- | --- | --- |
+| `search_help_center` | `results` containing policy identifiers, titles, snippets, and retrieval scores. | `invalid_argument` for an empty or whitespace-only query; execution exception if retrieval fails. |
+| `get_policy` | `policy_id`, `title`, `audience`, and the full `body` of the requested policy. | `not_found` for an unknown policy identifier. |
+| `search_products` | `products` and `count`, filtered and sorted by price, then product identifier. Each product includes its identifier, store identifier, title, and price. The result limit is clamped to 1 through 25. No matches yields an empty list and count zero. | `invalid_argument` for an empty query or a nonpositive price ceiling; `not_found` for an unknown store. |
+| `get_order` | An authorized `order` record, including dates, status, store name, and refund eligibility. | `not_found` for an unknown order; `permission_denied` for an order outside the caller's scope. |
+| `list_my_orders` | `orders` and `count` for the shopper's own orders or the merchant's store, newest first, with at most 20 records. No orders yields an empty list and count zero. | `invalid_argument` for a support caller; execution exception if the database query fails. |
+| `find_order` | Up to five fuzzy product-name matches in `orders`, scoped to the shopper, merchant store, or authorized support caller. No matches yields an empty list. | Execution exception if search or database access fails. |
+| `issue_refund` | `refund_id`, `order_id`, `amount_usd`, and `status`. Status is `auto_approved` at or below the threshold and `queued_for_approval` above it. | `invalid_argument` for a nonpositive amount or an amount above the order total; `not_found` for an unknown order; `permission_denied` for an unauthorized caller; `not_eligible` for an ineligible order; `paused` when refunds are disabled. |
+| `cancel_order` | `order_id` and `status: cancelled` after updating an authorized order whose current status is `placed`. | `not_found` for an unknown order; `permission_denied` for an unauthorized caller; `not_eligible` when the order is no longer `placed`; `paused` when cancellations are disabled. |
+| `escalate_to_human` | `ticket_id` and `sla_hours` after creating the support ticket. | Execution exception if ticket creation fails. |
 
 ## 5. Escalation policy
 
@@ -84,22 +100,12 @@ The following cases always go to a human:
   order record.
 - **ESC-4.** Any case where the agent is unsure whether policy allows an action.
 
-## 6. Response requirements
+## 6. Other response requirements
+
+Requirements that do not fit in the sections above, including tone and style guidelines.
 
 - **RESP-1.** Cite the policy identifier for every claim derived from a policy document.
 - **RESP-2.** Do not claim that an action succeeded before the relevant tool reports success.
 - **RESP-3.** State when required information is missing or inconsistent, rather than inventing a value.
 - **RESP-4.** Explain refusals and escalations without revealing inaccessible order or user information.
 - **RESP-5.** Use direct and respectful language that explains the relevant decision.
-
-The requirements provide criteria for examining a trace, but they are not
-aggregate quality metrics. Error analysis in Module 2 may reveal additional
-criteria, particularly for communication quality, after reviewers observe
-real agent behavior.
-
-## 7. Open questions
-
-- Should merchants be able to see shopper contact details on their own store's
-  orders? Deferred until error analysis shows whether the agent ever needs it.
-- Do we cap refund count per user per month? A policy question for the facts
-  sheet, not the agent.

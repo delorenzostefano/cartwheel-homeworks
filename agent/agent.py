@@ -28,7 +28,7 @@ from agent.auth import AuthContext, can_refund_order, can_view_order, permission
 from agent.config import load_facts
 from agent.helpcenter import get_index
 from agent.killswitch import kill_switch
-from observability.instrument import record_tool_result
+from observability.instrument import configure_model_tracing, record_tool_result
 from seed.eligibility import refund_needs_approval
 
 # ---------------------------------------------------------------------------
@@ -173,8 +173,7 @@ def search_help_center_logic(ctx: AuthContext, query: str, k: int = 3) -> dict[s
 
 def get_order_logic(ctx: AuthContext, order_id: int) -> dict[str, Any]:
     """Order lookup, gated by the access matrix."""
-    conn = db.connect()
-    try:
+    with db.connection() as conn:
         order = db.get_order(conn, order_id)
         if order is None:
             return {"ok": False, "error": "not_found", "reason": f"no order #{order_id}"}
@@ -186,8 +185,6 @@ def get_order_logic(ctx: AuthContext, order_id: int) -> dict[str, Any]:
         payload = order.to_public_dict()
         payload["store_name"] = store.name if store else None
         return {"ok": True, "order": payload}
-    finally:
-        conn.close()
 
 
 def issue_refund_logic(
@@ -215,8 +212,7 @@ def issue_refund_logic(
             "error": "invalid_argument",
             "reason": "refund amount must be positive",
         }
-    conn = db.connect()
-    try:
+    with db.connection() as conn:
         order = db.get_order(conn, order_id)
         if order is None:
             return {"ok": False, "error": "not_found", "reason": f"no order #{order_id}"}
@@ -283,8 +279,6 @@ def issue_refund_logic(
                 f"{facts['refund_processing_days_max']} business days"
             ),
         }
-    finally:
-        conn.close()
 
 
 def escalate_to_human_logic(
@@ -292,8 +286,7 @@ def escalate_to_human_logic(
 ) -> dict[str, Any]:
     """Open a ticket for a human support agent. Write tool."""
     facts = load_facts()
-    conn = db.connect()
-    try:
+    with db.connection() as conn:
         ticket_id = db.insert_escalation(
             conn,
             user_id=ctx.user_id,
@@ -308,8 +301,6 @@ def escalate_to_human_logic(
             "ticket_id": ticket_id,
             "sla_hours": facts["support_escalation_sla_hours"],
         }
-    finally:
-        conn.close()
 
 
 # ---------------------------------------------------------------------------
@@ -321,13 +312,13 @@ def escalate_to_human_logic(
 
 
 def _call(
-    wrapper: RunContextWrapper[AuthContext], tool_name: str, fn: Any, /, *args: Any
+    wrapper: RunContextWrapper[AuthContext], fn: Any, /, *args: Any
 ) -> dict[str, Any]:
     try:
         result = fn(wrapper.context, *args)
     except NotImplementedError as exc:
         result = {"ok": False, "error": "not_implemented", "reason": str(exc)}
-    record_tool_result(wrapper.context, tool_name, result)
+    record_tool_result(wrapper.context, result)
     return result
 
 
@@ -336,13 +327,13 @@ def search_help_center(
     wrapper: RunContextWrapper[AuthContext], query: str
 ) -> dict[str, Any]:
     """Search Cartwheel's help-center policy docs. Returns top matches with policy ids."""
-    return _call(wrapper, "search_help_center", search_help_center_logic, query)
+    return _call(wrapper, search_help_center_logic, query)
 
 
 @function_tool
 def get_order(wrapper: RunContextWrapper[AuthContext], order_id: int) -> dict[str, Any]:
     """Look up one order by id, including its refund eligibility."""
-    return _call(wrapper, "get_order", get_order_logic, order_id)
+    return _call(wrapper, get_order_logic, order_id)
 
 
 def _issue_refund_impl(
@@ -351,7 +342,7 @@ def _issue_refund_impl(
     """Shared refund tool body. Wrapped twice below: once plainly (default,
     Module 1 behavior) and once with ``needs_approval`` when ``defenses=True``.
     Keeping the body in one function means the two tool objects never drift."""
-    return _call(wrapper, "issue_refund", issue_refund_logic, order_id, amount_usd, reason)
+    return _call(wrapper, issue_refund_logic, order_id, amount_usd, reason)
 
 
 @function_tool
@@ -367,13 +358,13 @@ def escalate_to_human(
     wrapper: RunContextWrapper[AuthContext], summary: str, context: str
 ) -> dict[str, Any]:
     """Open a ticket for a human support agent when a case is above your authority."""
-    return _call(wrapper, "escalate_to_human", escalate_to_human_logic, summary, context)
+    return _call(wrapper, escalate_to_human_logic, summary, context)
 
 
 @function_tool
 def get_policy(wrapper: RunContextWrapper[AuthContext], policy_id: str) -> dict[str, Any]:
     """Fetch the full text of one policy doc by its exact policy id."""
-    return _call(wrapper, "get_policy", hw_tools.get_policy, policy_id)
+    return _call(wrapper, hw_tools.get_policy, policy_id)
 
 
 @function_tool
@@ -392,14 +383,14 @@ def search_products(
         )
     except NotImplementedError as exc:
         result = {"ok": False, "error": "not_implemented", "reason": str(exc)}
-    record_tool_result(ctx, "search_products", result)
+    record_tool_result(ctx, result)
     return result
 
 
 @function_tool(strict_mode=False)
 def list_my_orders(wrapper: RunContextWrapper[AuthContext]) -> dict[str, Any]:
     """List the caller's recent orders (shopper) or their store's recent orders (merchant)."""
-    return _call(wrapper, "list_my_orders", hw_tools.list_my_orders)
+    return _call(wrapper, hw_tools.list_my_orders)
 
 
 @function_tool
@@ -407,7 +398,7 @@ def cancel_order(
     wrapper: RunContextWrapper[AuthContext], order_id: int, reason: str
 ) -> dict[str, Any]:
     """Cancel an order that has not shipped yet."""
-    return _call(wrapper, "cancel_order", hw_tools.cancel_order, order_id, reason)
+    return _call(wrapper, hw_tools.cancel_order, order_id, reason)
 
 
 @function_tool
@@ -415,7 +406,7 @@ def find_order(
     wrapper: RunContextWrapper[AuthContext], query: str
 ) -> dict[str, Any]:
     """Search your orders by product name (fuzzy match)."""
-    return _call(wrapper, "find_order", hw_tools.find_order, query)
+    return _call(wrapper, hw_tools.find_order, query)
 
 @function_tool
 def check_return_eligibility(
@@ -549,6 +540,7 @@ def build_agent(
     it, never a replacement for it.
     """
     resolved = resolve_model(model)
+    configure_model_tracing(openai_model=isinstance(resolved, str))
     if not defenses:
         return Agent[AuthContext](
             name="cartwheel-support",

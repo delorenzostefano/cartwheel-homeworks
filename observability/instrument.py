@@ -2,10 +2,10 @@
 
 `setup_tracing()` is the whole course stack: the Langfuse client reads
 LANGFUSE_PUBLIC_KEY, LANGFUSE_SECRET_KEY, and LANGFUSE_HOST from the
-environment and registers an OpenTelemetry tracer provider, and the
-OpenInference instrumentor makes the Agents SDK emit spans through it. That
-is the promised ~3 lines. Everything else in this file is the one seam
-students hand-roll: auth context and permission-denied events as span
+environment and registers an OpenTelemetry tracer provider.
+OpenLLMetry's OpenAI Agents integration records agent, model, and tool spans
+using OTel GenAI attributes. Students add request spans,
+auth context and permission-denied results as span
 attributes (the `cartwheel.*` namespace from the Module 1 outline,
 Artifact G).
 """
@@ -17,6 +17,8 @@ import os
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
+from agents.tracing import set_trace_processors
+from agents.tracing.processors import default_processor
 from opentelemetry import trace
 
 if TYPE_CHECKING:
@@ -25,7 +27,45 @@ if TYPE_CHECKING:
 REPO_ROOT = Path(__file__).resolve().parents[1]
 log = logging.getLogger("cartwheel.instrument")
 
-_tracer = trace.get_tracer("cartwheel")
+_genai_instrumented = False
+_openai_tracing_enabled = False
+
+
+def configure_model_tracing(*, openai_model: bool) -> None:
+    """Remove implicit hosted export for non-OpenAI models.
+
+    SDK processors are process-wide. Preserve either explicitly selected course
+    destination; do not globally disable spans, which would also break Langfuse.
+    """
+    if not openai_model and not _genai_instrumented and not _openai_tracing_enabled:
+        set_trace_processors([])
+
+
+def setup_openai_tracing() -> bool:
+    """Explicitly select hosted tracing, including for non-OpenAI inference."""
+    global _openai_tracing_enabled
+    if not os.environ.get("OPENAI_API_KEY", "").strip():
+        raise ValueError("--trace-openai requires OPENAI_API_KEY; omit the flag for local chat")
+    set_trace_processors([default_processor()])
+    _openai_tracing_enabled = True
+    return True
+
+
+
+def instrument_genai(tracer_provider: Any) -> None:
+    """Install GenAI recording once, using the supplied OTel provider."""
+    global _genai_instrumented
+    if _genai_instrumented:
+        return
+    from opentelemetry.instrumentation.openai_agents import OpenAIAgentsInstrumentor
+
+    os.environ.setdefault("TRACELOOP_TRACE_CONTENT", "false")
+    # Export only through Langfuse, not the SDK's separate hosted tracing path.
+    instrumentor = OpenAIAgentsInstrumentor(replace_existing_processors=True)
+    instrumentor.instrument(tracer_provider=tracer_provider)
+    if not instrumentor.is_instrumented_by_opentelemetry:
+        raise RuntimeError("OpenAI Agents tracing instrumentation failed to install")
+    _genai_instrumented = True
 
 
 def load_env(path: Path | None = None) -> None:
@@ -47,8 +87,8 @@ def load_env(path: Path | None = None) -> None:
             os.environ.setdefault(key, value)
 
 
-def setup_tracing() -> None:
-    """Instrument the Agents SDK and ship spans to self-hosted Langfuse."""
+def setup_tracing() -> bool:
+    """Install Langfuse tracing; return False when credentials are missing."""
     load_env()
     if not os.environ.get("LANGFUSE_PUBLIC_KEY"):
         log.warning(
@@ -56,43 +96,42 @@ def setup_tracing() -> None:
             "(docker compose -f observability/docker-compose.yml up -d) and "
             "copy .env.example to .env."
         )
-        return
-    # The course setup, as promised: about three lines.
+        return False
     from langfuse import get_client
-    from openinference.instrumentation.openai_agents import OpenAIAgentsInstrumentor
 
     get_client()  # registers the OTel tracer provider from LANGFUSE_* env vars
-    OpenAIAgentsInstrumentor().instrument()
+    instrument_genai(trace.get_tracer_provider())
+    # Preserve processor replacement for callers such as the server, which
+    # ignore our return value. A missing secret makes Langfuse a no-op client;
+    # returning before replacement would leave hosted OpenAI export active.
+    if not os.environ.get("LANGFUSE_SECRET_KEY"):
+        return False
     log.info("tracing enabled; spans go to %s", os.environ.get("LANGFUSE_HOST"))
+    return True
 
 
-def record_tool_result(
-    ctx: "AuthContext", tool_name: str, result: dict[str, Any]
-) -> None:
-    """Attach auth context and permission-denied attributes to the trace.
+def record_tool_result(ctx: "AuthContext", result: dict[str, Any]) -> None:
+    """Add authenticated identity and permission attributes to the active tool span.
 
-    Called by every tool wrapper in agent/agent.py after the tool logic runs.
-    It emits one small child span (named "cartwheel.tool_result") under the
-    current trace carrying the `cartwheel.*` attributes, so Module 2 can
-    query who the caller was and Module 4 can find every permission denial.
-
-    If tracing is not configured, the span is non-recording and this function
-    remains a no-op. The early return keeps the uninstrumented agent usable
-    before Homework 2 is complete.
+    OpenLLMetry creates the tool span and records its name, arguments, and
+    result. The tool wrappers call this helper before that span ends.
+    Add the caller's user_role and string user_id, plus the integer store_id
+    for merchants, then record the permission decision with the helper below.
+    When tracing is off, the active span is non-recording and this is a no-op.
     """
-    with _tracer.start_as_current_span("cartwheel.tool_result") as span:
-        if not span.is_recording():
-            return
-        ### YOUR CODE HERE (HW2)
-        raise NotImplementedError(
-            "HW2: record the tool name, authenticated caller, and denial attributes"
-        )
+    span = trace.get_current_span()
+    if not span.is_recording():
+        return
+    ### YOUR CODE HERE (HW2)
+    raise NotImplementedError(
+        "HW2: add authenticated caller and permission attributes to the tool span"
+    )
 
 
 def _set_permission_denied_attributes(
     span: trace.Span, result: dict[str, Any]
 ) -> None:
-    """Set the permission-denied attributes on a tool-result span.
+    """Set the permission-denied attributes on a tool span.
 
     Contract (Module 1 outline, Artifact G):
       - `result` is the structured dict a tool returned (see agent/auth.py

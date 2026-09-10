@@ -190,23 +190,20 @@ def _cached_preds(judge: dict[str, Any]) -> dict[str, int]:
 
 
 def _load_trace_source(trace_source: str | Path | None) -> list[dict[str, Any]]:
-    """Load traces from Langfuse (the ``"langfuse"`` sentinel) or a file.
-
-    When ``trace_source`` is the literal ``"langfuse"`` and Langfuse is
-    configured, this pulls the error-analysis slice live via
-    ``langfuse_io.fetch_traces`` (the same ``{"trace_id", "segments"}`` shape
-    the file export uses). Any other value is a Module 1 export path and goes
-    through ``selection.load_traces``. A live fetch that comes
-    back empty falls back to the committed store export.
-    """
+    """Load normalized traces from a file or Langfuse."""
     if isinstance(trace_source, str) and trace_source.lower() == "langfuse":
         from . import langfuse_io
 
-        if langfuse_io.is_configured():
-            traces = langfuse_io.fetch_traces()
-            if traces:
-                return traces
-        return _state.read_json(_state.state_path("store_traces.json"), default=[])
+        if not langfuse_io.is_configured():
+            raise langfuse_io.LangfuseNotConfigured(
+                "Langfuse is not configured. Configure LANGFUSE_PUBLIC_KEY, "
+                "LANGFUSE_SECRET_KEY, and LANGFUSE_HOST, or pass a trace "
+                "export path for offline analysis."
+            )
+        traces = langfuse_io.fetch_traces()
+        if not traces:
+            raise ValueError("Langfuse returned no traces for the Module 2 slice")
+        return traces
     return selection.load_traces(trace_source)
 
 
@@ -231,8 +228,9 @@ def select_traces(
     Args:
         trace_source: a Langfuse export path (JSON/JSONL of trace records), or
             the literal ``"langfuse"`` to pull the
-            error-analysis slice live from Langfuse when it is configured. The
-            demo uses the committed export.
+            error-analysis slice live from configured Langfuse. Empty live
+            results raise. For offline use, pass a Module 1 export such as
+            ``traces/support_traces.json``.
         k: batch size (the demo default is 24).
         strategy: ``"diversity"`` (default), ``"random"``, or ``"outlier"``
             (interquartile-range flags on a numeric feature).
@@ -240,8 +238,9 @@ def select_traces(
 
     Returns:
         A list of ``{"trace_id": ..., "reason": ...}`` dicts, one per pick,
-        with a one-line reason. The sample manifest is persisted to
-        ``state/samples.json``.
+        with a one-line reason. Review records are persisted to
+        ``state/samples.json`` and selection details to
+        ``state/sample_manifest.json``.
     """
     exclude = set(exclude_ids or [])
     traces = _load_trace_source(trace_source)
@@ -269,6 +268,9 @@ def select_traces(
         "selected_at": _utcnow(),
         "picks": picks,
     }
+    # Remember the file even if the next call runs from another directory.
+    if not (isinstance(trace_source, str) and trace_source.lower() == "langfuse"):
+        manifest["source"] = str(Path(trace_source).resolve())
     _state.write_json(_state.state_path("samples.json"), samples)
     _state.write_json(_state.state_path("sample_manifest.json"), manifest)
     return samples
@@ -302,7 +304,8 @@ def next_to_label(
         k: how many candidates to propose.
         strategy: one of the four above.
         trace_source: override the trace source; defaults to the last
-            ``select_traces`` source recorded in ``samples.json``.
+            ``select_traces`` source recorded in ``sample_manifest.json``.
+            With no recorded source, returns no candidates.
 
     Returns:
         ``{"trace_id": ..., "signal": ...}`` dicts naming why each was
@@ -311,9 +314,9 @@ def next_to_label(
     labeled = {r["trace_id"] for r in _load_labels(mode)}
     confirmed_failures = [r["trace_id"] for r in _load_labels(mode) if r["label"] == 1]
     source = trace_source or _state.read_json(
-        _state.state_path("samples.json"), default={}
+        _state.state_path("sample_manifest.json"), default={}
     ).get("source")
-    traces = selection.load_traces(source) if source else []
+    traces = _load_trace_source(source) if source else []
     return selection.next_candidates(
         traces,
         mode=mode,

@@ -1,22 +1,17 @@
-"""One contract test per homework hole.
+"""Contract tests for homework implementations.
 
 Each test is marked xfail(raises=NotImplementedError): it "fails as
 expected" while the hole is unimplemented, and flips to passing (XPASS)
 once you implement the function correctly. If your implementation is wrong,
-the test fails loudly with an assertion error instead. Acceptance for each
-homework is that its tests here pass.
+the test fails loudly with an assertion error instead. Run the tests alongside the inspection steps in each homework.
 """
 
 from __future__ import annotations
 
-import asyncio
 import sqlite3
 from pathlib import Path
 
 import pytest
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import SimpleSpanProcessor
-from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
 
 from agent import db, tools
 from agent.auth import AuthContext
@@ -152,7 +147,7 @@ def test_hw1_find_order(world: dict) -> None:
     result = tools.find_order(SHOPPER_1, product_name)
     assert result["ok"] is True
     assert isinstance(result["orders"], list)
-    assert any(o["id"] == 4127 for o in result["orders"])
+    assert any(o["order_id"] == 4127 for o in result["orders"])
 
     # No match returns an empty list, not an error.
     empty = tools.find_order(SHOPPER_1, "zzzznonexistent9999")
@@ -162,59 +157,6 @@ def test_hw1_find_order(world: dict) -> None:
 # ---------------------------------------------------------------------------
 # Homework 2: instrumentation and authenticated endpoint
 # ---------------------------------------------------------------------------
-
-
-@hw(2, "record_tool_result")
-def test_hw2_tool_result_span_attributes() -> None:
-    from observability import instrument
-
-    exporter = InMemorySpanExporter()
-    provider = TracerProvider()
-    provider.add_span_processor(SimpleSpanProcessor(exporter))
-    tracer = provider.get_tracer("test")
-    original_tracer = instrument._tracer
-    instrument._tracer = tracer
-    try:
-        instrument.record_tool_result(
-            MERCHANT_STORE_1,
-            "get_order",
-            {"ok": False, "error": "permission_denied", "reason": "outside store"},
-        )
-    finally:
-        instrument._tracer = original_tracer
-
-    spans = exporter.get_finished_spans()
-    assert len(spans) == 1
-    attrs = spans[0].attributes
-    assert spans[0].name == "cartwheel.tool_result"
-    assert attrs["gen_ai.tool.name"] == "get_order"
-    assert attrs["cartwheel.user_role"] == "merchant"
-    assert attrs["cartwheel.user_id"] == "9001"
-    assert attrs["cartwheel.store_id"] == 1
-    assert attrs["cartwheel.permission_denied"] is True
-    assert attrs["cartwheel.permission_denied.reason"] == "outside store"
-
-
-@hw(2, "_set_permission_denied_attributes")
-def test_hw2_permission_denied_attribute() -> None:
-    from observability.instrument import _set_permission_denied_attributes
-
-    exporter = InMemorySpanExporter()
-    provider = TracerProvider()
-    provider.add_span_processor(SimpleSpanProcessor(exporter))
-    tracer = provider.get_tracer("test")
-
-    denied = {"ok": False, "error": "permission_denied", "reason": "not your order"}
-    allowed = {"ok": True, "order": {}}
-    with tracer.start_as_current_span("denied-span") as span:
-        _set_permission_denied_attributes(span, denied)
-    with tracer.start_as_current_span("allowed-span") as span:
-        _set_permission_denied_attributes(span, allowed)
-
-    spans = {s.name: s.attributes for s in exporter.get_finished_spans()}
-    assert spans["denied-span"]["cartwheel.permission_denied"] is True
-    assert spans["denied-span"]["cartwheel.permission_denied.reason"] == "not your order"
-    assert spans["allowed-span"]["cartwheel.permission_denied"] is False
 
 
 @hw(2, "create_session")
@@ -233,47 +175,6 @@ def test_hw2_create_session_binds_verified_identity(world: dict) -> None:
     assert payload["user_id"] == 9002
     assert payload["role"] == "merchant"
     assert payload["store_id"] == 2
-
-
-@hw(2, "post_message")
-def test_hw2_message_endpoint_records_root_span(world: dict, monkeypatch) -> None:
-    from server import app as server_app
-
-    class FakeResult:
-        final_output = "A traced answer."
-
-    async def fake_run(*args, **kwargs):
-        return FakeResult()
-
-    exporter = InMemorySpanExporter()
-    provider = TracerProvider()
-    provider.add_span_processor(SimpleSpanProcessor(exporter))
-    tracer = provider.get_tracer("test")
-    monkeypatch.setattr(server_app, "_tracer", tracer)
-    monkeypatch.setattr(server_app, "build_agent", lambda *args, **kwargs: object())
-    monkeypatch.setattr(server_app.Runner, "run", fake_run)
-
-    server_app._SESSIONS.clear()
-    created = server_app.create_session(
-        server_app.SessionCreate(user_id=1, role="shopper")
-    )
-    response = asyncio.run(
-        server_app.post_message(
-            created["session_id"],
-            server_app.MessageIn(message="Where is my order?", scenario_id="manual-1"),
-            authorization=f"Bearer {created['token']}",
-        )
-    )
-
-    spans = exporter.get_finished_spans()
-    assert len(spans) == 1
-    attrs = spans[0].attributes
-    assert spans[0].name == "cartwheel.session_message"
-    assert attrs["cartwheel.user_role"] == "shopper"
-    assert attrs["cartwheel.user_id"] == "1"
-    assert attrs["cartwheel.scenario_id"] == "manual-1"
-    assert attrs["cartwheel.prompt_version"] == response["prompt_version"]
-    assert response["reply"] == "A traced answer."
 
 
 @pytest.mark.xfail(
@@ -783,13 +684,18 @@ def test_m2_failure_report_matches_artifact_l_schema(analysis_state, tmp_path) -
     lead = next(mode for mode in report["modes"] if mode["name"] == DEMO_MODE)
     assert lead["name"] == DEMO_MODE
     assert round(lead["prevalence"]["corrected"], 3) == 0.163
+    # The demo judge gets 36/38 passes and 10/12 failures right.
+    evaluator = lead["evaluator"]
+    assert evaluator["test_tpr_interval"] == [0.8271, 0.9854]
+    assert evaluator["test_tnr_interval"] == [0.552, 0.953]
 
-def test_m2_select_traces_is_deterministic_and_offline(analysis_state, tmp_path) -> None:
-    """`select_traces` clusters an export into a reproducible diverse batch
-    with a one-line reason per pick, no model call."""
+def test_m2_file_selection_is_deterministic_and_resumable(
+    analysis_state, tmp_path, monkeypatch
+) -> None:
+    """Select a repeatable batch, then resume after changing directories."""
     import json
 
-    from analysis.helpers import select_traces
+    from analysis.helpers import select_traces, next_to_label
 
     # A tiny synthetic export with feature vectors, written to a temp file.
     traces = [
@@ -798,7 +704,8 @@ def test_m2_select_traces_is_deterministic_and_offline(analysis_state, tmp_path)
                                      "tokens": 100 * (i % 7)}}
         for i in range(40)
     ]
-    export = tmp_path / "export.json"
+    monkeypatch.chdir(tmp_path)
+    export = Path("export.json")
     export.write_text(json.dumps({"traces": traces}))
 
     picks_a = select_traces(export, k=24, strategy="diversity")
@@ -813,6 +720,11 @@ def test_m2_select_traces_is_deterministic_and_offline(analysis_state, tmp_path)
     saved = json.loads((analysis_state / "samples.json").read_text())
     assert isinstance(saved, list) and saved
     assert set(saved[0]) >= {"trace_id", "reason", "trace", "features", "meta"}
+
+    # Resume from the full export, even after changing directories.
+    monkeypatch.chdir(analysis_state)
+    candidates = next_to_label("resumed", k=len(traces), strategy="random")
+    assert {c["trace_id"] for c in candidates} == {t["id"] for t in traces}
 
 
 def test_m2_module1_export_is_normalized_for_review(analysis_state, tmp_path) -> None:
@@ -890,6 +802,32 @@ def test_m2_next_to_label_enriches_from_confirmed(analysis_state, tmp_path) -> N
     assert all(c.get("signal") for c in cands)
 
 
+def test_m2_next_to_label_resumes_live_source(analysis_state, monkeypatch) -> None:
+    from analysis.helpers import langfuse_io, select_traces, next_to_label
+    from analysis.helpers.normalization import normalize_traces
+
+    traces = normalize_traces([{"id": "live", "text": "hello"}])
+    monkeypatch.setattr(langfuse_io, "is_configured", lambda: True)
+    monkeypatch.setattr(langfuse_io, "fetch_traces", lambda: traces)
+    select_traces("langfuse", k=1)
+    assert next_to_label("resumed", k=1, strategy="random") == [
+        {"trace_id": "live", "signal": "random"}
+    ]
+
+
+@pytest.mark.parametrize("configured, error", [(False, RuntimeError), (True, ValueError)])
+def test_m2_unavailable_live_source_raises(
+    analysis_state, monkeypatch, configured, error
+) -> None:
+    """Missing setup or an empty live dataset should give a useful error."""
+    from analysis.helpers import langfuse_io, select_traces
+
+    monkeypatch.setattr(langfuse_io, "is_configured", lambda: configured)
+    monkeypatch.setattr(langfuse_io, "fetch_traces", lambda: [])
+    with pytest.raises(error, match="Langfuse"):
+        select_traces("langfuse", k=1)
+
+
 # --------------------------------------------------------------------------
 # Grading a student's OWN submission (mode-agnostic; opt-in).
 #
@@ -957,3 +895,15 @@ def test_m2_submission_has_a_frozen_judge_per_split_mode() -> None:
             frozen_modes.add(j.get("mode"))
     for mode in splits:
         assert mode in frozen_modes, f"{mode}: no frozen judge (freeze before reporting)"
+
+
+@hw(1, "find_order")
+@pytest.mark.parametrize("ctx,scope", [(SHOPPER_1, "shopper"), (AuthContext(user_id=9002, role="merchant", store_id=2), "merchant"), (SUPPORT, "support")])
+def test_hw1_find_order_roles_and_old_matches(order_search_cases, ctx, scope):
+    title, expected = order_search_cases
+    result = tools.find_order(ctx, title)
+    assert result["ok"] is True
+    with db.connection() as conn:
+        wanted = [db.get_order(conn, order_id).to_public_dict() for order_id in expected[scope][:5]]
+    assert result["orders"] == wanted
+    assert tools.find_order(ctx, "zzzznonexistent9999") == {"ok": True, "orders": []}

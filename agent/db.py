@@ -8,6 +8,7 @@ separable and testable. The schema itself is created by seed/generate.py.
 from __future__ import annotations
 
 import sqlite3
+from contextlib import closing
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
@@ -17,7 +18,7 @@ from agent.config import db_path
 
 
 def connect(path: Path | None = None) -> sqlite3.Connection:
-    """Open the world database. Caller closes it (or uses a context manager)."""
+    """Open the world database. Caller must close it; prefer connection()."""
     target = path or db_path()
     if not target.exists():
         raise FileNotFoundError(
@@ -26,6 +27,11 @@ def connect(path: Path | None = None) -> sqlite3.Connection:
     conn = sqlite3.connect(target)
     conn.row_factory = sqlite3.Row
     return conn
+
+
+def connection(path: Path | None = None) -> closing[sqlite3.Connection]:
+    """Open a connection that closes on block exit, without committing on exit."""
+    return closing(connect(path))
 
 
 def _parse_date(value: str | None) -> date | None:
@@ -179,6 +185,34 @@ def list_orders_for_store(
     rows = conn.execute(
         "SELECT * FROM orders WHERE store_id = ? ORDER BY ordered_at DESC, id DESC LIMIT ?",
         (store_id, limit),
+    ).fetchall()
+    return [_order_from_row(row) for row in rows]
+
+
+def list_order_search_candidates(
+    conn: sqlite3.Connection,
+    *,
+    user_id: int | None = None,
+    store_id: int | None = None,
+    all_orders: bool = False,
+) -> list[Order]:
+    """Return the complete search scope, newest first (order ID breaks ties).
+
+    Select exactly one scope. The tool must derive user/store IDs from its
+    authenticated context and allow all_orders=True only for support staff.
+    There is deliberately no limit: product matching must precede truncation.
+    Use list_products to map product IDs to titles for student-owned matching.
+    """
+    if sum((user_id is not None, store_id is not None, all_orders)) != 1:
+        raise ValueError("select exactly one order search scope")
+    if user_id is not None:
+        where, params = " WHERE user_id = ?", (user_id,)
+    elif store_id is not None:
+        where, params = " WHERE store_id = ?", (store_id,)
+    else:
+        where, params = "", ()
+    rows = conn.execute(
+        "SELECT * FROM orders" + where + " ORDER BY ordered_at DESC, id DESC", params
     ).fetchall()
     return [_order_from_row(row) for row in rows]
 

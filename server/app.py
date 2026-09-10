@@ -154,6 +154,9 @@ async def post_message(
     prompt version, and a nonempty scenario id when one is supplied. Run the
     agent inside that span, then return the session id, final reply, and
     prompt version.
+    When TRACELOOP_TRACE_CONTENT is true, record gen_ai.input.messages and
+    gen_ai.output.messages on the root span as JSON arrays of OTel GenAI
+    messages with role and parts fields.
     """
     ### YOUR CODE HERE (HW2)
     raise NotImplementedError("HW2: implement the traced message endpoint")
