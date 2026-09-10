@@ -517,3 +517,65 @@ def order_history_summary(ctx: AuthContext) -> dict[str, Any]:
         "last_order_at": orders[0].ordered_at.isoformat() if orders else None,
         "refund_eligible_count": sum(1 for o in orders if o.refund_eligible),
     }
+
+
+def get_product(ctx: AuthContext, product_id: int) -> dict[str, Any]:
+    """Full detail for one catalog product. Risk tier: read."""
+    conn = db.connect()
+    try:
+        product = db.get_product(conn, product_id)
+        store = db.get_store(conn, product.store_id) if product else None
+    finally:
+        conn.close()
+    if product is None:
+        return {"ok": False, "error": "not_found", "reason": f"No product with id {product_id}"}
+    return {
+        "ok": True,
+        "product_id": product.id,
+        "title": product.title,
+        "description": product.description,
+        "category": product.category,
+        "price_usd": product.price_usd,
+        "store_id": product.store_id,
+        "store_name": store.name if store else None,
+    }
+
+
+def dispute_window(ctx: AuthContext, order_id: int) -> dict[str, Any]:
+    """Whether a charge on this order can still be disputed. Risk tier: read."""
+    conn = db.connect()
+    try:
+        order = db.get_order(conn, order_id)
+        if order is None:
+            return {"ok": False, "error": "not_found", "reason": f"No order with id {order_id}"}
+        if not can_view_order(ctx, order.user_id, order.store_id):
+            return permission_denied(
+                f"{ctx.role} {ctx.user_id} may not view order {order_id}"
+            )
+        today = db.world_asof(conn)
+    finally:
+        conn.close()
+
+    days = load_facts()["dispute_window_days"]
+    if order.delivered_at is None:
+        return {
+            "ok": True,
+            "order_id": order_id,
+            "disputable": False,
+            "dispute_window_days": days,
+            "window_ends": None,
+            "days_left": None,
+            "reason": f"order is {order.status}, not delivered yet; window starts at delivery",
+        }
+    window_ends = order.delivered_at + timedelta(days=days)
+    days_left = (window_ends - today).days
+    return {
+        "ok": True,
+        "order_id": order_id,
+        "disputable": 0 <= days_left,
+        "dispute_window_days": days,
+        "delivered_at": order.delivered_at.isoformat(),
+        "window_ends": window_ends.isoformat(),
+        "days_left": days_left,
+        "as_of": today.isoformat(),
+    }

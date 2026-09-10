@@ -445,6 +445,21 @@ def get_store_info(
     """Look up a store by name or slug: category, return window, restocking fee, and its policy id"""
     return _call(wrapper, "get_store_info", hw_tools.get_store_info, store)
 
+@function_tool
+def get_product(
+    wrapper: RunContextWrapper[AuthContext], product_id: int
+) -> dict[str, Any]:
+    """Fetch one product by id: description, category, price, and the store that sells it."""
+    return _call(wrapper, "get_product", hw_tools.get_product, product_id)
+
+@function_tool
+def dispute_window(
+    wrapper: RunContextWrapper[AuthContext], order_id: int
+) -> dict[str, Any]:
+    """Say whether an order's charge can still be disputed and when the dispute window closes."""
+    return _call(wrapper, "dispute_window", hw_tools.dispute_window, order_id)
+
+
 # Progressive disclosure: a session exposes only the tools its role can use.
 # Fewer tools mean fewer wrong choices and cleaner evals. At dev scale the
 # only difference is that support staff, who have no orders of their own,
@@ -460,6 +475,7 @@ _COMMON_TOOLS = [
     check_return_eligibility,
     track_shipment,
     get_store_info,
+    dispute_window,
 ]
 TOOLS_BY_ROLE = {
     "shopper": _COMMON_TOOLS + [list_my_orders, find_order, order_history_summary],

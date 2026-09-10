@@ -139,6 +139,18 @@ def get_store_by_name(conn: sqlite3.Connection, name: str) -> Store | None:
     ).fetchone()
     return _store_from_row(row) if row else None
 
+def get_product(conn: sqlite3.Connection, product_id: int) -> Product | None:
+    row = conn.execute("SELECT * FROM products WHERE id = ?", (product_id,)).fetchone()
+    if row is None:
+        return None
+    return Product(
+        id=row["id"],
+        store_id=row["store_id"],
+        title=row["title"],
+        description=row["description"],
+        category=row["category"],
+        price_cents=row["price_cents"],
+    )
 
 def _store_from_row(row: sqlite3.Row) -> Store:
     return Store(
