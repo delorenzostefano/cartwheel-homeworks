@@ -174,6 +174,7 @@ def run_case(
     model: str | None = None,
     max_turns: int = 12,
     prompt_template: str | None = None,
+    timeout_seconds: float = 300,
 ) -> dict[str, Any]:
     """Play one evaluation case through the real agent, in process.
 
@@ -185,7 +186,8 @@ def run_case(
         {"turns": [{"user", "reply", "tool_calls": [{"name", "args",
           "result"}], "steps"}],
          "final_reply": str, "steps": int,
-         "usage": {"requests", "input_tokens", "output_tokens"}}
+         "usage": {"requests", "input_tokens", "cached_input_tokens",
+                   "output_tokens"}}
     """
     from agents import Runner, SQLiteSession
 
@@ -198,7 +200,12 @@ def run_case(
     async def _run() -> dict[str, Any]:
         session = SQLiteSession(f"replay-{case['id']}")  # in-memory, per run
         turns = []
-        usage = {"requests": 0, "input_tokens": 0, "output_tokens": 0}
+        usage = {
+            "requests": 0,
+            "input_tokens": 0,
+            "cached_input_tokens": 0,
+            "output_tokens": 0,
+        }
         for message in messages:
             result = await Runner.run(
                 agent, message, context=ctx, session=session, max_turns=max_turns
@@ -209,6 +216,8 @@ def run_case(
             run_usage = result.context_wrapper.usage
             usage["requests"] += run_usage.requests
             usage["input_tokens"] += run_usage.input_tokens
+            details = run_usage.input_tokens_details
+            usage["cached_input_tokens"] += (details.cached_tokens or 0) if details else 0
             usage["output_tokens"] += run_usage.output_tokens
         return {
             "turns": turns,
@@ -217,7 +226,15 @@ def run_case(
             "usage": usage,
         }
 
-    return asyncio.run(_run())
+    async def _run_with_timeout() -> dict[str, Any]:
+        try:
+            return await asyncio.wait_for(_run(), timeout=timeout_seconds)
+        except asyncio.TimeoutError as exc:
+            raise TimeoutError(
+                f"agent run timed out after {timeout_seconds:.0f} seconds"
+            ) from exc
+
+    return asyncio.run(_run_with_timeout())
 
 
 # ---------------------------------------------------------------------------
@@ -368,8 +385,31 @@ def retrieved_docs_text(transcript: dict[str, Any]) -> str:
     return "\n\n".join(chunks) if chunks else "(no policy documents were retrieved)"
 
 
+def judge_trace_text(transcript: dict[str, Any]) -> str:
+    """Format a runtime transcript like the normalized traces used in HW5."""
+    lines: list[str] = []
+    for turn in transcript.get("turns", []):
+        lines.append(f"user: {turn.get('user', '')}")
+        for call in turn.get("tool_calls", []):
+            arguments = json.dumps(
+                call.get("args"), ensure_ascii=False, sort_keys=True, default=str
+            )
+            result = json.dumps(
+                call.get("result"), ensure_ascii=False, sort_keys=True, default=str
+            )
+            lines.append(f"tool_call: {arguments}")
+            lines.append(f"tool_result: {result}")
+        lines.append(f"assistant: {turn.get('reply', '')}")
+    return "\n".join(lines)
+
+
 def judge_reply(judge: dict[str, Any], reply: str, docs: str) -> str:
-    """Run one frozen judge on a reply. Returns "pass" or "fail".
+    """Run one frozen judge on a reply. Returns "pass" or "fail"."""
+    return judge_reply_with_text(judge, reply, docs)[0]
+
+
+def judge_reply_with_text(judge: dict[str, Any], reply: str, docs: str) -> tuple[str, str]:
+    """Run one frozen judge on a reply. Returns the verdict and the judge's text.
 
     This is a live call to the judge's pinned model (a Module 2 freeze pins
     both the prompt and the model id), routed through LiteLLM like the
@@ -390,10 +430,12 @@ def judge_reply(judge: dict[str, Any], reply: str, docs: str) -> str:
             {"role": "user", "content": user_content},
         ],
         temperature=0,
+        num_retries=3,
+        timeout=120,
     )
     text = response.choices[0].message.content or ""
     match = re.search(r'"answer"\s*:\s*"(pass|fail)"', text)
     if match:
-        return match.group(1)
+        return match.group(1), text
     lowered = text.lower()
-    return "fail" if "fail" in lowered else "pass"
+    return ("fail" if "fail" in lowered else "pass"), text

@@ -2,6 +2,9 @@
 
 The Cartwheel repository grows across the course, so every student assignment is stored here beside the code used to complete it. Begin with Module 1, and keep the files produced by each assignment because later modules use the same support agent and evaluation records.
 
+> [!IMPORTANT]
+> Run the Cartwheel agent on a small model, such as `gpt-4o-mini` (the default), `gpt-5-nano`, or `claude-haiku-4-5`. Frontier models such as `gpt-5.5` or `claude-opus-4-6` rarely make mistakes in this synthetic world, and every module depends on finding and studying agent failures. Judge models are chosen separately in each assignment.
+
 Assignments are released incrementally. More will appear here as the course progresses.
 
 ## Module 1
@@ -14,3 +17,13 @@ Assignments are released incrementally. More will appear here as the course prog
 
 - [Homework 4](module-2/hw4.md): Review traces and define failure modes.
 - [Homework 5](module-2/hw5.md): Develop and test one LLM judge. Build two more as optional extensions.
+
+## Module 3
+
+- [Homework 6](module-3/hw6.md): Build continuous integration for the Cartwheel support agent.
+- [Homework 7](module-3/hw7.md): Monitor one failure mode after deployment.
+
+## Module 5
+
+- [Homework 8](module-5/hw8.md): Improve accuracy on one failure mode and compare agent configurations on a Pareto frontier.
+- [Homework 9](module-5/hw9.md): Reduce cost with fewer tokens, prompt caching, and a model cascade, then compare configurations by score and cost.

@@ -26,7 +26,7 @@ dev = [
 
 [project.optional-dependencies]
 optimization = [
-    "gepa>=0.1.4,<0.2",
+    "gepa==0.1.4",
 ]
 
 [build-system]
@@ -34,7 +34,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["agent", "observability", "scenarios", "seed", "server", "analysis", "replay", "optimize"]
+packages = ["agent", "observability", "scenarios", "seed", "server", "analysis", "replay", "optimize", "harbor_adapter"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

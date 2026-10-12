@@ -21,7 +21,7 @@ uv sync
 uv run python -m seed.generate
 ```
 
-Copy `.env.example` to `.env` if `.env` does not already exist, then add the key for the model you will use during the manual session. The tests and seed command do not require a model key, but the command line chat does.
+Copy `.env.example` to `.env` if `.env` does not already exist, then add the key for the model you will use during the manual session. Use a small model such as the default `gpt-4o-mini`, `gpt-5-nano`, or `claude-haiku-4-5`. Frontier models rarely make mistakes in this synthetic world, and Part C depends on observing failures. The tests and seed command do not require a model key, but the command line chat does.
 
 The seed command creates `data/cartwheel.db`, a local SQLite database containing the stores, products, users, orders, refunds, and escalations used by the assignment. The command also creates the policy documents under `data/policies/`. Generation is deterministic, so every student receives the same demonstration orders and policy facts. No external database service is required.
 

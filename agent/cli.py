@@ -5,7 +5,7 @@ error-analysis UI Module 2 builds. Chat here.
 
 Usage:
     uv run python -m agent.cli --role shopper
-    uv run python -m agent.cli --role merchant --model claude-opus-4-6
+    uv run python -m agent.cli --role merchant --model claude-haiku-4-5
     uv run python -m agent.cli --role support --user 9502 --trace
     uv run python -m agent.cli --role support --defenses   # Module 4 guards + refund pause
 
@@ -186,7 +186,7 @@ def main() -> None:
     parser.add_argument(
         "--model",
         default=None,
-        help="gpt-5.5 | claude-opus-4-6 | glm-5.2 (default: $CARTWHEEL_MODEL or gpt-5.5)",
+        help="gpt-4o-mini | claude-haiku-4-5 | glm-5.2 | ... (default: $CARTWHEEL_MODEL or gpt-4o-mini)",
     )
     tracing_options = parser.add_mutually_exclusive_group()
     tracing_options.add_argument(

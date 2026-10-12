@@ -1,4 +1,4 @@
-"""Run a Homework 9 development or test evaluation."""
+"""Run a Homework 8 development or test evaluation."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import Any
 
 from observability.instrument import load_env
-from replay.__main__ import make_runner
+from replay.__main__ import judge_provider_key, make_runner
 from replay.harness import replay_case
 from replay.rollout import WRITE_TOOLS, load_cases, load_frozen_judge, world_reset
 from agent.agent import prompt_version
@@ -22,8 +22,10 @@ from optimize.workflow import (
     RESULTS_DIR,
     SPLIT_PATH,
     current_commit,
+    is_expected_write,
     now_utc,
     read_json,
+    release_search_calls,
     reserve_search_calls,
     validate_split,
     validate_model_selection,
@@ -31,14 +33,6 @@ from optimize.workflow import (
 )
 
 DEFAULT_CONFIG = Path(__file__).with_name("config.json")
-
-
-def is_expected_write(case: dict[str, Any]) -> bool:
-    return any(
-        check["check"] == "refund_status"
-        or (check["check"] == "tool_called" and check.get("name") in WRITE_TOOLS)
-        for check in case["expected"].get("checks", [])
-    )
 
 
 def runs_for_case(case: dict[str, Any]) -> int:
@@ -51,11 +45,9 @@ def required_judge_keys(cases: list[dict[str, Any]]) -> set[str]:
         mode for case in cases for mode in case["expected"].get("judges", {})
     }
     for mode in modes:
-        model = load_frozen_judge(mode)["model"]
-        if model.startswith("claude"):
-            keys.add("ANTHROPIC_API_KEY")
-        elif model.startswith("gpt") or model.startswith("openai/"):
-            keys.add("OPENAI_API_KEY")
+        key = judge_provider_key(load_frozen_judge(mode)["model"])
+        if key:
+            keys.add(key)
     return keys
 
 
@@ -80,6 +72,13 @@ def read_prices(path: Path, model: str) -> tuple[str, float, float]:
     return str(date), float(prices["input"]), float(prices["output"])
 
 
+def read_cached_input_price(path: Path, model: str) -> float | None:
+    """Return the optional discounted price for cached input tokens."""
+    prices = read_json(path).get("prices_per_million_tokens_usd", {}).get(model) or {}
+    value = prices.get("cached_input")
+    return None if value is None else float(value)
+
+
 def default_output(split_name: str, candidate: str, model: str) -> Path:
     safe = "-".join(part for part in (candidate, model) if part).replace("/", "_")
     stamp = time.strftime("%Y%m%d-%H%M%S")
@@ -100,50 +99,71 @@ def run_evaluation(args: argparse.Namespace) -> dict[str, Any]:
         )
 
     planned_runs = sum(runs_for_case(case) for case in cases)
+    price_date, input_price, output_price = read_prices(args.config, args.model)
+    cached_price = read_cached_input_price(args.config, args.model)
     if args.search:
         reserve_search_calls(planned_runs, args.candidate)
-
-    price_date, input_price, output_price = read_prices(args.config, args.model)
+    completed_runs = 0
     prompt_template = args.prompt_file.read_text() if args.prompt_file else None
     prompt_hash = prompt_version(prompt_template)
-    world_temp = tempfile.TemporaryDirectory(prefix="hw9-eval-")
+    world_temp = tempfile.TemporaryDirectory(prefix="hw8-eval-")
     world_root = Path(world_temp.name)
     records: list[dict[str, Any]] = []
     total_input = 0
+    total_cached = 0
     total_output = 0
 
-    for case in cases:
-        reset = world_reset(world_root)
-        runner = make_runner(case, world_root, args.model, prompt_template)
-        case_records = []
-        latencies = []
-        for _ in range(runs_for_case(case)):
-            started = time.perf_counter()
-            record = replay_case(runner, reset, n=1)[0]
-            elapsed = time.perf_counter() - started
-            latencies.append(float(record.get("agent_latency_seconds", elapsed)))
-            case_records.append(record)
-            usage = record.get("usage", {})
-            total_input += int(usage.get("input_tokens", 0))
-            total_output += int(usage.get("output_tokens", 0))
-        passes = sum(bool(record["passed"]) for record in case_records)
-        records.append(
-            {
-                "case_id": case["id"],
-                "expected_write": is_expected_write(case),
-                "runs": len(case_records),
-                "passes": passes,
-                "pass_rate": passes / len(case_records),
-                "failure_modes": sorted(
-                    {
-                        failure
+    try:
+        for case in cases:
+            reset = world_reset(world_root)
+            runner = make_runner(case, world_root, args.model, prompt_template)
+            case_records = []
+            latencies = []
+            for _ in range(runs_for_case(case)):
+                started = time.perf_counter()
+                record = replay_case(runner, reset, n=1)[0]
+                elapsed = time.perf_counter() - started
+                latencies.append(float(record.get("agent_latency_seconds", elapsed)))
+                case_records.append(record)
+                completed_runs += 1
+                usage = record.get("usage", {})
+                total_input += int(usage.get("input_tokens", 0))
+                total_cached += int(usage.get("cached_input_tokens", 0))
+                total_output += int(usage.get("output_tokens", 0))
+            passes = sum(bool(record["passed"]) for record in case_records)
+            records.append(
+                {
+                    "case_id": case["id"],
+                    "expected_write": is_expected_write(case),
+                    "runs": len(case_records),
+                    "passes": passes,
+                    "pass_rate": passes / len(case_records),
+                    "failure_modes": sorted(
+                        {
+                            failure
+                            for record in case_records
+                            for failure in record.get("failure_modes", [])
+                        }
+                    ),
+                    "latencies_seconds": [round(value, 4) for value in latencies],
+                    "run_details": [
+                        {
+                            "passed": record["passed"],
+                            "failure_modes": record.get("failure_modes", []),
+                            "final_reply": record.get("final_reply", "")[:2000],
+                            "judge_reasons": record.get("judge_reasons", {}),
+                            "error": record.get("error"),
+                        }
                         for record in case_records
-                        for failure in record.get("failure_modes", [])
-                    }
-                ),
-                "latencies_seconds": [round(value, 4) for value in latencies],
-            }
-        )
+                    ],
+                }
+            )
+
+    except BaseException:
+        # A crashed run produced no result, so return the unused runs.
+        if args.search and planned_runs > completed_runs:
+            release_search_calls(planned_runs - completed_runs, args.candidate)
+        raise
 
     score = statistics.mean(record["pass_rate"] for record in records)
     write_records = [record for record in records if record["expected_write"]]
@@ -153,7 +173,14 @@ def run_evaluation(args: argparse.Namespace) -> dict[str, Any]:
         else None
     )
     all_latencies = [value for record in records for value in record["latencies_seconds"]]
-    total_cost = (total_input * input_price + total_output * output_price) / 1_000_000
+    # Cached input tokens are billed at the cached price when the config lists
+    # one; otherwise every input token is billed at the full input price.
+    billed_cached = total_cached if cached_price is not None else 0
+    total_cost = (
+        (total_input - billed_cached) * input_price
+        + billed_cached * (cached_price or 0.0)
+        + total_output * output_price
+    ) / 1_000_000
     result = {
         "schema_version": 1,
         "created_at": now_utc(),
@@ -168,6 +195,8 @@ def run_evaluation(args: argparse.Namespace) -> dict[str, Any]:
         "score": round(score, 6),
         "write_pass_5": None if write_pass_5 is None else round(write_pass_5, 6),
         "input_tokens": total_input,
+        "cached_input_tokens": total_cached,
+        "cached_fraction": round(total_cached / total_input, 6) if total_input else 0.0,
         "output_tokens": total_output,
         "price_date": price_date,
         "cost_usd": round(total_cost, 6),
@@ -195,6 +224,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path)
     parser.add_argument("--test-plan-hash")
     args = parser.parse_args()
+    if args.split == "test" and not args.test_plan_hash:
+        raise SystemExit("run the test cases with `optimize.frontier run` after saving the final version")
     config = read_json(args.config)
     validate_model_selection(config)
     if not args.model:

@@ -53,7 +53,7 @@ Before generating any scenarios, confirm that the application runs and that its 
 
 Do not start bulk generation until authentication, tracing, and any state reset all work.
 
-**Cartwheel example.** Start the server and Langfuse, send "What's the status of my last order?" as a shopper, and confirm that the Langfuse trace contains the conversation, `gpt-5.5` as the model, the `get_order` tool call and its result, and a `cartwheel.scenario_id` attribute. Reset the database with `uv run python -m seed.generate`.
+**Cartwheel example.** Start the server and Langfuse, send "What's the status of my last order?" as a shopper, and confirm that the Langfuse trace contains the conversation, the `CARTWHEEL_MODEL` value as the model, the `get_order` tool call and its result, and a `cartwheel.scenario_id` attribute. Reset the database with `uv run python -m seed.generate`.
 
 ## Step 2: Define dimensions of variation
 

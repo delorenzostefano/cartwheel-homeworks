@@ -11,7 +11,7 @@ ground truth.
 Usage:
     uv run uvicorn server.app:app --port 8010          # in one terminal
     uv run python -m scenarios.runner path/to/scenarios.jsonl \
-        --model gpt-5.5 [--base-url http://localhost:8010] [--limit 50] \
+        --model gpt-4o-mini [--base-url http://localhost:8010] [--limit 50] \
         [--output scenarios/final-primary.jsonl] [--resume] [--ids a,b]
 
 Without ``--output``, results land in the gitignored scratch directory

@@ -37,7 +37,10 @@ uv run pytest
 
 If `.env` does not exist, copy `.env.example` to `.env`. Add a key for the model provider you will use, and preserve any existing settings. The tests and seed command do not require a model key.
 
-The default model is `gpt-5.5` with OpenAI. You can select `claude-opus-4-6` with Anthropic or `glm-5.2` with Together AI using `CARTWHEEL_MODEL` in `.env`. The CLI's `--model` flag overrides the default. You need a key for only one provider.
+The default model is `gpt-4o-mini` with OpenAI. You can select another model, e.g. `claude-haiku-4-5` with Anthropic or `glm-5.2` with Together AI, using `CARTWHEEL_MODEL` in `.env`. The CLI's `--model` flag overrides the default. You need a key for only one provider.
+
+> [!IMPORTANT]
+> Use a small, inexpensive model for the Cartwheel agent, such as `gpt-4o-mini`, `gpt-5-nano`, or `claude-haiku-4-5`. Cartwheel is a synthetic world, and frontier models such as `gpt-5.5` or `claude-opus-4-6` rarely make mistakes in it. The homework depends on observing and analyzing agent failures, so a powerful agent model leaves you too little to study. This applies to the agent model only; judge and reflection models are chosen separately in each assignment.
 
 The starter contains unfinished homework functions. Tests for unfinished functions report expected failures until you implement them. Follow [Homework 1](homework/module-1/hw1.md) to complete the five support tools, then use the chat interface:
 
