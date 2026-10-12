@@ -442,7 +442,7 @@ def track_shipment(
     """Track an order's shipment: stage, ship and delivery dates, and whether it's late"""
     return _call(wrapper, hw_tools.track_shipment, order_id)
 
-@function_tool
+@function_tool(strict_mode=False)
 def order_history_summary(
     wrapper: RunContextWrapper[AuthContext]
 ) -> dict[str, Any]:
