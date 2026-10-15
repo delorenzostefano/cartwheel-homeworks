@@ -20,6 +20,8 @@ API:
     GET  /api/labels            current label per (mode, conversation)
     POST /api/labels            record one judgment (``hw5: true`` writes the HW5 file)
     GET  /api/hw5_labels        current HW5 label per (mode, conversation)
+    GET  /api/judges            judge verdicts and critiques (test withheld until frozen)
+    GET|POST /api/hw5_review    the reviewer's decision on each dev disagreement
     GET|POST /api/annotations   free-text notes
     GET|POST /api/samples       review batches and the reason for each pick
     GET|POST /api/patterns      the taxonomy
@@ -56,6 +58,7 @@ API_FILES: dict[str, tuple[str, Any]] = {
     "/api/patterns": ("patterns.json", {"modes": []}),
     "/api/suggestions": ("suggestions.json", []),
     "/api/label_suggestions": ("label_suggestions.json", []),
+    "/api/hw5_review": ("hw5_dev_review.json", []),
 }
 
 MODE_NAME = re.compile(r"^[a-z][a-z0-9_]*$")
@@ -108,6 +111,30 @@ def current_hw5_labels() -> list[dict[str, Any]]:
             if not row.get("superseded_by"):
                 live[row["trace_id"]] = row
         out.extend({**row, "mode": path.stem, "pass": row["label"], "label": 1 - row["label"]} for row in live.values())
+    return out
+
+
+def judge_views() -> list[dict[str, Any]]:
+    """Judge versions with their verdicts and critiques, for disagreement review.
+
+    Predictions use the HW5 convention (1 = Pass). Test-split predictions are
+    withheld until the judge is frozen, so the reviewer cannot see them while
+    choosing the final prompt.
+    """
+    splits = _state.read_json(_state.state_path("splits.json"), default={})
+    out = []
+    for path in sorted(_state.state_path("judges").glob("*-v*.json")):
+        judge = _state.read_json(path)
+        mode = judge.get("mode")
+        if judge.get("label_convention") != "pass_positive" or mode not in splits:
+            continue
+        h = judge["prompt_hash"]
+        hidden = set() if judge.get("status") == "frozen" else set(splits[mode].get("test", []))
+        preds = {t: v for t, v in judge.get("predictions", {}).get(h, {}).items() if t not in hidden}
+        crit = {t: v for t, v in judge.get("critiques", {}).get(h, {}).items() if t not in hidden}
+        out.append({"judge_id": judge["judge_id"], "mode": mode, "version": judge["version"],
+                    "status": judge.get("status"), "model": judge.get("model"),
+                    "predictions": preds, "critiques": crit, "dev": splits[mode].get("dev", [])})
     return out
 
 
@@ -190,6 +217,8 @@ class ReviewHandler(BaseHTTPRequestHandler):
             self._send_json(current_labels())
         elif path == "/api/hw5_labels":
             self._send_json(current_hw5_labels())
+        elif path == "/api/judges":
+            self._send_json(judge_views())
         elif path in API_FILES:
             name, default = API_FILES[path]
             try:

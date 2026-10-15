@@ -133,6 +133,7 @@ td.cell { text-align: center; } td a, .link { color: var(--accent); cursor: poin
   </nav>
   <span class="spacer"></span>
   <label class="dim"><input type="checkbox" id="queue-sample" checked> sample only</label>
+  <label class="dim" id="dis-wrap" style="display:none"><input type="checkbox" id="queue-dis"> dev disagreements</label>
   <button class="btn" id="spec-toggle">SPEC</button>
 </header>
 <aside id="spec"><h3>SPEC.md requirements</h3><div id="spec-body"></div></aside>
@@ -152,6 +153,14 @@ const S = { convs: [], byId: {}, byTrace: {}, ann: [], samples: [], patterns: { 
             // ?hw5=<mode>: label one mode into state/hw5_labels (1 = Pass) and queue the hw5-* batches.
             hw5: new URLSearchParams(location.search).get('hw5') };
 const LABELS_API = S.hw5 ? '/api/hw5_labels' : '/api/labels';
+S.judges = [];
+// The judge shown beside the label: the latest version of this mode that has predictions.
+const curJudge = () => S.judges.filter(j => j.mode === S.hw5 && Object.keys(j.predictions).length).sort((a, b) => b.version - a.version)[0];
+const judgePass = (cid) => { const j = curJudge(); return j && cid in j.predictions ? j.predictions[cid] : null; };
+function disagreements() {
+  const j = curJudge(); if (!j) return [];
+  return j.dev.filter(t => t in j.predictions && labelOf(S.hw5, t) && (1 - labelOf(S.hw5, t).label) !== j.predictions[t]).map(t => S.byId[t]).filter(Boolean);
+}
 const BACKUP = 'cw-review-annotations';
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -198,6 +207,7 @@ const notesFor = cid => S.ann.filter(a => a.trace_id === cid && !a.deleted);
 const reviewed = cid => notesFor(cid).length > 0;
 const labelOf = (mode, cid) => S.labels.find(l => l.mode === mode && l.trace_id === cid);
 function queue() {
+  if (S.hw5 && document.getElementById('queue-dis').checked) return disagreements();
   if (S.hw5 && document.getElementById('queue-sample').checked)
     return S.samples.filter(s => String(s.batch || '').startsWith('hw5')).map(s => S.byId[s.trace_id]).filter(Boolean);
   if (document.getElementById('queue-sample').checked && S.samples.length)
@@ -214,6 +224,7 @@ async function loadAll() {
     api('/api/conversations'), api('/api/annotations'), api('/api/samples'), api('/api/patterns'),
     api('/api/suggestions'), api(LABELS_API), api('/api/spec'), api('/api/label_suggestions')]);
   S.lsugg = lsugg;
+  if (S.hw5) { S.judges = await api('/api/judges'); S.review = await api('/api/hw5_review'); document.getElementById('dis-wrap').style.display = ''; }
   S.convs = convs; S.byId = {}; S.byTrace = {};
   for (const c of convs) { S.byId[c.id] = c; for (const t of c.trace_ids) S.byTrace[t] = c; }
   S.ann = Array.isArray(ann) ? ann : (ann.annotations || []);
@@ -305,6 +316,7 @@ function renderReview() {
       <span class="dim"> · select text in a block, type what went wrong first, press Enter</span>
       ${noteCell('conv', notes.filter(n => n.anchor === 'conv'), suggs.filter(s => !s.anchor))}</div>
     ${labelPanel(c)}
+    ${judgePanel(c)}
     <div class="panel"><details><summary>Expected outcome (open after writing your note)</summary>
       <pre>${esc(pretty(c.expected || 'none recorded'))}</pre></details></div>
   </div>`);
@@ -328,6 +340,30 @@ function labelPanel(c) {
     (passable(c.id).length ? `<button class="btn" data-passrest="${c.id}">Pass all remaining (${passable(c.id).length})</button>` : '') + '</div>';
 }
 
+function judgePanel(c) {
+  const j = curJudge(); if (!S.hw5 || !j || !(c.id in j.predictions)) return '';
+  const jp = j.predictions[c.id], l = labelOf(S.hw5, c.id), hp = l ? 1 - l.label : null;
+  const agree = hp === null ? '' : hp === jp ? '<span class="chip done">agrees with you</span>' : '<span class="chip warn">disagrees with you</span>';
+  return `<div class="panel"><h3>Judge ${esc(j.judge_id)} (${esc(j.model)}) · verdict: ${jp ? 'Pass' : 'Fail'} ${agree}</h3>
+    <div class="text" style="white-space:pre-wrap">${esc(j.critiques[c.id] || '(no critique)')}</div>
+    ${hp !== null && hp !== jp ? reviewButtons(j, c) : ''}</div>`;
+}
+const REVIEW = { judge_wrong: 'Judge is wrong (fix the prompt)', label_wrong: 'My label is wrong (fix the label)', definition_unclear: 'Definition is unclear (clarify the boundary)' };
+function reviewButtons(j, c) {
+  const r = (S.review || []).find(x => x.judge_id === j.judge_id && x.trace_id === c.id);
+  return `<div class="labelrow">${Object.entries(REVIEW).map(([k, v]) =>
+    `<button class="btn${r && r.decision === k ? ' primary' : ''}" data-review="${k}|${c.id}">${v}</button>`).join(' ')}</div>` +
+    (r ? `<div class="dim">Your decision: ${esc(REVIEW[r.decision])}${r.note ? ' · ' + esc(r.note) : ''}${r.decision === 'label_wrong' ? ' · now flip the label above' : ''}</div>` : '');
+}
+async function review(decision, cid) {
+  const j = curJudge(), c = S.byId[cid];
+  const note = await ask(`${REVIEW[decision]}. Why? (what in the reply decides it)`, { required: true });
+  if (note === null) return;
+  S.review = (S.review || []).filter(x => !(x.judge_id === j.judge_id && x.trace_id === cid));
+  S.review.push({ judge_id: j.judge_id, trace_id: cid, scenario_id: c.scenario_id, decision, note, ts: now(),
+    human: 1 - labelOf(S.hw5, cid).label, judge: j.predictions[cid] });
+  await api('/api/hw5_review', S.review); toast('decision saved'); render();
+}
 function addNote(anchor, quote, text, extra = {}) {
   const c = curConv();
   const turnIdx = anchor.includes(':') ? +anchor.split(':')[0] : null;
@@ -480,6 +516,7 @@ document.addEventListener('click', e => {
   else if (d.rej) decide(d.rej, false);
   else if (d.lab) { const [m, l, cid] = d.lab.split('|'); setLabel(m, +l, cid); }
   else if (d.acceptrow) acceptRow(d.acceptrow);
+  else if (d.review) { const [k, cid] = d.review.split('|'); review(k, cid); }
   else if (d.passrest) passRest(d.passrest);
   else if (d.go) go(d.go);
   else if (t.id === 'no-failure') { addNote('conv', '', 'no failure observed', { kind: 'no_failure' }); render(); }
@@ -509,6 +546,7 @@ document.addEventListener('keydown', e => {
   }
 });
 document.getElementById('queue-sample').addEventListener('change', () => { S.cur = 0; render(); });
+document.getElementById('queue-dis').addEventListener('change', () => { S.cur = 0; render(); });
 
 async function poll() {
   try {

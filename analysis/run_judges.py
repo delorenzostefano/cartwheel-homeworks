@@ -27,7 +27,8 @@ from analysis.review_app import conversations as conv
 REPO_ROOT = Path(__file__).resolve().parents[1]
 INPUTS_PATH = REPO_ROOT / "analysis" / "state" / "hw5_trace_inputs.json"
 REPORT_DIR = REPO_ROOT / "analysis" / "report"
-JUDGE_MODEL = "gpt-4o-mini"
+# The handout specifies gpt-4o-mini; no OpenAI access, so DeepSeek-V3 (a different family from the Claude agent) is used for dev and test.
+JUDGE_MODEL = "deepseek/deepseek-chat"
 MODES = ("unrequested_detail",)
 # Judge runs read the saved inputs, never live Langfuse, so every version sees the same records.
 os.environ.setdefault("CARTWHEEL_JUDGE_TRACE_SOURCE", str(INPUTS_PATH))

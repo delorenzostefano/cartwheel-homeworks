@@ -112,3 +112,15 @@ def test_hw5_label_uses_pass_convention_and_separate_file(state):
     assert not (state / "labels" / "unrequested_detail.jsonl").exists()
     ui = {r["trace_id"]: (r["label"], r["pass"]) for r in server.current_hw5_labels()}
     assert ui == {"t1": (1, 0), "t2": (0, 1)}
+
+
+def test_judge_views_withhold_test_predictions_until_frozen(state):
+    server._state.write_json(state / "splits.json", {"m": {"train": ["a"], "dev": ["b"], "test": ["c"]}})
+    judge = {"judge_id": "m-v0", "mode": "m", "version": 0, "status": "draft", "model": "x",
+             "label_convention": "pass_positive", "prompt_hash": "h",
+             "predictions": {"h": {"b": 1, "c": 0}}, "critiques": {"h": {"b": "ok", "c": "bad"}}}
+    server._state.write_json(state / "judges" / "m-v0.json", judge)
+    view = server.judge_views()[0]
+    assert view["predictions"] == {"b": 1} and "c" not in view["critiques"]
+    server._state.write_json(state / "judges" / "m-v0.json", {**judge, "status": "frozen"})
+    assert server.judge_views()[0]["predictions"] == {"b": 1, "c": 0}
