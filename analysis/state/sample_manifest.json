@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T12:33:13+00:00",
+  "updated_at": "2026-10-15T13:02:58+00:00",
   "total": 127,
   "pool": "250 complete support-* conversations from Langfuse (stale support-0031 first attempt excluded)",
   "batches": {
@@ -265,7 +265,50 @@
         "support-0195",
         "support-0012",
         "support-0080"
-      ]
+      ],
+      "synthetic": [
+        "hw5ud-0001",
+        "hw5ud-0002",
+        "hw5ud-0003",
+        "hw5ud-0004",
+        "hw5ud-0005",
+        "hw5ud-0006",
+        "hw5ud-0007",
+        "hw5ud-0008",
+        "hw5ud-0009",
+        "hw5ud-0010",
+        "hw5ud-0011",
+        "hw5ud-0012",
+        "hw5ud-0013",
+        "hw5ud-0014",
+        "hw5ud-0015",
+        "hw5ud-0016",
+        "hw5ud-0017",
+        "hw5ud-0018",
+        "hw5ud-0019",
+        "hw5ud-0020",
+        "hw5ud-0021",
+        "hw5ud-0022",
+        "hw5ud-0023",
+        "hw5ud-0024",
+        "hw5ud-0025",
+        "hw5ud-0026",
+        "hw5ud-0027",
+        "hw5ud-0028",
+        "hw5ud-0029",
+        "hw5ud-0030",
+        "hw5ud-0031",
+        "hw5ud-0032",
+        "hw5ud-0033",
+        "hw5ud-0034",
+        "hw5ud-0035",
+        "hw5ud-0036",
+        "hw5ud-0037",
+        "hw5ud-0038",
+        "hw5ud-0039",
+        "hw5ud-0040"
+      ],
+      "synthetic_method": "40 targeted scenarios (narrow questions: status, return yes/no, price, shipped cancellation, past-window refund, out of scope); answer keys from SQL and seed.eligibility; writer and critic claude-sonnet-5-5; agent claude-haiku-5-5"
     }
   },
   "picks": [

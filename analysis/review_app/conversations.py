@@ -27,7 +27,9 @@ from analysis.helpers.normalization import _data
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_EXPORT = REPO_ROOT / "traces" / "support_traces.json"
 DEFAULT_SCENARIOS = REPO_ROOT / "scenarios" / "support_scenarios.jsonl"
-SCENARIO_PREFIX = "support-"
+# HW5 adds targeted scenarios for one mode; they are reviewed alongside the HW3 set.
+EXTRA_SCENARIOS = [REPO_ROOT / "scenarios" / "hw5_unrequested_scenarios.jsonl"]
+SCENARIO_PREFIX = ("support-", "hw5ud-")
 
 
 def _attributes(trace: dict[str, Any]) -> dict[str, Any]:
@@ -174,10 +176,12 @@ def _find_response(history: list[Any], call_id: Any) -> Any:
 
 
 def load_scenarios(path: Path = DEFAULT_SCENARIOS) -> dict[str, dict[str, Any]]:
-    if not path.exists():
-        return {}
-    rows = [json.loads(line) for line in path.read_text().splitlines() if line.strip()]
-    return {row["id"]: row for row in rows}
+    out: dict[str, dict[str, Any]] = {}
+    for p in [path, *(EXTRA_SCENARIOS if path == DEFAULT_SCENARIOS else [])]:
+        if p.exists():
+            rows = [json.loads(line) for line in p.read_text().splitlines() if line.strip()]
+            out.update({row["id"]: row for row in rows})
+    return out
 
 
 def build_conversations(
@@ -233,9 +237,16 @@ def build_conversations(
     return conversations
 
 
+EXTRA_EXPORTS = [REPO_ROOT / "traces" / "hw5_unrequested_traces.json"]
+
+
 def load_export(path: Path = DEFAULT_EXPORT) -> list[dict[str, Any]]:
-    data = json.loads(path.read_text())
-    return data["traces"] if isinstance(data, dict) else data
+    traces: list[dict[str, Any]] = []
+    for p in [path, *(EXTRA_EXPORTS if path == DEFAULT_EXPORT else [])]:
+        if p.exists():
+            data = json.loads(p.read_text())
+            traces.extend(data["traces"] if isinstance(data, dict) else data)
+    return traces
 
 
 def load_langfuse() -> list[dict[str, Any]]:

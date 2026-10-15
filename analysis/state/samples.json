@@ -1090,5 +1090,245 @@
     "scenario_id": "support-0111",
     "batch": "hw5-random",
     "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "da2426d84207bde4d44c376e7189d70d",
+    "scenario_id": "hw5ud-0001",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "6496687ad555361f02b4433d77497205",
+    "scenario_id": "hw5ud-0002",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "10a54b66d3ce856ca4abc2fcca0d3818",
+    "scenario_id": "hw5ud-0003",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "f8e5da3f95b357b0f74f230e2f6ba07e",
+    "scenario_id": "hw5ud-0004",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "0550de4139d2ea2834a8e65f17855ae9",
+    "scenario_id": "hw5ud-0005",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "d280d1047718b946c9c433b5e085a420",
+    "scenario_id": "hw5ud-0006",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "186892206363db45f1ba601611241305",
+    "scenario_id": "hw5ud-0007",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "f1f5103c3bd13dd1f654e0d9997b35cc",
+    "scenario_id": "hw5ud-0008",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "4d5678c3b87d7c3489891b5e4b41480a",
+    "scenario_id": "hw5ud-0009",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "f0925a374da5c1932005f943af20fe77",
+    "scenario_id": "hw5ud-0010",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (order_status) for unrequested_detail"
+  },
+  {
+    "trace_id": "1ce0d7ac2af7dce36a8476cf8389f315",
+    "scenario_id": "hw5ud-0011",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "1a03e0f86300b1a7a3b7b9705ada4e9a",
+    "scenario_id": "hw5ud-0012",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "ae8ca5298a493a1419abaed89ad27c95",
+    "scenario_id": "hw5ud-0013",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "6a25ebc43a35e4dd7dae9c885bf5f1d4",
+    "scenario_id": "hw5ud-0014",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "c0e8e912fb9fb0b63b336c93a6901dcd",
+    "scenario_id": "hw5ud-0015",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "f4b90869d431415cf3cd7845e85df077",
+    "scenario_id": "hw5ud-0016",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "52ddd1aa8dedd032ff77b2c3ea7410e3",
+    "scenario_id": "hw5ud-0017",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "9bdafccf6f8e8d093931c38f37291191",
+    "scenario_id": "hw5ud-0018",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (return_eligibility) for unrequested_detail"
+  },
+  {
+    "trace_id": "49c816f7724d40dab2a9b371336cc79b",
+    "scenario_id": "hw5ud-0019",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (product_detail) for unrequested_detail"
+  },
+  {
+    "trace_id": "e1d9b7ba69f05da83ee38ea119394336",
+    "scenario_id": "hw5ud-0020",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (product_detail) for unrequested_detail"
+  },
+  {
+    "trace_id": "31178739e70a13b08ce1f5d587476920",
+    "scenario_id": "hw5ud-0021",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (product_detail) for unrequested_detail"
+  },
+  {
+    "trace_id": "b1cf347c5ebbb3e36379c03c28dd49a0",
+    "scenario_id": "hw5ud-0022",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (product_detail) for unrequested_detail"
+  },
+  {
+    "trace_id": "5283cd8eba5a1feeb252bdae2ec7c729",
+    "scenario_id": "hw5ud-0023",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (product_detail) for unrequested_detail"
+  },
+  {
+    "trace_id": "5006616a5024cc06779be3c9495fc083",
+    "scenario_id": "hw5ud-0024",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (product_detail) for unrequested_detail"
+  },
+  {
+    "trace_id": "935342a445792c277da3311cc11e0835",
+    "scenario_id": "hw5ud-0025",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (cancellation) for unrequested_detail"
+  },
+  {
+    "trace_id": "a46048eabb65d2ec8f93f8cf14fc33d2",
+    "scenario_id": "hw5ud-0026",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (cancellation) for unrequested_detail"
+  },
+  {
+    "trace_id": "e938a5f49e7455959f30d06ed51416b9",
+    "scenario_id": "hw5ud-0027",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (cancellation) for unrequested_detail"
+  },
+  {
+    "trace_id": "494eed8e7c70e7ed83c8fbba8a0c7fa3",
+    "scenario_id": "hw5ud-0028",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (cancellation) for unrequested_detail"
+  },
+  {
+    "trace_id": "38b9a29cc679c995aaaed15773e7089d",
+    "scenario_id": "hw5ud-0029",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (cancellation) for unrequested_detail"
+  },
+  {
+    "trace_id": "25e3b307c19b11ef9df99334654cace8",
+    "scenario_id": "hw5ud-0030",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (cancellation) for unrequested_detail"
+  },
+  {
+    "trace_id": "4a8b44abb959d800720c1c2eba403adc",
+    "scenario_id": "hw5ud-0031",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (refund) for unrequested_detail"
+  },
+  {
+    "trace_id": "a00914fdb16c0679401dd34badff9e58",
+    "scenario_id": "hw5ud-0032",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (refund) for unrequested_detail"
+  },
+  {
+    "trace_id": "4deebe1a561f154854966f604247b9ae",
+    "scenario_id": "hw5ud-0033",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (refund) for unrequested_detail"
+  },
+  {
+    "trace_id": "3d2a7594f797058e9d615c1a235de857",
+    "scenario_id": "hw5ud-0034",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (refund) for unrequested_detail"
+  },
+  {
+    "trace_id": "d2f456b7868200ca1909ab220c41ba1c",
+    "scenario_id": "hw5ud-0035",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (refund) for unrequested_detail"
+  },
+  {
+    "trace_id": "09033fbfab686e07db808bd1376b297a",
+    "scenario_id": "hw5ud-0036",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (out_of_scope) for unrequested_detail"
+  },
+  {
+    "trace_id": "7fb2b67566dd35fb59718d59678a5619",
+    "scenario_id": "hw5ud-0037",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (out_of_scope) for unrequested_detail"
+  },
+  {
+    "trace_id": "1236a731eb78f868f2d09636b816f978",
+    "scenario_id": "hw5ud-0038",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (out_of_scope) for unrequested_detail"
+  },
+  {
+    "trace_id": "3dc385de29f83ec9bc587c8482123819",
+    "scenario_id": "hw5ud-0039",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (out_of_scope) for unrequested_detail"
+  },
+  {
+    "trace_id": "9e90b2fd2d1cc04b7bd10d60d08dc840",
+    "scenario_id": "hw5ud-0040",
+    "batch": "hw5-synthetic",
+    "reason": "HW5 targeted synthetic scenario (out_of_scope) for unrequested_detail"
   }
 ]
