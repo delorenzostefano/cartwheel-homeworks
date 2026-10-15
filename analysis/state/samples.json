@@ -736,5 +736,89 @@
     "scenario_id": "support-0032",
     "batch": "d-search",
     "reason": "Part D search for thin mode write_stacked_after_correction (close negative); search: multi-turn session with a write"
+  },
+  {
+    "trace_id": "d9b73bf09d9d52713f3404bcd4b6401c",
+    "scenario_id": "support-0056",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "5fa6518f4639da330807ad4fb60861c0",
+    "scenario_id": "support-0057",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "172b81bdeb0fd34a5583741fced58bcd",
+    "scenario_id": "support-0059",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "e591e5f8443e80ce62a24b322d9fe785",
+    "scenario_id": "support-0080",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "dcb2c8bf0ade0733c3498b1ff6d6b642",
+    "scenario_id": "support-0095",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "edca563c43ba738da90922561d9469da",
+    "scenario_id": "support-0096",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "daac5bd058c1a75f62dec60f8eadb983",
+    "scenario_id": "support-0190",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "797c45b0f3a14b2a2535b1a3668e3f50",
+    "scenario_id": "support-0192",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "7a4c94e578da987f664239b53c5ee30c",
+    "scenario_id": "support-0200",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "10b2a9e524fff9646d3b4af04162fee2",
+    "scenario_id": "support-0203",
+    "batch": "d-search",
+    "reason": "Part D: routes search 1 for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "9d26a272622a39d4a7267081fd358488",
+    "scenario_id": "support-0223",
+    "batch": "d-search",
+    "reason": "Part D: close-negative search for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "2ab2612bb6f054da57e0e463d5c38e1f",
+    "scenario_id": "support-0224",
+    "batch": "d-search",
+    "reason": "Part D: close-negative search for routes_around_clear_denial"
+  },
+  {
+    "trace_id": "32fc7b7f99c1bd7c6ed19e8621c46cb2",
+    "scenario_id": "support-0221",
+    "batch": "d-search",
+    "reason": "Part D: close-negative search for no_escalation_when_unresolved"
+  },
+  {
+    "trace_id": "ad6d98edb2e98f6885ca6e4f84606936",
+    "scenario_id": "support-0225",
+    "batch": "d-search",
+    "reason": "Part D: close-negative search for no_escalation_when_unresolved"
   }
 ]

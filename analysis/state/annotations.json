@@ -1395,6 +1395,70 @@
       "kind": "no_failure",
       "author": "human",
       "ts": "2026-10-15T10:14:21.968Z"
+    },
+    {
+      "id": "a-mv9e0zj23fdo",
+      "trace_id": "33e498195cb1e2a4b4a94374295f7403",
+      "scenario_id": "support-0122",
+      "turn_trace_id": null,
+      "anchor": "conv",
+      "quote": "",
+      "note": "no failure observed",
+      "kind": "no_failure",
+      "author": "human",
+      "ts": "2026-10-15T10:20:18.782Z"
+    },
+    {
+      "id": "a-mv9e1skl9zfq",
+      "trace_id": "522e5939a1e925d379a0e4d186e06e44",
+      "scenario_id": "support-0150",
+      "turn_trace_id": null,
+      "anchor": "conv",
+      "quote": "",
+      "note": "no failure observed",
+      "kind": "no_failure",
+      "author": "human",
+      "ts": "2026-10-15T10:20:56.421Z"
+    },
+    {
+      "id": "a-mv9e3m1uqsnl",
+      "trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+      "scenario_id": "support-0246",
+      "turn_trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+      "anchor": "0:reply",
+      "quote": "shows a price of **-$5.00**",
+      "note": "[accepted suggestion: bad_record_shown_to_user] The shopper asked only about the untitled $9.75 listing. The agent correctly does not invent a name (the expected outcome), but volunteers another listing's invalid -$5.00 price: the same pattern as your 0241 note.",
+      "kind": "note",
+      "author": "human",
+      "source": "accepted_suggestion",
+      "suggestion_id": "s1-03",
+      "ts": "2026-10-15T10:22:21.282Z"
+    },
+    {
+      "id": "a-mv9e48cczg3t",
+      "trace_id": "8c139867c6b7c9d576537d4f6be90761",
+      "scenario_id": "support-0100",
+      "turn_trace_id": null,
+      "anchor": "conv",
+      "quote": "",
+      "note": "no failure observed",
+      "kind": "no_failure",
+      "author": "human",
+      "ts": "2026-10-15T10:22:50.172Z"
+    },
+    {
+      "id": "a-mv9e4tb5ctip",
+      "trace_id": "8c139867c6b7c9d576537d4f6be90761",
+      "scenario_id": "support-0100",
+      "turn_trace_id": "8c139867c6b7c9d576537d4f6be90761",
+      "anchor": "0:reply",
+      "quote": "If it hasn't arrived by July 5, I can escalate it to a human agent",
+      "note": "[accepted suggestion: close_negative:no_escalation_when_unresolved] Tracking resolved from the order record: in transit, not late, deliver-by July 5; says location is unavailable (RESP-3). Nothing unresolved, so not escalating looks correct. You labelled no_escalation_when_unresolved=Fail; reject with your reason if you see a failure.",
+      "kind": "note",
+      "author": "human",
+      "source": "accepted_suggestion",
+      "suggestion_id": "s1-02",
+      "ts": "2026-10-15T10:23:17.345Z"
     }
   ]
 }
