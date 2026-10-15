@@ -1,0 +1,46 @@
+{
+  "judge_id": "unrequested_detail-v2",
+  "split": "dev",
+  "tpr": 0.6944,
+  "tnr": 0.8605,
+  "tpr_interval": [
+    0.5314,
+    0.82
+  ],
+  "tnr_interval": [
+    0.7274,
+    0.9344
+  ],
+  "agreement": 0.7848,
+  "tp": 25,
+  "fn": 11,
+  "tn": 37,
+  "fp": 6,
+  "n": 79,
+  "disagreements": [
+    "216d66d067f60d3ac8bedf425ee444c5",
+    "38b9a29cc679c995aaaed15773e7089d",
+    "44b7fd47f55f1b030be5704afdad08c9",
+    "4deebe1a561f154854966f604247b9ae",
+    "754715d0ab0bdd0ce80970a06890a65a",
+    "8124ecb26b60c47182358fc26cbc0415",
+    "91ce05719354b5bef243f02bd2c1c01f",
+    "935342a445792c277da3311cc11e0835",
+    "9e90b2fd2d1cc04b7bd10d60d08dc840",
+    "abe445ad3468bb60e4cd22b3ceec05e0",
+    "b7dc72c71c4d07bf9e2d40bca2e814a8",
+    "cd1a86b5d1345614cda85646045f9aef",
+    "da2426d84207bde4d44c376e7189d70d",
+    "e4e40b3e728719f01f485a5b8a0b4685",
+    "e58d1ade85ab4ae94367426d42aaba6f",
+    "f0925a374da5c1932005f943af20fe77",
+    "f2da13092749bc6c0c4be81b709b280f"
+  ],
+  "prompt_path": "analysis/prompts/unrequested_detail-v2.txt",
+  "model": "deepseek/deepseek-chat",
+  "prompt_hash": "e26b43ab4769",
+  "class_counts": {
+    "pass": 36,
+    "fail": 43
+  }
+}

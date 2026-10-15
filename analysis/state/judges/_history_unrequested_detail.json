@@ -7,6 +7,10 @@
     {
       "judge_id": "unrequested_detail-v1",
       "prompt_hash": "cf29f0e5303e"
+    },
+    {
+      "judge_id": "unrequested_detail-v2",
+      "prompt_hash": "e26b43ab4769"
     }
   ]
 }
