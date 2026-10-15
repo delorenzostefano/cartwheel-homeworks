@@ -1,12 +1,20 @@
 {
-  "updated_at": "2026-10-15T10:27:47+00:00",
+  "updated_at": "2026-10-15T10:49:21+00:00",
   "modes": [
     {
       "name": "policy_id_in_reply",
-      "definition": "The reply shows a policy identifier such as cw-returns.",
-      "status": "rejected",
+      "definition": "The reply shows an internal policy identifier (cw-* or store-*-policy) instead of, or in addition to, the policy's title.",
+      "status": "candidate",
       "count": 7,
-      "example_trace_ids": [],
+      "example_trace_ids": [
+        "17e3c57dde49472bc8ed85de2af311f7",
+        "5dd6346df85178d0b937ac8e910ab962",
+        "64a693c674c556ae1ab155fb28c3a07e",
+        "875ac252c8ed30ca73250afd36f7c1a5",
+        "a3cfa3fa240d8b53844e172d4c50e24f",
+        "f2da13092749bc6c0c4be81b709b280f",
+        "f9f7f1a1dca070074c8ffd70ce74b328"
+      ],
       "example_quotes": [
         "(cw-returns).",
         "cw-returns",
@@ -25,13 +33,17 @@
         "a-mv9a5ofrakg9"
       ],
       "close_negatives": [],
-      "requirement": "Conflicts with RESP-1 (cite the policy identifier for every policy claim) and PURPOSE-1.",
-      "boundary": "",
-      "evaluator": "",
+      "requirement": "RESP-1 (revised: refer to policies by title, not internal identifier); PURPOSE-1",
+      "boundary": "Versus unrequested_detail: naming the policy by its title is allowed and often required to explain a decision; only the raw identifier counts here.",
+      "evaluator": "code check (regex for cw-* and store-*-policy in the reply)",
       "revisions": [
         {
           "ts": "2026-10-15T08:59:09+00:00",
           "change": "Rejected in axial coding round 1: the behavior is required by RESP-1, so it is not a failure. Student kept G2-G6 and dropped this group."
+        },
+        {
+          "ts": "2026-10-15T10:49:21+00:00",
+          "change": "Part D: reinstated. Rejected in round 1 because RESP-1 required identifiers; the student then revised RESP-1 to require titles instead of internal identifiers, so the originating batch-1 notes now describe a requirement violation."
         }
       ]
     },
@@ -80,7 +92,7 @@
       "close_negatives": [
         "61875bbb98e76c76c7a543390ff5bb12"
       ],
-      "requirement": "No SPEC requirement yet; needs a specification revision (candidate RESP-6, answer the question asked). Open: whether support-0212 is verbosity or disclosure (RESP-4).",
+      "requirement": "RESP-6 (new)",
       "boundary": "",
       "evaluator": "LLM judge",
       "revisions": [
@@ -99,6 +111,10 @@
         {
           "ts": "2026-10-15T10:16:42+00:00",
           "change": "Round 4: added batch 4 notes 0172, 0043, 0205, 0204."
+        },
+        {
+          "ts": "2026-10-15T10:49:21+00:00",
+          "change": "Part D: requirement source set to RESP-6 (new) after the SPEC revision."
         }
       ]
     },
@@ -106,13 +122,14 @@
       "name": "no_escalation_when_unresolved",
       "definition": "The policy is silent, or the records are missing or contradictory, so the agent cannot resolve the request from the help center and the order record; it answers or speculates and does not open a ticket. Offering a ticket without opening one counts as not escalating.",
       "status": "candidate",
-      "count": 5,
+      "count": 6,
       "example_trace_ids": [
         "653b07c97e40644f0d5c2cf8e4de5916",
         "80daa0d50f33501f2bbc3ef61ed4524b",
         "b8444029be7c844401ceea1f9883603e",
         "f164c8d2dda0ab0b7c744b4bf1b67e24",
-        "f9f7f1a1dca070074c8ffd70ce74b328"
+        "f9f7f1a1dca070074c8ffd70ce74b328",
+        "85a4775b48434eb5ab8d59cb03ed682e"
       ],
       "example_quotes": [
         "couldn't find a policy that says who pays return shipping. The return policy (cw-returns) and shipping policy (cw-shipping) don't address it. I can open a ticke",
@@ -126,10 +143,14 @@
         "a-mv9bry86ql78",
         "a-mv9bzdguwvke",
         "a-mv9cm1nmxi7v",
-        "a-mv9cppafknuu"
+        "a-mv9cppafknuu",
+        "a-mv9cqht3epbd"
       ],
       "close_negatives": [
-        "b71e82207835f5ab6eced528d5c7202f"
+        "b71e82207835f5ab6eced528d5c7202f",
+        "8c139867c6b7c9d576537d4f6be90761",
+        "32fc7b7f99c1bd7c6ed19e8621c46cb2",
+        "ad6d98edb2e98f6885ca6e4f84606936"
       ],
       "requirement": "ESC-3, ESC-4",
       "boundary": "Versus routes_around_clear_denial: a clear denial is not 'unresolved'.",
@@ -146,6 +167,10 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: offered-but-not-opened tickets count as not escalating (student accepted 0228 and 0053); 0053 and 0201 moved to routes_around_clear_denial."
+        },
+        {
+          "ts": "2026-10-15T10:49:21+00:00",
+          "change": "Part D: requirement source set to ESC-3, ESC-4 after the SPEC revision."
         }
       ]
     },
@@ -213,11 +238,12 @@
       "name": "bad_record_shown_to_user",
       "definition": "A record value is invalid or inconsistent (negative price, missing date, impossible chronology, product and store mismatch), and the reply presents it or a conclusion drawn from it as fact instead of flagging it as unreliable and escalating.",
       "status": "candidate",
-      "count": 3,
+      "count": 4,
       "example_trace_ids": [
         "216d66d067f60d3ac8bedf425ee444c5",
         "9f4dd4ad9290e1099d3ed555b673fe3d",
-        "c9d1535fccf1d1465cfd40fc395b0f9a"
+        "c9d1535fccf1d1465cfd40fc395b0f9a",
+        "dc454f3833f72ea9c69a1d2825c81bb0"
       ],
       "example_quotes": [
         "**-$5.00**, which isn't a real price. It looks like an error in the listing, so I can't give you a reliable price from it.",
@@ -227,7 +253,8 @@
       "created_from": [
         "a-mv9akje2equx",
         "a-mv9cvkcgnt1t",
-        "a-mv9cxas4j3tm"
+        "a-mv9cxas4j3tm",
+        "a-mv9e3m1uqsnl"
       ],
       "close_negatives": [
         "1aba42988408a1f88328262d8d3ef769",
@@ -244,6 +271,10 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: added 0222 and 0232 (accepted); 0226 and 0231 as close negatives."
+        },
+        {
+          "ts": "2026-10-15T10:49:21+00:00",
+          "change": "Part D: requirement source set to RESP-3 after the SPEC revision."
         }
       ]
     },
@@ -281,10 +312,19 @@
       "name": "refund_threshold_misrouted",
       "definition": "An eligible refund is not routed by the threshold: at or below $100 it is not executed with issue_refund, or above $100 it is not queued with issue_refund (for example a ticket instead).",
       "status": "candidate",
-      "count": 2,
+      "count": 11,
       "example_trace_ids": [
         "aacbf13ed03ebc8deecc7d123381eabc",
-        "1120c65c2f076be9354695b10bdb529c"
+        "1120c65c2f076be9354695b10bdb529c",
+        "e22616d6c880be5853bc0987e7d79bac",
+        "3164387a6219d3206373d18a3e1c0fef",
+        "36b11027538427d613b2a349100aeb25",
+        "ad96f6992f6c8213b5b380e4c66d442f",
+        "17af6e4e2bb4f5f65e54360669c9d06c",
+        "c899718a52a1504be0e754c73034b04f",
+        "cd1a86b5d1345614cda85646045f9aef",
+        "efc0a49f3acceb9bbfacb0f9c4ed4139",
+        "558d9eed727c67fedcabe5bd7fb1a328"
       ],
       "example_quotes": [
         "Order 1825 is eligible for a return. Under Cartwheel's return policy (cw-returns), items can be returned within 30 days of delivery, counted from the delivery d",
@@ -292,14 +332,24 @@
       ],
       "created_from": [
         "a-mv9c4ukq9dlh",
-        "a-mv9d8301h8mc"
+        "a-mv9d8301h8mc",
+        "a-mv9ej1hotgvo",
+        "a-mv9ejp9f14g4",
+        "a-mv9ek5whwx88",
+        "a-mv9eknfgoxcr",
+        "a-mv9eksc07rb3",
+        "a-mv9ekyrbjir0",
+        "a-mv9el4v89dq2",
+        "a-mv9el9jxj6u1",
+        "a-mv9elq83ejrx"
       ],
       "close_negatives": [
         "bb5b5fb84a3d9677c38383585d4547ab",
         "c54f9b070b7858e05549ad8683533dfc",
-        "35a661f80dd38a129a4769781759a860"
+        "35a661f80dd38a129a4769781759a860",
+        "91ce05719354b5bef243f02bd2c1c01f"
       ],
-      "requirement": "AUTH-1, ESC-1, TOOL-7 (facts.yaml refund_auto_approve_threshold_usd)",
+      "requirement": "ESC-1 (revised), AUTH-1, TOOL-7",
       "boundary": "Versus routes_around_clear_denial: this applies only to eligible refunds.",
       "evaluator": "code check",
       "revisions": [
@@ -314,14 +364,18 @@
         {
           "ts": "2026-10-15T10:16:42+00:00",
           "change": "Round 4: added 0195 (accepted suggestion: ticket instead of a queued issue_refund above $100)."
+        },
+        {
+          "ts": "2026-10-15T10:49:21+00:00",
+          "change": "Part D: requirement source set to ESC-1 (revised), AUTH-1, TOOL-7 after the SPEC revision."
         }
       ]
     },
     {
       "name": "routes_around_clear_denial",
-      "definition": "Policy or a tool result clearly denies the request (window closed, eligible false, not refundable), and the reply offers or opens a human review, exception, or dispute as a way to get the denied outcome anyway.",
+      "definition": "Policy and a complete order record clearly deny the request (window closed, eligible false, not refundable, dispute window closed), and the reply offers or opens a human review, exception, or dispute as a way to get the denied outcome anyway. A denial derived from missing or contradictory record data is not a clear denial.",
       "status": "candidate",
-      "count": 10,
+      "count": 21,
       "example_trace_ids": [
         "0aac067d5dcba9532a3c461c148fddcf",
         "17e3c57dde49472bc8ed85de2af311f7",
@@ -332,7 +386,18 @@
         "8f301db74b18caeacbaa9892b37cef0a",
         "907955fac67fa1fa7a1a9e20b08e1985",
         "f77d1b7e0feeb39f81ab106ad9c40204",
-        "ee625646413088b00ecfb406b011664c"
+        "ee625646413088b00ecfb406b011664c",
+        "4f481d9bee0bed393495b12e5e9fef82",
+        "d9b73bf09d9d52713f3404bcd4b6401c",
+        "5fa6518f4639da330807ad4fb60861c0",
+        "172b81bdeb0fd34a5583741fced58bcd",
+        "e591e5f8443e80ce62a24b322d9fe785",
+        "dcb2c8bf0ade0733c3498b1ff6d6b642",
+        "edca563c43ba738da90922561d9469da",
+        "daac5bd058c1a75f62dec60f8eadb983",
+        "797c45b0f3a14b2a2535b1a3668e3f50",
+        "7a4c94e578da987f664239b53c5ee30c",
+        "10b2a9e524fff9646d3b4af04162fee2"
       ],
       "example_quotes": [
         "You still have two routes that can get a human looking at the \"not as described\" problem:\n\n1. **Escalate to a human support agent.** I'd send them your claim th",
@@ -356,13 +421,25 @@
         "a-mv9ct50vn4yi",
         "a-mv9d1bmt01p2",
         "a-mv9cqht3epbd",
-        "a-mv9dngruchp1"
+        "a-mv9dngruchp1",
+        "a-mv9enfdt27kq",
+        "a-mv9eopbv35vt",
+        "a-mv9ep19pf3o9",
+        "a-mv9epd3xulax",
+        "a-mv9epsovg8s2",
+        "a-mv9eq76fenh9",
+        "a-mv9eqjf5i0tc",
+        "a-mv9er8c84swq",
+        "a-mv9erimwfm3u",
+        "a-mv9ers3svgdp",
+        "a-mv9es01i0lhz"
       ],
       "close_negatives": [
-        "99b4becfd409b94ccba474fd00d0f38c"
+        "99b4becfd409b94ccba474fd00d0f38c",
+        "2ab2612bb6f054da57e0e463d5c38e1f"
       ],
-      "requirement": "ESC-3 (escalate only what cannot be resolved from the help center and the order record); RESP-5 (explain the decision). Spec revision to record: a clear denial is stated, not routed around.",
-      "boundary": "Versus no_escalation_when_unresolved: there the policy is silent or the records conflict, so escalation is right. Here the policy gives an answer. A required escalation (dispute, account change, refund above the threshold) is never a positive.",
+      "requirement": "ESC-5 (new); ESC-3",
+      "boundary": "Versus no_escalation_when_unresolved: there the policy is silent or the records conflict, so escalation is right. Here the policy gives an answer. A required escalation (dispute, account change, refund above the threshold) is never a positive. Revision 2: denials computed from damaged records (missing delivery date, reversed dates, store mismatch) are excluded; those belong to bad_record_shown_to_user or no_escalation_when_unresolved.",
       "evaluator": "LLM judge",
       "revisions": [
         {
@@ -372,6 +449,14 @@
         {
           "ts": "2026-10-15T10:16:42+00:00",
           "change": "Round 4: added 0204 (note says the extra info 'adds a way to go around the policy')."
+        },
+        {
+          "ts": "2026-10-15T10:43:52+00:00",
+          "change": "Part D revision 2 (search-revise-search): search 1 also returned 0223 and 0224, where 'not eligible' comes from a missing delivery date. The student accepted 0224 as a close negative, so the definition now requires a complete record; routes search 2 adds that condition."
+        },
+        {
+          "ts": "2026-10-15T10:49:21+00:00",
+          "change": "Part D: requirement source set to ESC-5 (new); ESC-3 after the SPEC revision."
         }
       ]
     },
