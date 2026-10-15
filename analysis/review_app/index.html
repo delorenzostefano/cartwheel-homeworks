@@ -386,8 +386,11 @@ async function decide(id, accept) {
   s.status = accept ? 'accepted' : 'rejected'; s.decided_at = now(); s.decision_note = why || '';
   if (accept) {
     const c = S.byTrace[s.trace_id] || S.byId[s.trace_id];
+    // A close-negative or "none" suggestion says the trace is clean for open coding.
+    const clean = s.mode === 'none' || String(s.mode).startsWith('close_negative:');
     S.ann.push({ id: uid(), trace_id: c.id, scenario_id: c.scenario_id, turn_trace_id: s.trace_id, anchor: s.anchor || 'conv',
-      quote: s.text || '', note: `[accepted suggestion: ${s.mode}] ${s.rationale || ''}`, kind: 'note', author: 'human',
+      quote: s.text || '', note: `[accepted suggestion: ${s.mode}] ${s.rationale || ''}${why ? ' | ' + why : ''}`,
+      kind: clean ? 'no_failure' : 'note', author: 'human',
       source: 'accepted_suggestion', suggestion_id: s.id, ts: now() });
     await saveAnnotations();
   }

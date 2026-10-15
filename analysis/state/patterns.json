@@ -1,1 +1,408 @@
-{"modes": []}
+{
+  "updated_at": "2026-10-15T10:01:10+00:00",
+  "modes": [
+    {
+      "name": "policy_id_in_reply",
+      "definition": "The reply shows a policy identifier such as cw-returns.",
+      "status": "rejected",
+      "count": 7,
+      "example_trace_ids": [],
+      "example_quotes": [
+        "(cw-returns).",
+        "cw-returns",
+        "cw-returns",
+        "cw-cancellations)",
+        "(policy: store-northwind-books-policy)."
+      ],
+      "created_from": [
+        "a-mv993evue27e",
+        "a-mv9943ot6sez",
+        "a-mv9997cgij46",
+        "a-mv99gptf6hxr",
+        "a-mv99hpsz9eqp",
+        "a-mv99yiu1xf8t",
+        "a-mv9a216s0eju",
+        "a-mv9a5ofrakg9"
+      ],
+      "close_negatives": [],
+      "requirement": "Conflicts with RESP-1 (cite the policy identifier for every policy claim) and PURPOSE-1.",
+      "boundary": "",
+      "evaluator": "",
+      "revisions": [
+        {
+          "ts": "2026-10-15T08:59:09+00:00",
+          "change": "Rejected in axial coding round 1: the behavior is required by RESP-1, so it is not a failure. Student kept G2-G6 and dropped this group."
+        }
+      ]
+    },
+    {
+      "name": "unrequested_detail",
+      "definition": "The reply adds policy or order detail the user did not ask for and that is not needed to answer the question or explain the decision.",
+      "status": "candidate",
+      "count": 7,
+      "example_trace_ids": [
+        "0a318f449e08a9dfbf013ab7dd5acffa",
+        "17e3c57dde49472bc8ed85de2af311f7",
+        "e4e40b3e728719f01f485a5b8a0b4685",
+        "f9f7f1a1dca070074c8ffd70ce74b328",
+        "00f7e69dcd5e46c9639ec1dcb0dc756e",
+        "9c92d7cded7e9efaf89166bfccdf4317",
+        "f28e13dc8507eee52d386a9efefded4a"
+      ],
+      "example_quotes": [
+        "Blue Heron Ceramics doesn't override the default window.",
+        "Refunds over $100 need human review before money moves (cw-refunds). Order 8003 is $429.50, so any refund on it would need that review.",
+        "Refunds over $100 also need a human agent to review them before any money moves (cw-refunds), so even a valid claim wouldn't be instant.",
+        "Tracking doesn't show which items are in the order, so I can't confirm from this lookup that it contains the Petal & Stem pruning shears. If you need that, or w",
+        "- **Return window:** Second Stitch Apparel uses the standard 30 days from delivery (`store-second-stitch-apparel-policy`). Your order was delivered on June 21, ",
+        "Your options:\n\n- **Return it after delivery.** Cascade Audio follows the Cartwheel 30-day return window, counted from the delivery date (policy `store-cascade-a",
+        "That's a high price for a notebook, so if it looks wrong to you, the store can confirm it",
+        "I didn't find a Blue Heron-specific policy page in the help center, so these answers come from the store record. If you tell me which order you're returning, I "
+      ],
+      "created_from": [
+        "a-mv993uz197k3",
+        "a-mv99605jmday",
+        "a-mv999oj557e8",
+        "a-mv99tnag2gxn",
+        "a-mv9a1g0rlf22",
+        "a-mv9bcs93jtqk",
+        "a-mv9bv5ujd37p",
+        "a-mv9cb54aryab"
+      ],
+      "close_negatives": [
+        "61875bbb98e76c76c7a543390ff5bb12"
+      ],
+      "requirement": "No SPEC requirement yet; needs a specification revision (candidate RESP-6, answer the question asked). Open: whether support-0212 is verbosity or disclosure (RESP-4).",
+      "boundary": "",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T08:59:09+00:00",
+          "change": "Created as candidate in axial coding round 1 (batch 1)."
+        },
+        {
+          "ts": "2026-10-15T09:40:17+00:00",
+          "change": "Round 2: added batch 2 notes 0079, 0144, 0129. 0129 is in question (it may be RESP-3 transparency); a close-negative suggestion is pending."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: 0119 accepted as a close negative."
+        }
+      ]
+    },
+    {
+      "name": "no_escalation_when_unresolved",
+      "definition": "The policy is silent, or the records are missing or contradictory, so the agent cannot resolve the request from the help center and the order record; it answers or speculates and does not open a ticket. Offering a ticket without opening one counts as not escalating.",
+      "status": "candidate",
+      "count": 5,
+      "example_trace_ids": [
+        "653b07c97e40644f0d5c2cf8e4de5916",
+        "80daa0d50f33501f2bbc3ef61ed4524b",
+        "b8444029be7c844401ceea1f9883603e",
+        "f164c8d2dda0ab0b7c744b4bf1b67e24",
+        "f9f7f1a1dca070074c8ffd70ce74b328"
+      ],
+      "example_quotes": [
+        "couldn't find a policy that says who pays return shipping. The return policy (cw-returns) and shipping policy (cw-shipping) don't address it. I can open a ticke",
+        "The policy doesn't define a \"miss\" separately, so I'd read anything past 24 hours as outside the target. It doesn't say whether the clock starts at ticket creat",
+        "Two listings share the name \"Walnut Tea Sampler\" at very different prices. They have different product IDs, so they may be different sizes or versions, but I ca",
+        "I can open a ticket for a human support agent.",
+        "so it may be a different edition"
+      ],
+      "created_from": [
+        "a-mv99549cnvrc",
+        "a-mv9bry86ql78",
+        "a-mv9bzdguwvke",
+        "a-mv9cm1nmxi7v",
+        "a-mv9cppafknuu"
+      ],
+      "close_negatives": [
+        "b71e82207835f5ab6eced528d5c7202f"
+      ],
+      "requirement": "ESC-3, ESC-4",
+      "boundary": "Versus routes_around_clear_denial: a clear denial is not 'unresolved'.",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T08:59:09+00:00",
+          "change": "Created as candidate in axial coding round 1 (batch 1)."
+        },
+        {
+          "ts": "2026-10-15T09:40:17+00:00",
+          "change": "Round 2: added batch 2 notes 0121, 0137."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: offered-but-not-opened tickets count as not escalating (student accepted 0228 and 0053); 0053 and 0201 moved to routes_around_clear_denial."
+        }
+      ]
+    },
+    {
+      "name": "offers_route_around_policy",
+      "definition": "After policy rules an outcome out, the reply suggests routes to obtain that outcome anyway.",
+      "status": "merged",
+      "count": 1,
+      "example_trace_ids": [
+        "17e3c57dde49472bc8ed85de2af311f7"
+      ],
+      "example_quotes": [
+        "You still have two routes that can get a human looking at the \"not as described\" problem:\n\n1. **Escalate to a human support agent.** I'd send them your claim th"
+      ],
+      "created_from": [
+        "a-mv9adjej2dbu"
+      ],
+      "close_negatives": [],
+      "requirement": "To confirm (AUTH-1 / ESC-4)",
+      "boundary": "",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T08:59:09+00:00",
+          "change": "Created as candidate in axial coding round 1 (batch 1)."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: merged into routes_around_clear_denial (one-fix test: when policy clearly denies, say so and do not open or offer a human or dispute route as a workaround). Student's 0219 note 'again going around the policy' supports the merge."
+        }
+      ],
+      "merged_into": "routes_around_clear_denial"
+    },
+    {
+      "name": "write_before_required_info",
+      "definition": "The agent performs a write (refund or cancellation) before collecting the information the policy requires for it.",
+      "status": "revised",
+      "count": 1,
+      "example_trace_ids": [
+        "18596d04046e3216411b156ec2fcadea"
+      ],
+      "example_quotes": [
+        "Your refund is done.\n\n- **Order:** #9259, Midnight Face Serum from Fern & Fog Skincare\n- **Refund amount:** $47.75, the full amount you paid\n- **Refund ID:** 58"
+      ],
+      "created_from": [
+        "a-mv9a7m868a8z"
+      ],
+      "close_negatives": [],
+      "requirement": "To confirm; possibly a SPEC gap",
+      "boundary": "",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T08:59:09+00:00",
+          "change": "Created as candidate in axial coding round 1 (batch 1)."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: renamed and redefined as write_on_unconfirmed_order. The student marked 0036 clean (no condition check needed), so 'without required info' no longer has support; the 0037 note stays in history and is re-checked under the new definition."
+        }
+      ],
+      "renamed_to": "write_on_unconfirmed_order"
+    },
+    {
+      "name": "bad_record_shown_to_user",
+      "definition": "A record value is invalid or inconsistent (negative price, missing date, impossible chronology, product and store mismatch), and the reply presents it or a conclusion drawn from it as fact instead of flagging it as unreliable and escalating.",
+      "status": "candidate",
+      "count": 3,
+      "example_trace_ids": [
+        "216d66d067f60d3ac8bedf425ee444c5",
+        "9f4dd4ad9290e1099d3ed555b673fe3d",
+        "c9d1535fccf1d1465cfd40fc395b0f9a"
+      ],
+      "example_quotes": [
+        "**-$5.00**, which isn't a real price. It looks like an error in the listing, so I can't give you a reliable price from it.",
+        "The system says order 8002 is **not eligible** for a return.",
+        "Cartwheel's rules apply here, and you deal with Cartwheel."
+      ],
+      "created_from": [
+        "a-mv9akje2equx",
+        "a-mv9cvkcgnt1t",
+        "a-mv9cxas4j3tm"
+      ],
+      "close_negatives": [
+        "1aba42988408a1f88328262d8d3ef769",
+        "daa8b97ac7d1d2461f1fc2745d9cf857"
+      ],
+      "requirement": "RESP-3",
+      "boundary": "Versus no_escalation_when_unresolved: this mode is about asserting bad data as fact; a reply that flags the bad record and only offers a ticket is a no_escalation case.",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T08:59:09+00:00",
+          "change": "Created as candidate in axial coding round 1 (batch 1)."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: added 0222 and 0232 (accepted); 0226 and 0231 as close negatives."
+        }
+      ]
+    },
+    {
+      "name": "unneeded_escalation",
+      "definition": "The agent opens a ticket for a request that the help center and the order record already resolve (for example a refund outside the window, with no exception in policy).",
+      "status": "merged",
+      "count": 1,
+      "example_trace_ids": [
+        "5f02c92595ccaef1db77d20ebbed57f1"
+      ],
+      "example_quotes": [
+        "- **Return window:** Juniper Home Goods sets its own 14-day return window (cw-store-overrides), which ended June 18, 2026. The order was delivered June 4.\n- **R"
+      ],
+      "created_from": [
+        "a-mv9c3l0fppfe"
+      ],
+      "close_negatives": [],
+      "requirement": "ESC-3 read in reverse (escalate only what cannot be resolved); mirror of no_escalation_when_unresolved",
+      "boundary": "",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T09:40:17+00:00",
+          "change": "Round 2: drafted from your support-0199 note; awaiting your acceptance."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: merged into routes_around_clear_denial (one-fix test: when policy clearly denies, say so and do not open or offer a human or dispute route as a workaround). Student's 0219 note 'again going around the policy' supports the merge."
+        }
+      ],
+      "merged_into": "routes_around_clear_denial"
+    },
+    {
+      "name": "refund_threshold_misrouted",
+      "definition": "An eligible refund is not routed by the threshold: at or below $100 it is not executed with issue_refund, or above $100 it is not queued with issue_refund (for example a ticket instead).",
+      "status": "candidate",
+      "count": 1,
+      "example_trace_ids": [
+        "aacbf13ed03ebc8deecc7d123381eabc"
+      ],
+      "example_quotes": [
+        "Order 1825 is eligible for a return. Under Cartwheel's return policy (cw-returns), items can be returned within 30 days of delivery, counted from the delivery d"
+      ],
+      "created_from": [
+        "a-mv9c4ukq9dlh"
+      ],
+      "close_negatives": [
+        "bb5b5fb84a3d9677c38383585d4547ab",
+        "c54f9b070b7858e05549ad8683533dfc",
+        "35a661f80dd38a129a4769781759a860"
+      ],
+      "requirement": "AUTH-1, ESC-1, TOOL-7 (facts.yaml refund_auto_approve_threshold_usd)",
+      "boundary": "Versus routes_around_clear_denial: this applies only to eligible refunds.",
+      "evaluator": "code check",
+      "revisions": [
+        {
+          "ts": "2026-10-15T09:40:17+00:00",
+          "change": "Round 2: drafted from your support-0198 note; awaiting your acceptance."
+        },
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: close negatives 0060, 0033, 0194. 0195 and 0198 suggestions are pending."
+        }
+      ]
+    },
+    {
+      "name": "routes_around_clear_denial",
+      "definition": "Policy or a tool result clearly denies the request (window closed, eligible false, not refundable), and the reply offers or opens a human review, exception, or dispute as a way to get the denied outcome anyway.",
+      "status": "candidate",
+      "count": 9,
+      "example_trace_ids": [
+        "0aac067d5dcba9532a3c461c148fddcf",
+        "17e3c57dde49472bc8ed85de2af311f7",
+        "352fd4a6f5fdeea890daa9e23f677667",
+        "5f02c92595ccaef1db77d20ebbed57f1",
+        "809681af9caaa5491213c4728bffc29d",
+        "85a4775b48434eb5ab8d59cb03ed682e",
+        "8f301db74b18caeacbaa9892b37cef0a",
+        "907955fac67fa1fa7a1a9e20b08e1985",
+        "f77d1b7e0feeb39f81ab106ad9c40204"
+      ],
+      "example_quotes": [
+        "You still have two routes that can get a human looking at the \"not as described\" problem:\n\n1. **Escalate to a human support agent.** I'd send them your claim th",
+        "- **Return window:** Juniper Home Goods sets its own 14-day return window (cw-store-overrides), which ended June 18, 2026. The order was delivered June 4.\n- **R",
+        "There is another option. Under Cartwheel's dispute policy (cw-disputes), you can dispute a charge for up to 60 days after delivery. For this order, that window ",
+        "I've opened ticket 176 for a human support agent.",
+        "The colour mismatch might still count, since cw-returns says items must match the store's listing. That's a judgement call I can't make, so I can send your case",
+        "it may need a human to review it",
+        "a human agent could review it as an exception",
+        "You still have another option."
+      ],
+      "created_from": [
+        "a-mv9adjej2dbu",
+        "a-mv9c3l0fppfe",
+        "a-mv9d0yajywpc",
+        "a-mv9d1bmt01p2",
+        "a-mv9aa5v6iyz2",
+        "a-mv9cnif1gv28",
+        "a-mv9cscsruanu",
+        "a-mv9crme6okty",
+        "a-mv9ct50vn4yi",
+        "a-mv9d1bmt01p2",
+        "a-mv9cqht3epbd"
+      ],
+      "close_negatives": [
+        "99b4becfd409b94ccba474fd00d0f38c"
+      ],
+      "requirement": "ESC-3 (escalate only what cannot be resolved from the help center and the order record); RESP-5 (explain the decision). Spec revision to record: a clear denial is stated, not routed around.",
+      "boundary": "Versus no_escalation_when_unresolved: there the policy is silent or the records conflict, so escalation is right. Here the policy gives an answer. A required escalation (dispute, account change, refund above the threshold) is never a positive.",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: created by merging offers_route_around_policy and unneeded_escalation; moved 0053 and 0201 here from no_escalation_when_unresolved because both are 'window closed, exception suggested', like 0052."
+        }
+      ]
+    },
+    {
+      "name": "write_on_unconfirmed_order",
+      "definition": "The agent executes a refund or cancellation on an order the user did not identify and the agent did not confirm (for example after an empty search it picks an order from the list).",
+      "status": "candidate",
+      "count": 1,
+      "example_trace_ids": [
+        "754715d0ab0bdd0ce80970a06890a65a"
+      ],
+      "example_quotes": [
+        "Your refund for the Signature Plush Fox is approved"
+      ],
+      "created_from": [
+        "a-mv9d2b0ebxec"
+      ],
+      "close_negatives": [
+        "13e1808cb1f8c93d5b8690f300955b99",
+        "370936c53cec7c9f732fd2d9dc3c093d",
+        "4e63970933021fb2254c3aff2ca6d572"
+      ],
+      "requirement": "RESP-3 (do not invent a missing value); RESP-2. Spec revision to record: confirm the order before an irreversible write when the lookup is ambiguous.",
+      "boundary": "Versus a correct write: if a lookup returns exactly the order the user named, there is no failure even without a confirmation step.",
+      "evaluator": "code check (write after an empty or multi-result lookup) + LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: replaces write_before_required_info."
+        }
+      ]
+    },
+    {
+      "name": "requests_personal_data",
+      "definition": "The agent asks the user to send personal account data (email, address, name) in chat, although a human handles the change and will collect it.",
+      "status": "candidate",
+      "count": 1,
+      "example_trace_ids": [
+        "fb7825c123f72400795a357caf51b7f0"
+      ],
+      "example_quotes": [
+        "If you have the new email address ready, you can reply with it so the agent has it when they reach out."
+      ],
+      "created_from": [
+        "a-mv9cz4mrrqph"
+      ],
+      "close_negatives": [],
+      "requirement": "No SPEC requirement (SCOPE-2 covers only payment credentials); needs a specification revision.",
+      "boundary": "",
+      "evaluator": "LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T10:01:10+00:00",
+          "change": "Round 3: drafted from the student's 0163 note."
+        }
+      ]
+    }
+  ]
+}

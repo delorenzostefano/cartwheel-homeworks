@@ -1,0 +1,815 @@
+{
+  "updated_at": "2026-10-15T10:01:10+00:00",
+  "total": 100,
+  "pool": "250 complete support-* conversations from Langfuse (stale support-0031 first attempt excluded)",
+  "batches": {
+    "b1-uniform": {
+      "method": "uniform random",
+      "seed": 20261015,
+      "n": 15,
+      "ids": [
+        "support-0235",
+        "support-0055",
+        "support-0051",
+        "support-0113",
+        "support-0124",
+        "support-0003",
+        "support-0210",
+        "support-0211",
+        "support-0011",
+        "support-0008",
+        "support-0157",
+        "support-0050",
+        "support-0135",
+        "support-0212",
+        "support-0109"
+      ]
+    },
+    "b1-cluster": {
+      "method": "KMeans k=8 (20 restarts, numpy), nearest-to-centroid, 1-2 per cluster",
+      "seed": 20261015,
+      "n": 15,
+      "features": "role one-hot, turn count, tool-call count, distinct tools, log reply length, tool-used flags; no outcome fields",
+      "clusters": {
+        "0": "2 convs; roles {'shopper': 0, 'merchant': 2, 'support': 0}; mean turns 1.0; top tools ['list_my_orders', 'order_history_summary', 'cancel_order']",
+        "1": "74 convs; roles {'shopper': 63, 'merchant': 11, 'support': 0}; mean turns 1.0; top tools ['get_order', 'track_shipment', 'find_order']",
+        "2": "23 convs; roles {'shopper': 23, 'merchant': 0, 'support': 0}; mean turns 1.5; top tools ['get_order', 'find_order', 'search_help_center']",
+        "3": "69 convs; roles {'shopper': 55, 'merchant': 9, 'support': 5}; mean turns 1.0; top tools ['search_help_center', 'get_store_info', 'check_return_eligibility']",
+        "4": "29 convs; roles {'shopper': 25, 'merchant': 4, 'support': 0}; mean turns 1.1; top tools ['search_products', 'get_store_info', 'escalate_to_human']",
+        "5": "9 convs; roles {'shopper': 4, 'merchant': 3, 'support': 2}; mean turns 1.0; top tools ['cancel_order', 'get_order', 'find_order']",
+        "6": "27 convs; roles {'shopper': 0, 'merchant': 8, 'support': 19}; mean turns 1.0; top tools ['track_shipment', 'get_order', 'search_help_center']",
+        "7": "17 convs; roles {'shopper': 13, 'merchant': 4, 'support': 0}; mean turns 1.0; top tools ['list_my_orders', 'get_order', 'track_shipment']"
+      },
+      "ids": [
+        "support-0161",
+        "support-0181",
+        "support-0170",
+        "support-0035",
+        "support-0037",
+        "support-0201",
+        "support-0229",
+        "support-0140",
+        "support-0241",
+        "support-0071",
+        "support-0075",
+        "support-0014",
+        "support-0016",
+        "support-0156",
+        "support-0183"
+      ]
+    },
+    "b2-intent": {
+      "method": "stratified random by intent; dimension chosen by the student before seeing outcomes",
+      "seed": 20261016,
+      "n": 30,
+      "quota": {
+        "account_change": 2,
+        "cancellation": 2,
+        "dispute": 2,
+        "order_history": 2,
+        "order_status": 3,
+        "out_of_scope": 2,
+        "policy_question": 2,
+        "product_detail": 3,
+        "product_search": 2,
+        "refund": 3,
+        "return_eligibility": 3,
+        "shipment_tracking": 2,
+        "store_policy": 2
+      },
+      "unreviewed_pool_sizes": {
+        "account_change": 5,
+        "cancellation": 16,
+        "dispute": 6,
+        "order_history": 5,
+        "order_status": 41,
+        "out_of_scope": 7,
+        "policy_question": 12,
+        "product_detail": 20,
+        "product_search": 10,
+        "refund": 50,
+        "return_eligibility": 28,
+        "shipment_tracking": 13,
+        "store_policy": 7
+      },
+      "ids": [
+        "support-0164",
+        "support-0166",
+        "support-0079",
+        "support-0077",
+        "support-0150",
+        "support-0149",
+        "support-0162",
+        "support-0158",
+        "support-0214",
+        "support-0023",
+        "support-0005",
+        "support-0169",
+        "support-0174",
+        "support-0121",
+        "support-0122",
+        "support-0144",
+        "support-0143",
+        "support-0246",
+        "support-0137",
+        "support-0138",
+        "support-0199",
+        "support-0198",
+        "support-0197",
+        "support-0097",
+        "support-0202",
+        "support-0098",
+        "support-0106",
+        "support-0100",
+        "support-0127",
+        "support-0129"
+      ]
+    },
+    "b3-depth": {
+      "method": "depth searches for candidate modes plus close negatives; retrieval signals (keyword, tool-call, threshold and data-quality filters) rank unreviewed conversations, the agent reads the top hits and posts each as a pending suggestion; signals are not labels",
+      "n": 25,
+      "ids": [
+        "support-0228",
+        "support-0058",
+        "support-0119",
+        "support-0139",
+        "support-0053",
+        "support-0120",
+        "support-0123",
+        "support-0193",
+        "support-0052",
+        "support-0094",
+        "support-0036",
+        "support-0044",
+        "support-0072",
+        "support-0060",
+        "support-0222",
+        "support-0226",
+        "support-0231",
+        "support-0232",
+        "support-0154",
+        "support-0163",
+        "support-0219",
+        "support-0220",
+        "support-0033",
+        "support-0194",
+        "support-0195"
+      ]
+    },
+    "b4-uniform": {
+      "method": "uniform random from unreviewed conversations, after the taxonomy draft",
+      "seed": 20261017,
+      "n": 15,
+      "pool_size": 165,
+      "ids": [
+        "support-0099",
+        "support-0012",
+        "support-0172",
+        "support-0066",
+        "support-0043",
+        "support-0187",
+        "support-0205",
+        "support-0206",
+        "support-0204",
+        "support-0217",
+        "support-0216",
+        "support-0116",
+        "support-0233",
+        "support-0065",
+        "support-0185"
+      ]
+    }
+  },
+  "picks": [
+    {
+      "trace_id": "f9f7f1a1dca070074c8ffd70ce74b328",
+      "scenario_id": "support-0235",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "17e3c57dde49472bc8ed85de2af311f7",
+      "scenario_id": "support-0055",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 2
+    },
+    {
+      "trace_id": "abe445ad3468bb60e4cd22b3ceec05e0",
+      "scenario_id": "support-0051",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "5dd6346df85178d0b937ac8e910ab962",
+      "scenario_id": "support-0113",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "875ac252c8ed30ca73250afd36f7c1a5",
+      "scenario_id": "support-0124",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "9c07292123a49d26a641e21bd523fdd7",
+      "scenario_id": "support-0003",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "fa80e1771f26f3e4a5a2ddc003fdb0f6",
+      "scenario_id": "support-0210",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "9a4e71427d514c96967172860d19cf7a",
+      "scenario_id": "support-0211",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "a6d0a356fae004870480e420561d4315",
+      "scenario_id": "support-0011",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "0a318f449e08a9dfbf013ab7dd5acffa",
+      "scenario_id": "support-0008",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "5ab3e2d45d8060d4f92c018500c7566f",
+      "scenario_id": "support-0157",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 7
+    },
+    {
+      "trace_id": "f2da13092749bc6c0c4be81b709b280f",
+      "scenario_id": "support-0050",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 2
+    },
+    {
+      "trace_id": "fed691c6c97caa84590fbb7d49d47f9c",
+      "scenario_id": "support-0135",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 4
+    },
+    {
+      "trace_id": "e4e40b3e728719f01f485a5b8a0b4685",
+      "scenario_id": "support-0212",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "a3cfa3fa240d8b53844e172d4c50e24f",
+      "scenario_id": "support-0109",
+      "batch": "b1-uniform",
+      "reason": "uniform random draw (seed 20261015)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "b3a32da3905379784d0bc8c3ef124d59",
+      "scenario_id": "support-0161",
+      "batch": "b1-cluster",
+      "reason": "cluster 0 representative #1 (nearest to centroid)",
+      "cluster": 0
+    },
+    {
+      "trace_id": "9499c6198eabd1905da9bd65d2fabcba",
+      "scenario_id": "support-0181",
+      "batch": "b1-cluster",
+      "reason": "cluster 1 representative #1 (nearest to centroid)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "1d1b4a928adef7fa2f7c1908503b1fb3",
+      "scenario_id": "support-0170",
+      "batch": "b1-cluster",
+      "reason": "cluster 1 representative #2 (nearest to centroid)",
+      "cluster": 1
+    },
+    {
+      "trace_id": "64a693c674c556ae1ab155fb28c3a07e",
+      "scenario_id": "support-0035",
+      "batch": "b1-cluster",
+      "reason": "cluster 2 representative #1 (nearest to centroid)",
+      "cluster": 2
+    },
+    {
+      "trace_id": "18596d04046e3216411b156ec2fcadea",
+      "scenario_id": "support-0037",
+      "batch": "b1-cluster",
+      "reason": "cluster 2 representative #2 (nearest to centroid)",
+      "cluster": 2
+    },
+    {
+      "trace_id": "0aac067d5dcba9532a3c461c148fddcf",
+      "scenario_id": "support-0201",
+      "batch": "b1-cluster",
+      "reason": "cluster 3 representative #1 (nearest to centroid)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "ec212fc16bdabf6acaf5a5e07140ed4a",
+      "scenario_id": "support-0229",
+      "batch": "b1-cluster",
+      "reason": "cluster 3 representative #2 (nearest to centroid)",
+      "cluster": 3
+    },
+    {
+      "trace_id": "12bcfa2de5e46aa2d826e99e4416d8fa",
+      "scenario_id": "support-0140",
+      "batch": "b1-cluster",
+      "reason": "cluster 4 representative #1 (nearest to centroid)",
+      "cluster": 4
+    },
+    {
+      "trace_id": "216d66d067f60d3ac8bedf425ee444c5",
+      "scenario_id": "support-0241",
+      "batch": "b1-cluster",
+      "reason": "cluster 4 representative #2 (nearest to centroid)",
+      "cluster": 4
+    },
+    {
+      "trace_id": "32f0b905e8d7433fb996e4f6d30cfea7",
+      "scenario_id": "support-0071",
+      "batch": "b1-cluster",
+      "reason": "cluster 5 representative #1 (nearest to centroid)",
+      "cluster": 5
+    },
+    {
+      "trace_id": "b7dc72c71c4d07bf9e2d40bca2e814a8",
+      "scenario_id": "support-0075",
+      "batch": "b1-cluster",
+      "reason": "cluster 5 representative #2 (nearest to centroid)",
+      "cluster": 5
+    },
+    {
+      "trace_id": "0d1e0f32bfdb4b38fb7b08db179ef455",
+      "scenario_id": "support-0014",
+      "batch": "b1-cluster",
+      "reason": "cluster 6 representative #1 (nearest to centroid)",
+      "cluster": 6
+    },
+    {
+      "trace_id": "77849a3dcc4c15956232c3532ef62dc5",
+      "scenario_id": "support-0016",
+      "batch": "b1-cluster",
+      "reason": "cluster 6 representative #2 (nearest to centroid)",
+      "cluster": 6
+    },
+    {
+      "trace_id": "55b6a4b41532276ce7627d9d66a925bf",
+      "scenario_id": "support-0156",
+      "batch": "b1-cluster",
+      "reason": "cluster 7 representative #1 (nearest to centroid)",
+      "cluster": 7
+    },
+    {
+      "trace_id": "7773a3708c587398c7ce2823e1ff02fa",
+      "scenario_id": "support-0183",
+      "batch": "b1-cluster",
+      "reason": "cluster 7 representative #2 (nearest to centroid)",
+      "cluster": 7
+    },
+    {
+      "trace_id": "6e60159f202efdff2b1f75a1b772608e",
+      "scenario_id": "support-0164",
+      "batch": "b2-intent",
+      "reason": "intent=account_change: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "c648b2cd2c78651057d50ade9593e01d",
+      "scenario_id": "support-0166",
+      "batch": "b2-intent",
+      "reason": "intent=account_change: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "00f7e69dcd5e46c9639ec1dcb0dc756e",
+      "scenario_id": "support-0079",
+      "batch": "b2-intent",
+      "reason": "intent=cancellation: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "15ac081cf4eb7cc32ce52a024d23d6c5",
+      "scenario_id": "support-0077",
+      "batch": "b2-intent",
+      "reason": "intent=cancellation: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "522e5939a1e925d379a0e4d186e06e44",
+      "scenario_id": "support-0150",
+      "batch": "b2-intent",
+      "reason": "intent=dispute: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "92b335f48aa9a7f022f2f9b12f0c898e",
+      "scenario_id": "support-0149",
+      "batch": "b2-intent",
+      "reason": "intent=dispute: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "e58d1ade85ab4ae94367426d42aaba6f",
+      "scenario_id": "support-0162",
+      "batch": "b2-intent",
+      "reason": "intent=order_history: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "67fab6364ea249ae09b900925cab5210",
+      "scenario_id": "support-0158",
+      "batch": "b2-intent",
+      "reason": "intent=order_history: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "59480262f9a5cbee9d2cc1150d01b5eb",
+      "scenario_id": "support-0214",
+      "batch": "b2-intent",
+      "reason": "intent=order_status: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "952712aef9022d406afa01590717cd2b",
+      "scenario_id": "support-0023",
+      "batch": "b2-intent",
+      "reason": "intent=order_status: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "42ffb657603ccf87035eccb3adb894b6",
+      "scenario_id": "support-0005",
+      "batch": "b2-intent",
+      "reason": "intent=order_status: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "66ab7efe8d68dfdec4562cd94427cdf3",
+      "scenario_id": "support-0169",
+      "batch": "b2-intent",
+      "reason": "intent=out_of_scope: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "8c199dec148035e83dff13f50ca7ca7f",
+      "scenario_id": "support-0174",
+      "batch": "b2-intent",
+      "reason": "intent=out_of_scope: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "80daa0d50f33501f2bbc3ef61ed4524b",
+      "scenario_id": "support-0121",
+      "batch": "b2-intent",
+      "reason": "intent=policy_question: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "33e498195cb1e2a4b4a94374295f7403",
+      "scenario_id": "support-0122",
+      "batch": "b2-intent",
+      "reason": "intent=policy_question: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "9c92d7cded7e9efaf89166bfccdf4317",
+      "scenario_id": "support-0144",
+      "batch": "b2-intent",
+      "reason": "intent=product_detail: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "d5e32a781114885e6372ab2edc336928",
+      "scenario_id": "support-0143",
+      "batch": "b2-intent",
+      "reason": "intent=product_detail: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+      "scenario_id": "support-0246",
+      "batch": "b2-intent",
+      "reason": "intent=product_detail: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "653b07c97e40644f0d5c2cf8e4de5916",
+      "scenario_id": "support-0137",
+      "batch": "b2-intent",
+      "reason": "intent=product_search: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "f2e78ac33fa62cfd6bef6df31e679b5e",
+      "scenario_id": "support-0138",
+      "batch": "b2-intent",
+      "reason": "intent=product_search: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "5f02c92595ccaef1db77d20ebbed57f1",
+      "scenario_id": "support-0199",
+      "batch": "b2-intent",
+      "reason": "intent=refund: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "aacbf13ed03ebc8deecc7d123381eabc",
+      "scenario_id": "support-0198",
+      "batch": "b2-intent",
+      "reason": "intent=refund: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "44b7fd47f55f1b030be5704afdad08c9",
+      "scenario_id": "support-0197",
+      "batch": "b2-intent",
+      "reason": "intent=refund: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "47a9ee6333ef794d8a64b2ebb2693f74",
+      "scenario_id": "support-0097",
+      "batch": "b2-intent",
+      "reason": "intent=return_eligibility: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "0b40559561510dc60e5b8251f9c81e15",
+      "scenario_id": "support-0202",
+      "batch": "b2-intent",
+      "reason": "intent=return_eligibility: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "f3501b7776ed72964bbba95615b5b15b",
+      "scenario_id": "support-0098",
+      "batch": "b2-intent",
+      "reason": "intent=return_eligibility: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "6350ca477fbd163be30866e43390300b",
+      "scenario_id": "support-0106",
+      "batch": "b2-intent",
+      "reason": "intent=shipment_tracking: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "8c139867c6b7c9d576537d4f6be90761",
+      "scenario_id": "support-0100",
+      "batch": "b2-intent",
+      "reason": "intent=shipment_tracking: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "324a8ba435eae25316343c8191153f09",
+      "scenario_id": "support-0127",
+      "batch": "b2-intent",
+      "reason": "intent=store_policy: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "f28e13dc8507eee52d386a9efefded4a",
+      "scenario_id": "support-0129",
+      "batch": "b2-intent",
+      "reason": "intent=store_policy: random draw within stratum (seed 20261016)"
+    },
+    {
+      "trace_id": "f164c8d2dda0ab0b7c744b4bf1b67e24",
+      "scenario_id": "support-0228",
+      "batch": "b3-depth",
+      "reason": "depth search for no_escalation_when_unresolved (candidate positive); signal: uncertainty phrases, no escalate call; dq case"
+    },
+    {
+      "trace_id": "f77d1b7e0feeb39f81ab106ad9c40204",
+      "scenario_id": "support-0058",
+      "batch": "b3-depth",
+      "reason": "depth search for offers_route_around_policy (candidate positive); signal: ineligible + route phrases"
+    },
+    {
+      "trace_id": "61875bbb98e76c76c7a543390ff5bb12",
+      "scenario_id": "support-0119",
+      "batch": "b3-depth",
+      "reason": "depth search for unrequested_detail (close negative); signal: high reply/question length ratio"
+    },
+    {
+      "trace_id": "b8444029be7c844401ceea1f9883603e",
+      "scenario_id": "support-0139",
+      "batch": "b3-depth",
+      "reason": "depth search for no_escalation_when_unresolved (candidate positive); signal: uncertainty phrases, no escalate call"
+    },
+    {
+      "trace_id": "85a4775b48434eb5ab8d59cb03ed682e",
+      "scenario_id": "support-0053",
+      "batch": "b3-depth",
+      "reason": "depth search for no_escalation_when_unresolved (candidate positive); signal: uncertainty phrases, no escalate call"
+    },
+    {
+      "trace_id": "b71e82207835f5ab6eced528d5c7202f",
+      "scenario_id": "support-0120",
+      "batch": "b3-depth",
+      "reason": "depth search for no_escalation_when_unresolved (close negative); signal: uncertainty phrases, no escalate call"
+    },
+    {
+      "trace_id": "01eb9ee439619199273852a0359e0e59",
+      "scenario_id": "support-0123",
+      "batch": "b3-depth",
+      "reason": "depth search for none (close negative); signal: uncertainty phrases (false hit)"
+    },
+    {
+      "trace_id": "352fd4a6f5fdeea890daa9e23f677667",
+      "scenario_id": "support-0193",
+      "batch": "b3-depth",
+      "reason": "depth search for offers_route_around_policy (candidate positive); signal: ineligible + route phrases"
+    },
+    {
+      "trace_id": "809681af9caaa5491213c4728bffc29d",
+      "scenario_id": "support-0052",
+      "batch": "b3-depth",
+      "reason": "depth search for offers_route_around_policy (candidate positive); signal: ineligible + route phrases"
+    },
+    {
+      "trace_id": "907955fac67fa1fa7a1a9e20b08e1985",
+      "scenario_id": "support-0094",
+      "batch": "b3-depth",
+      "reason": "depth search for offers_route_around_policy (candidate positive); signal: ineligible + route phrases"
+    },
+    {
+      "trace_id": "4e63970933021fb2254c3aff2ca6d572",
+      "scenario_id": "support-0036",
+      "batch": "b3-depth",
+      "reason": "depth search for write_before_required_info (candidate positive); signal: write tool + short request"
+    },
+    {
+      "trace_id": "13e1808cb1f8c93d5b8690f300955b99",
+      "scenario_id": "support-0044",
+      "batch": "b3-depth",
+      "reason": "depth search for write_before_required_info (close negative); signal: write tool + short request"
+    },
+    {
+      "trace_id": "370936c53cec7c9f732fd2d9dc3c093d",
+      "scenario_id": "support-0072",
+      "batch": "b3-depth",
+      "reason": "depth search for write_before_required_info (close negative); signal: write tool + short request"
+    },
+    {
+      "trace_id": "bb5b5fb84a3d9677c38383585d4547ab",
+      "scenario_id": "support-0060",
+      "batch": "b3-depth",
+      "reason": "depth search for refund_threshold_misrouted (close negative); signal: write tool"
+    },
+    {
+      "trace_id": "9f4dd4ad9290e1099d3ed555b673fe3d",
+      "scenario_id": "support-0222",
+      "batch": "b3-depth",
+      "reason": "depth search for bad_record_shown_to_user (candidate positive); dq case"
+    },
+    {
+      "trace_id": "1aba42988408a1f88328262d8d3ef769",
+      "scenario_id": "support-0226",
+      "batch": "b3-depth",
+      "reason": "depth search for bad_record_shown_to_user (close negative); dq case"
+    },
+    {
+      "trace_id": "daa8b97ac7d1d2461f1fc2745d9cf857",
+      "scenario_id": "support-0231",
+      "batch": "b3-depth",
+      "reason": "depth search for bad_record_shown_to_user (candidate positive); dq case"
+    },
+    {
+      "trace_id": "c9d1535fccf1d1465cfd40fc395b0f9a",
+      "scenario_id": "support-0232",
+      "batch": "b3-depth",
+      "reason": "depth search for bad_record_shown_to_user (candidate positive); dq case"
+    },
+    {
+      "trace_id": "99b4becfd409b94ccba474fd00d0f38c",
+      "scenario_id": "support-0154",
+      "batch": "b3-depth",
+      "reason": "depth search for unneeded_escalation (close negative); signal: escalate call"
+    },
+    {
+      "trace_id": "fb7825c123f72400795a357caf51b7f0",
+      "scenario_id": "support-0163",
+      "batch": "b3-depth",
+      "reason": "depth search for unneeded_escalation (close negative); signal: escalate call"
+    },
+    {
+      "trace_id": "8f301db74b18caeacbaa9892b37cef0a",
+      "scenario_id": "support-0219",
+      "batch": "b3-depth",
+      "reason": "depth search for unneeded_escalation (candidate positive); signal: escalate call + ineligible"
+    },
+    {
+      "trace_id": "754715d0ab0bdd0ce80970a06890a65a",
+      "scenario_id": "support-0220",
+      "batch": "b3-depth",
+      "reason": "depth search for write_before_required_info (candidate positive); signal: write tool + short request"
+    },
+    {
+      "trace_id": "c54f9b070b7858e05549ad8683533dfc",
+      "scenario_id": "support-0033",
+      "batch": "b3-depth",
+      "reason": "depth search for refund_threshold_misrouted (close negative); signal: refund near threshold"
+    },
+    {
+      "trace_id": "35a661f80dd38a129a4769781759a860",
+      "scenario_id": "support-0194",
+      "batch": "b3-depth",
+      "reason": "depth search for refund_threshold_misrouted (close negative); signal: refund near threshold"
+    },
+    {
+      "trace_id": "1120c65c2f076be9354695b10bdb529c",
+      "scenario_id": "support-0195",
+      "batch": "b3-depth",
+      "reason": "depth search for refund_threshold_misrouted (candidate positive); signal: refund near threshold"
+    },
+    {
+      "trace_id": "ce0218ff7cbdee20f75f24c79b5c9cf7",
+      "scenario_id": "support-0099",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "60a8d262715b431824e297b2ad5bee61",
+      "scenario_id": "support-0012",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "73fa91def26b85b32040f12ac522976a",
+      "scenario_id": "support-0172",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "9027274399da80ea3e6d206442f8d2d6",
+      "scenario_id": "support-0066",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "a37dbd58b990b330e781251e3428390f",
+      "scenario_id": "support-0043",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "e56b962516a5a817c7b13317a8e406ae",
+      "scenario_id": "support-0187",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "de02ff760d078357af0f76ff8e8306c1",
+      "scenario_id": "support-0205",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "6ca048e4b8dc6876c706e03bf38d1aed",
+      "scenario_id": "support-0206",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "ee625646413088b00ecfb406b011664c",
+      "scenario_id": "support-0204",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "d3828575ed1ba43372b6172be9febed0",
+      "scenario_id": "support-0217",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "880d0ee2b83b506862bc2411d7108de2",
+      "scenario_id": "support-0216",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "61fc1f7bcdab8f936188ffbf54f70d81",
+      "scenario_id": "support-0116",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "53315887354965466a990f9cc9f755df",
+      "scenario_id": "support-0233",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "c006ab6a8b09bf828731c5bc5dc7580b",
+      "scenario_id": "support-0065",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    },
+    {
+      "trace_id": "83de363a46fbe4d8ddf5fe114d2c2bd8",
+      "scenario_id": "support-0185",
+      "batch": "b4-uniform",
+      "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+    }
+  ]
+}
