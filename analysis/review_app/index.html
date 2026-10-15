@@ -189,6 +189,8 @@ function pfButtons(mode, cid, short) {
          `<button class="fail${cls(1)}" data-lab="${esc(mode)}|1|${cid}">${short ? 'F' : 'Fail'}</button></span>`;
 }
 const pendingSugg = cid => activeModes().filter(m => !labelOf(m.name, cid) && labelSugg(m.name, cid));
+// Unlabelled cells the reviewer can pass in one click; a suggested Fail is left for an explicit decision.
+const passable = cid => activeModes().filter(m => !labelOf(m.name, cid) && (labelSugg(m.name, cid) || {}).label !== 1);
 const notesFor = cid => S.ann.filter(a => a.trace_id === cid && !a.deleted);
 const reviewed = cid => notesFor(cid).length > 0;
 const labelOf = (mode, cid) => S.labels.find(l => l.mode === mode && l.trace_id === cid);
@@ -317,7 +319,8 @@ function labelPanel(c) {
     return `<div class="labelrow"><span class="mname" title="${esc(m.definition || '')}">${esc(m.name)}</span>
       ${pfButtons(m.name, c.id, false)}
       <span class="dim">${l ? esc(l.evidence || '') + (l.source === 'accepted_suggestion' ? ' (accepted suggestion)' : '') : s ? 'suggested: ' + esc(s.basis) : ''}</span></div>`;
-  }).join('') + (pend.length ? `<button class="btn" data-acceptrow="${c.id}">Accept ${pend.length} evidence-backed cell${pend.length > 1 ? 's' : ''}</button>` : '') + '</div>';
+  }).join('') + (pend.length ? `<button class="btn" data-acceptrow="${c.id}">Accept ${pend.length} evidence-backed cell${pend.length > 1 ? 's' : ''}</button> ` : '') +
+    (passable(c.id).length ? `<button class="btn" data-passrest="${c.id}">Pass all remaining (${passable(c.id).length})</button>` : '') + '</div>';
 }
 
 function addNote(anchor, quote, text, extra = {}) {
@@ -364,7 +367,8 @@ function renderLabels() {
     set.map(c => { const pend = pendingSugg(c.id).length;
       return `<tr><td>${convLink(c.id)} <span class="dim">${esc(c.role)}</span></td>` +
         modes.map(m => `<td class="cell">${pfButtons(m.name, c.id, true)}</td>`).join('') +
-        `<td>${pend ? `<button class="btn" data-acceptrow="${c.id}">accept ${pend}</button>` : ''}</td></tr>`; }).join('') + '</table>';
+        `<td>${pend ? `<button class="btn" data-acceptrow="${c.id}">accept ${pend}</button> ` : ''}` +
+        `${passable(c.id).length ? `<button class="btn" data-passrest="${c.id}">pass rest</button>` : ''}</td></tr>`; }).join('') + '</table>';
 }
 function renderProgress() {
   const el = document.getElementById('v-progress'); const modes = activeModes(); const set = reviewSet();
@@ -432,6 +436,14 @@ async function acceptRow(cid) {
   } catch (e) { toast(`stopped after ${n}: ${e.message}`); }
   render();
 }
+async function passRest(cid) {
+  const c = S.byId[cid]; let n = 0;
+  try {
+    for (const m of passable(cid)) { await postLabel(m.name, 0, c, '', 'human'); n++; }
+    toast(`${n} Pass label${n === 1 ? '' : 's'} saved`);
+  } catch (e) { toast(`stopped after ${n}: ${e.message}`); }
+  render();
+}
 function go(cid) {
   let i = queue().findIndex(c => c.id === cid);
   if (i < 0) { document.getElementById('queue-sample').checked = false; i = queue().findIndex(c => c.id === cid); }
@@ -462,6 +474,7 @@ document.addEventListener('click', e => {
   else if (d.rej) decide(d.rej, false);
   else if (d.lab) { const [m, l, cid] = d.lab.split('|'); setLabel(m, +l, cid); }
   else if (d.acceptrow) acceptRow(d.acceptrow);
+  else if (d.passrest) passRest(d.passrest);
   else if (d.go) go(d.go);
   else if (t.id === 'no-failure') { addNote('conv', '', 'no failure observed', { kind: 'no_failure' }); render(); }
   else if (t.id === 'spec-toggle') document.getElementById('spec').classList.toggle('on');
