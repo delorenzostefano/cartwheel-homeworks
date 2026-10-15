@@ -32,7 +32,11 @@
         "a-mv9a216s0eju",
         "a-mv9a5ofrakg9"
       ],
-      "close_negatives": [],
+      "close_negatives": [
+        "35a661f80dd38a129a4769781759a860",
+        "d3828575ed1ba43372b6172be9febed0",
+        "9f4dd4ad9290e1099d3ed555b673fe3d"
+      ],
       "requirement": "RESP-1 (revised: refer to policies by title, not internal identifier); PURPOSE-1",
       "boundary": "Versus unrequested_detail: naming the policy by its title is allowed and often required to explain a decision; only the raw identifier counts here.",
       "evaluator": "code check (regex for cw-* and store-*-policy in the reply)",
@@ -44,6 +48,10 @@
         {
           "ts": "2026-10-15T10:49:21+00:00",
           "change": "Part D: reinstated. Rejected in round 1 because RESP-1 required identifiers; the student then revised RESP-1 to require titles instead of internal identifiers, so the originating batch-1 notes now describe a requirement violation."
+        },
+        {
+          "ts": "2026-10-15T10:49:36+00:00",
+          "change": "Close negatives: 0194, 0217, 0222 state a policy rule (the $100 limit, the 30-day window) without an identifier. Search note: 113 of 250 replies contain an identifier."
         }
       ]
     },
