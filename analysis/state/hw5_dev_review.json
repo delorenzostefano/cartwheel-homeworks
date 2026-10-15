@@ -1,0 +1,332 @@
+[
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "01eb9ee439619199273852a0359e0e59",
+    "scenario_id": "support-0123",
+    "decision": "label_wrong",
+    "note": "it add info not requested",
+    "ts": "2026-10-15T16:56:34.508Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "15ac081cf4eb7cc32ce52a024d23d6c5",
+    "scenario_id": "support-0077",
+    "decision": "label_wrong",
+    "note": "too much info",
+    "ts": "2026-10-15T16:57:09.357Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "17af6e4e2bb4f5f65e54360669c9d06c",
+    "scenario_id": "support-0189",
+    "decision": "label_wrong",
+    "note": "\"**If approved:** The refund goes back to your original payment method and usually arrives in 5 to 10 business days.\" — this is unrequested detail. The user asked for an immediate full refund of $122.50 and did not ask how or when a refund, if approved, would be delivered; the 5-to-10-business-day payout timeline and the \"original payment method\" mechanic are extra policy details beyond the yes/no-plus-reason that decides the outcome. It is arguably marginally relevant to \"do it now, not later\" (it explains the money will not be instant), but it is stated as a general policy",
+    "ts": "2026-10-15T16:58:12.693Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "25e3b307c19b11ef9df99334654cace8",
+    "scenario_id": "hw5ud-0030",
+    "decision": "label_wrong",
+    "note": "more info is added on top of what the user asked",
+    "ts": "2026-10-15T16:59:33.140Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "216d66d067f60d3ac8bedf425ee444c5",
+    "scenario_id": "support-0241",
+    "decision": "label_wrong",
+    "note": "more info is added later",
+    "ts": "2026-10-15T16:59:45.960Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "352fd4a6f5fdeea890daa9e23f677667",
+    "scenario_id": "support-0193",
+    "decision": "label_wrong",
+    "note": "extra info added",
+    "ts": "2026-10-15T17:21:53.506Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "38b9a29cc679c995aaaed15773e7089d",
+    "scenario_id": "hw5ud-0029",
+    "decision": "judge_wrong",
+    "note": "the information give is useful to continue the conversation",
+    "ts": "2026-10-15T17:22:38.020Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "494eed8e7c70e7ed83c8fbba8a0c7fa3",
+    "scenario_id": "hw5ud-0028",
+    "decision": "label_wrong",
+    "note": "it proposes a series of extra paths",
+    "ts": "2026-10-15T17:23:33.115Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "4f481d9bee0bed393495b12e5e9fef82",
+    "scenario_id": "support-0218",
+    "decision": "label_wrong",
+    "note": "the agent proposes many policies",
+    "ts": "2026-10-15T17:25:03.087Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "55b6a4b41532276ce7627d9d66a925bf",
+    "scenario_id": "support-0156",
+    "decision": "judge_wrong",
+    "note": "the extra question is useful to continue to offer support",
+    "ts": "2026-10-15T17:26:01.453Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "61fc1f7bcdab8f936188ffbf54f70d81",
+    "scenario_id": "support-0116",
+    "decision": "label_wrong",
+    "note": "the user explicitly asks for a straight answer",
+    "ts": "2026-10-15T17:26:31.853Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "625081781cdc834f66c48e8a377af62e",
+    "scenario_id": "support-0240",
+    "decision": "label_wrong",
+    "note": "my label refferred to the ids which in this case is not allowed",
+    "ts": "2026-10-15T17:27:28.452Z",
+    "human": 0,
+    "judge": 1
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "6e60159f202efdff2b1f75a1b772608e",
+    "scenario_id": "support-0164",
+    "decision": "judge_wrong",
+    "note": "it's ok to specify to not share personal info",
+    "ts": "2026-10-15T17:28:10.918Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "6e868325790330284faf4914d5d792ce",
+    "scenario_id": "support-0002",
+    "decision": "label_wrong",
+    "note": "it is suggesting over info like the good might be damaged",
+    "ts": "2026-10-15T17:28:47.653Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "6ea9411e648e5ed71de5bceb1fea865e",
+    "scenario_id": "support-0078",
+    "decision": "label_wrong",
+    "note": "it is suggesting several options not in line with request",
+    "ts": "2026-10-15T17:29:18.835Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "8124ecb26b60c47182358fc26cbc0415",
+    "scenario_id": "support-0026",
+    "decision": "judge_wrong",
+    "note": "the info shared is pertinent to the request",
+    "ts": "2026-10-15T17:30:47.636Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "85a4775b48434eb5ab8d59cb03ed682e",
+    "scenario_id": "support-0053",
+    "decision": "label_wrong",
+    "note": "the judge is right",
+    "ts": "2026-10-15T17:31:21.583Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "87f15730e126804017cb85dcf0e15c91",
+    "scenario_id": "support-0087",
+    "decision": "label_wrong",
+    "note": "the fee term wasn't requested",
+    "ts": "2026-10-15T17:31:53.911Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "9027274399da80ea3e6d206442f8d2d6",
+    "scenario_id": "support-0066",
+    "decision": "label_wrong",
+    "note": "refund timing and method are not relevant",
+    "ts": "2026-10-15T17:32:43.037Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "9e90b2fd2d1cc04b7bd10d60d08dc840",
+    "scenario_id": "hw5ud-0040",
+    "decision": "label_wrong",
+    "note": "no need to share menu of actions",
+    "ts": "2026-10-15T17:33:18.905Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "9fbd0d42497b97830f7483cbf07ffb0e",
+    "scenario_id": "support-0176",
+    "decision": "judge_wrong",
+    "note": "it's ok tu suggest possible actions",
+    "ts": "2026-10-15T17:33:58.977Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "a6d0a356fae004870480e420561d4315",
+    "scenario_id": "support-0011",
+    "decision": "label_wrong",
+    "note": "too much info given",
+    "ts": "2026-10-15T17:34:14.235Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "ad96f6992f6c8213b5b380e4c66d442f",
+    "scenario_id": "support-0188",
+    "decision": "label_wrong",
+    "note": "two other things to know it's unnecessary in that context",
+    "ts": "2026-10-15T17:34:55.285Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "aec77da9604f0a1fbc42057104aa28eb",
+    "scenario_id": "support-0004",
+    "decision": "label_wrong",
+    "note": "Result: the reply contains unrequested information beyond the answer to the delivery-status question, so it fails.",
+    "ts": "2026-10-15T17:35:40.151Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "b7dc72c71c4d07bf9e2d40bca2e814a8",
+    "scenario_id": "support-0075",
+    "decision": "judge_wrong",
+    "note": "it's ok to state the item to be sure it's right",
+    "ts": "2026-10-15T17:36:15.237Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "c006ab6a8b09bf828731c5bc5dc7580b",
+    "scenario_id": "support-0065",
+    "decision": "label_wrong",
+    "note": "no need for the second part",
+    "ts": "2026-10-15T17:36:43.072Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "c0a288c22869aa90b3bbd69aee339f3c",
+    "scenario_id": "support-0182",
+    "decision": "label_wrong",
+    "note": "Because the reply adds options, speculation, and support-timing commentary the user did not ask for, it fails RESP-6.",
+    "ts": "2026-10-15T17:37:07.419Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "e938a5f49e7455959f30d06ed51416b9",
+    "scenario_id": "hw5ud-0027",
+    "decision": "label_wrong",
+    "note": "These two bullet points are precisely the pattern flagged in the definitions: presenting several paths with their own policy details (return window, restocking fee, refund eligibility) when the user asked a single narrow question (\"Just cancel it\"). The user explicitly said they did not want back-and-forth, so the extra procedural menu works against the request.",
+    "ts": "2026-10-15T17:37:30.685Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "efc0a49f3acceb9bbfacb0f9c4ed4139",
+    "scenario_id": "support-0208",
+    "decision": "label_wrong",
+    "note": "These two bullet points are precisely the pattern flagged in the definitions: presenting several paths with their own policy details when the user asked a single narrow question . The user explicitly said they did not want back-and-forth, so the extra procedural menu works against the request.",
+    "ts": "2026-10-15T17:37:59.950Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "f0ef2c283032cc780ac8579ca26e8dde",
+    "scenario_id": "support-0090",
+    "decision": "label_wrong",
+    "note": "Because the reply includes fee/condition policy details beyond what is needed to answer \"can this still be returned,\" it contains unrequested detail.",
+    "ts": "2026-10-15T17:38:19.984Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "f2da13092749bc6c0c4be81b709b280f",
+    "scenario_id": "support-0050",
+    "decision": "label_wrong",
+    "note": "Because the reply volunteers the dispute-window policy and its closure — information the user did not ask for and that does not decide the refund question — the reply adds unrequested detail.",
+    "ts": "2026-10-15T17:38:48.917Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "f2e78ac33fa62cfd6bef6df31e679b5e",
+    "scenario_id": "support-0138",
+    "decision": "label_wrong",
+    "note": "The only questionable sentence is: \"The prices vary a lot, so you may want to check the product details before you buy.\" This is unsolicited commentary/advice (",
+    "ts": "2026-10-15T17:39:18.143Z",
+    "human": 1,
+    "judge": 0
+  },
+  {
+    "judge_id": "unrequested_detail-v0",
+    "trace_id": "f7f7377c642441a446773b47237f9a6e",
+    "scenario_id": "support-0092",
+    "decision": "label_wrong",
+    "note": "Because sentence 4 adds fee information the user did not ask for and that does not bear on the eligibility question, the reply contains unrequested detail.",
+    "ts": "2026-10-15T17:39:36.251Z",
+    "human": 1,
+    "judge": 0
+  }
+]

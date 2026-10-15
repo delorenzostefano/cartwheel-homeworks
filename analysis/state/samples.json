@@ -1330,5 +1330,215 @@
     "scenario_id": "hw5ud-0040",
     "batch": "hw5-synthetic",
     "reason": "HW5 targeted synthetic scenario (out_of_scope) for unrequested_detail"
+  },
+  {
+    "trace_id": "0d1e0f32bfdb4b38fb7b08db179ef455",
+    "scenario_id": "support-0014",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "10b2a9e524fff9646d3b4af04162fee2",
+    "scenario_id": "support-0203",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "172b81bdeb0fd34a5583741fced58bcd",
+    "scenario_id": "support-0059",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "1aba42988408a1f88328262d8d3ef769",
+    "scenario_id": "support-0226",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "1d1b4a928adef7fa2f7c1908503b1fb3",
+    "scenario_id": "support-0170",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "3164387a6219d3206373d18a3e1c0fef",
+    "scenario_id": "support-0063",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "33e498195cb1e2a4b4a94374295f7403",
+    "scenario_id": "support-0122",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "4e63970933021fb2254c3aff2ca6d572",
+    "scenario_id": "support-0036",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "59480262f9a5cbee9d2cc1150d01b5eb",
+    "scenario_id": "support-0214",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "5f02c92595ccaef1db77d20ebbed57f1",
+    "scenario_id": "support-0199",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "5fa6518f4639da330807ad4fb60861c0",
+    "scenario_id": "support-0057",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "63c764431e134c0ae4b6ac93e9fcba9a",
+    "scenario_id": "support-0032",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "64a693c674c556ae1ab155fb28c3a07e",
+    "scenario_id": "support-0035",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "66ab7efe8d68dfdec4562cd94427cdf3",
+    "scenario_id": "support-0169",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "7773a3708c587398c7ce2823e1ff02fa",
+    "scenario_id": "support-0183",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "77849a3dcc4c15956232c3532ef62dc5",
+    "scenario_id": "support-0016",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "7a4c94e578da987f664239b53c5ee30c",
+    "scenario_id": "support-0200",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "809681af9caaa5491213c4728bffc29d",
+    "scenario_id": "support-0052",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "80daa0d50f33501f2bbc3ef61ed4524b",
+    "scenario_id": "support-0121",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "83de363a46fbe4d8ddf5fe114d2c2bd8",
+    "scenario_id": "support-0185",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "880d0ee2b83b506862bc2411d7108de2",
+    "scenario_id": "support-0216",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "8c199dec148035e83dff13f50ca7ca7f",
+    "scenario_id": "support-0174",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "8f301db74b18caeacbaa9892b37cef0a",
+    "scenario_id": "support-0219",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "952712aef9022d406afa01590717cd2b",
+    "scenario_id": "support-0023",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "99b4becfd409b94ccba474fd00d0f38c",
+    "scenario_id": "support-0154",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "c899718a52a1504be0e754c73034b04f",
+    "scenario_id": "support-0196",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "d3828575ed1ba43372b6172be9febed0",
+    "scenario_id": "support-0217",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "d5e32a781114885e6372ab2edc336928",
+    "scenario_id": "support-0143",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "daa8b97ac7d1d2461f1fc2745d9cf857",
+    "scenario_id": "support-0231",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "dcb2c8bf0ade0733c3498b1ff6d6b642",
+    "scenario_id": "support-0095",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "e22616d6c880be5853bc0987e7d79bac",
+    "scenario_id": "support-0061",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "e56b962516a5a817c7b13317a8e406ae",
+    "scenario_id": "support-0187",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "edca563c43ba738da90922561d9469da",
+    "scenario_id": "support-0096",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "f3501b7776ed72964bbba95615b5b15b",
+    "scenario_id": "support-0098",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
+  },
+  {
+    "trace_id": "f77d1b7e0feeb39f81ab106ad9c40204",
+    "scenario_id": "support-0058",
+    "batch": "hw5-test-recheck",
+    "reason": "HW5: re-check a bulk-confirmed HW4 Pass label under the HW5 rule before the test run (no judge predictions exist for test)"
   }
 ]
