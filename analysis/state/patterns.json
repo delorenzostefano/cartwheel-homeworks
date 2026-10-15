@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T10:16:42+00:00",
+  "updated_at": "2026-10-15T10:27:47+00:00",
   "modes": [
     {
       "name": "policy_id_in_reply",
@@ -378,7 +378,7 @@
     {
       "name": "write_on_unconfirmed_order",
       "definition": "The agent executes a refund or cancellation on an order the user did not identify and the agent did not confirm (for example after an empty search it picks an order from the list).",
-      "status": "candidate",
+      "status": "dropped",
       "count": 1,
       "example_trace_ids": [
         "754715d0ab0bdd0ce80970a06890a65a"
@@ -401,13 +401,17 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: replaces write_before_required_info."
+        },
+        {
+          "ts": "2026-10-15T10:27:47+00:00",
+          "change": "Part D: dropped from the final taxonomy by the student (option a). A search over all 250 conversations found no further positives; only close negatives. Kept as a watch item: observed once, not enough evidence; candidate for synthetic scenarios."
         }
       ]
     },
     {
       "name": "requests_personal_data",
       "definition": "The agent asks the user to send personal account data (email, address, name) in chat, although a human handles the change and will collect it.",
-      "status": "candidate",
+      "status": "dropped",
       "count": 1,
       "example_trace_ids": [
         "fb7825c123f72400795a357caf51b7f0"
@@ -426,13 +430,17 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: drafted from the student's 0163 note."
+        },
+        {
+          "ts": "2026-10-15T10:27:47+00:00",
+          "change": "Part D: dropped from the final taxonomy by the student (option a). A search over all 250 conversations found no further positives; only close negatives. Kept as a watch item: observed once, not enough evidence; candidate for synthetic scenarios."
         }
       ]
     },
     {
       "name": "write_stacked_after_correction",
       "definition": "After a completed write, the user corrects which item or order they meant, and the agent performs another write without first escalating or resolving the earlier, now-unwanted one.",
-      "status": "candidate",
+      "status": "dropped",
       "count": 1,
       "example_trace_ids": [
         "d3828575ed1ba43372b6172be9febed0"
@@ -453,6 +461,10 @@
         {
           "ts": "2026-10-15T10:16:42+00:00",
           "change": "Round 4: accepted by the student from the 0217 note; the only new mode in the final 15 (batch 4). 0220 is a close negative (the agent escalated after the correction)."
+        },
+        {
+          "ts": "2026-10-15T10:27:47+00:00",
+          "change": "Part D: dropped from the final taxonomy by the student (option a). A search over all 250 conversations found no further positives; only close negatives. Kept as a watch item: observed once, not enough evidence; candidate for synthetic scenarios."
         }
       ]
     }

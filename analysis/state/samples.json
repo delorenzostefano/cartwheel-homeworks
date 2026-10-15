@@ -658,5 +658,83 @@
     "scenario_id": "support-0185",
     "batch": "b4-uniform",
     "reason": "uniform random draw after the taxonomy draft (seed 20261017), to check whether new modes still appear"
+  },
+  {
+    "trace_id": "e22616d6c880be5853bc0987e7d79bac",
+    "scenario_id": "support-0061",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund"
+  },
+  {
+    "trace_id": "3164387a6219d3206373d18a3e1c0fef",
+    "scenario_id": "support-0063",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund"
+  },
+  {
+    "trace_id": "36b11027538427d613b2a349100aeb25",
+    "scenario_id": "support-0064",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund"
+  },
+  {
+    "trace_id": "ad96f6992f6c8213b5b380e4c66d442f",
+    "scenario_id": "support-0188",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund"
+  },
+  {
+    "trace_id": "17af6e4e2bb4f5f65e54360669c9d06c",
+    "scenario_id": "support-0189",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund"
+  },
+  {
+    "trace_id": "c899718a52a1504be0e754c73034b04f",
+    "scenario_id": "support-0196",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund (boundary amount)"
+  },
+  {
+    "trace_id": "cd1a86b5d1345614cda85646045f9aef",
+    "scenario_id": "support-0207",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund (boundary amount; seen in Part A)"
+  },
+  {
+    "trace_id": "efc0a49f3acceb9bbfacb0f9c4ed4139",
+    "scenario_id": "support-0208",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: >$100, ticket, no issue_refund"
+  },
+  {
+    "trace_id": "558d9eed727c67fedcabe5bd7fb1a328",
+    "scenario_id": "support-0042",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (candidate positive); code check: <= $100 eligible, no issue_refund"
+  },
+  {
+    "trace_id": "91ce05719354b5bef243f02bd2c1c01f",
+    "scenario_id": "support-0047",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode refund_threshold_misrouted (close negative); code check: <= $100 eligible, no issue_refund"
+  },
+  {
+    "trace_id": "84e6e8e34d0a8cdcfdc4999fe4f021eb",
+    "scenario_id": "support-0070",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode write_on_unconfirmed_order (close negative); search: write after a multi-result lookup"
+  },
+  {
+    "trace_id": "4f481d9bee0bed393495b12e5e9fef82",
+    "scenario_id": "support-0218",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode write_stacked_after_correction (close negative); search: multi-turn session with a write"
+  },
+  {
+    "trace_id": "63c764431e134c0ae4b6ac93e9fcba9a",
+    "scenario_id": "support-0032",
+    "batch": "d-search",
+    "reason": "Part D search for thin mode write_stacked_after_correction (close negative); search: multi-turn session with a write"
   }
 ]
