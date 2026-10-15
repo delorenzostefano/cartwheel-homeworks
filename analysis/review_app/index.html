@@ -106,6 +106,11 @@ td.cell { text-align: center; } td a, .link { color: var(--accent); cursor: poin
 .mode-card dt { color: var(--dim); }
 .mode-card ul { margin: 4px 0; padding-left: 18px; font-size: 13px; }
 .stat { display: inline-block; margin-right: 24px; } .stat b { font-size: 22px; display: block; }
+#ask { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: none; align-items: center; justify-content: center; z-index: 10; }
+#ask.on { display: flex; }
+#ask .box { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 14px; width: min(460px, calc(100% - 32px)); }
+#ask textarea { width: 100%; min-height: 70px; margin: 8px 0; font: inherit; padding: 6px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+#ask .acts { display: flex; gap: 8px; justify-content: flex-end; }
 #toast { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); background: var(--ink); color: var(--bg);
   padding: 6px 14px; border-radius: 6px; opacity: 0; transition: opacity .2s; pointer-events: none; }
 #toast.on { opacity: 1; }
@@ -138,6 +143,8 @@ td.cell { text-align: center; } td a, .link { color: var(--accent); cursor: poin
   <section id="v-suggestions" class="view"></section>
 </main>
 <div id="toast"></div>
+<div id="ask"><div class="box"><div id="ask-msg"></div><textarea id="ask-text"></textarea>
+  <div class="acts"><button class="btn" id="ask-cancel">Cancel</button><button class="btn primary" id="ask-ok">OK</button></div></div></div>
 <script>
 const S = { convs: [], byId: {}, byTrace: {}, ann: [], samples: [], patterns: { modes: [] },
             sugg: [], labels: [], spec: [], cur: 0, composer: null };
@@ -148,6 +155,20 @@ const pretty = v => typeof v === 'string' ? v : JSON.stringify(v, null, 2);
 const uid = () => 'a-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 const now = () => new Date().toISOString();
 function toast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('on'); setTimeout(() => t.classList.remove('on'), 1800); }
+/* In-page dialog: some browsers (e.g. the VS Code Simple Browser) block prompt() and confirm().
+   Resolves to the entered text, '' for a confirm, or null on cancel. */
+function ask(message, { input = true, required = false } = {}) {
+  const box = document.getElementById('ask'), ta = document.getElementById('ask-text');
+  document.getElementById('ask-msg').textContent = message;
+  ta.value = ''; ta.style.display = input ? '' : 'none'; box.classList.add('on'); if (input) ta.focus();
+  return new Promise(resolve => {
+    const done = v => { box.classList.remove('on'); ok.onclick = cancel.onclick = ta.onkeydown = null; resolve(v); };
+    const ok = document.getElementById('ask-ok'), cancel = document.getElementById('ask-cancel');
+    ok.onclick = () => { const v = ta.value.trim(); if (required && !v) { ta.focus(); toast('a reason is required'); return; } done(v); };
+    cancel.onclick = () => done(null);
+    ta.onkeydown = e => { e.stopPropagation(); if (e.key === 'Escape') done(null); else if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ok.onclick(); } };
+  });
+}
 async function api(path, body) {
   const r = await fetch(path, body === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
   const data = await r.json();
@@ -360,8 +381,8 @@ function renderSuggestions() {
 /* ---------- actions ---------- */
 async function decide(id, accept) {
   const s = S.sugg.find(x => x.id === id); if (!s) return;
-  const why = prompt(accept ? 'Optional note for accepting:' : 'Why reject? (the boundary that excludes it)');
-  if (!accept && !why) return;
+  const why = await ask(accept ? 'Optional note for accepting:' : 'Why reject? (the boundary that excludes it)', { required: !accept });
+  if (why === null) return;
   s.status = accept ? 'accepted' : 'rejected'; s.decided_at = now(); s.decision_note = why || '';
   if (accept) {
     const c = S.byTrace[s.trace_id] || S.byId[s.trace_id];
@@ -374,7 +395,7 @@ async function decide(id, accept) {
 }
 async function setLabel(mode, label, cid) {
   const c = S.byId[cid];
-  const evidence = label === 1 ? (prompt(`Evidence for ${mode} = Fail (quote or short reason):`) ?? null) : '';
+  const evidence = label === 1 ? await ask(`Evidence for ${mode} = Fail (quote or short reason, optional):`) : '';
   if (evidence === null) return;
   try {
     const r = await api('/api/labels', { mode, trace_id: c.id, label, evidence, scenario_id: c.scenario_id, session_trace_ids: c.trace_ids });
@@ -402,7 +423,12 @@ document.addEventListener('click', e => {
   if (d.v) switchView(d.v);
   else if (d.nav) { const n = queue().length; S.cur = (S.cur + +d.nav + n) % n; S.composer = null; render(); window.scrollTo(0, 0); }
   else if (d.add) { S.composer = { anchor: d.add, quote: '' }; render(); }
-  else if (d.del) { const a = annById(d.del); if (a && confirm('Delete this note? It stays in the saved history as deleted.')) { a.deleted = true; a.deleted_at = now(); saveAnnotations(); render(); } }
+  else if (d.del) {
+    const a = annById(d.del);
+    if (a) ask('Delete this note? It stays in the saved history as deleted.', { input: false }).then(ok => {
+      if (ok !== null) { a.deleted = true; a.deleted_at = now(); saveAnnotations(); render(); }
+    });
+  }
   else if (d.acc) decide(d.acc, true);
   else if (d.rej) decide(d.rej, false);
   else if (d.lab) { const [m, l, cid] = d.lab.split('|'); setLabel(m, +l, cid); }
