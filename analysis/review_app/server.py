@@ -23,6 +23,7 @@ API:
     GET|POST /api/samples       review batches and the reason for each pick
     GET|POST /api/patterns      the taxonomy
     GET|POST /api/suggestions   AI suggestions and accept/reject decisions
+    GET|POST /api/label_suggestions  evidence-backed Pass/Fail suggestions for Part E
 
 Run it:
 
@@ -53,6 +54,7 @@ API_FILES: dict[str, tuple[str, Any]] = {
     "/api/samples": ("samples.json", []),
     "/api/patterns": ("patterns.json", {"modes": []}),
     "/api/suggestions": ("suggestions.json", []),
+    "/api/label_suggestions": ("label_suggestions.json", []),
 }
 
 MODE_NAME = re.compile(r"^[a-z][a-z0-9_]*$")

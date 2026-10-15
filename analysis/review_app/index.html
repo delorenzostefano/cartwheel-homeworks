@@ -87,6 +87,7 @@ mark.sugg { background: transparent; color: inherit; outline: 2px dashed var(--s
 .pf button:first-child { border-radius: 6px 0 0 6px; } .pf button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
 .pf button.pass.on { background: var(--ok); color: #fff; border-color: var(--ok); }
 .pf button.fail.on { background: var(--deny); color: #fff; border-color: var(--deny); }
+.pf button.sugg { outline: 2px dashed var(--sugg); outline-offset: -3px; }
 
 /* spec drawer */
 #spec { position: fixed; right: 0; top: 49px; bottom: 0; width: 380px; background: var(--panel); border-left: 1px solid var(--line);
@@ -147,7 +148,7 @@ td.cell { text-align: center; } td a, .link { color: var(--accent); cursor: poin
   <div class="acts"><button class="btn" id="ask-cancel">Cancel</button><button class="btn primary" id="ask-ok">OK</button></div></div></div>
 <script>
 const S = { convs: [], byId: {}, byTrace: {}, ann: [], samples: [], patterns: { modes: [] },
-            sugg: [], labels: [], spec: [], cur: 0, composer: null };
+            sugg: [], labels: [], lsugg: [], spec: [], cur: 0, composer: null };
 const BACKUP = 'cw-review-annotations';
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -177,7 +178,17 @@ async function api(path, body) {
 }
 
 /* ---------- state ---------- */
-const activeModes = () => (S.patterns.modes || []).filter(m => m.status !== 'rejected');
+const INACTIVE = ['rejected', 'merged', 'revised', 'dropped'];
+const activeModes = () => (S.patterns.modes || []).filter(m => !INACTIVE.includes(m.status));
+const labelSugg = (mode, cid) => S.lsugg.find(l => l.mode === mode && l.trace_id === cid);
+function pfButtons(mode, cid, short) {
+  const l = labelOf(mode, cid), s = l ? null : labelSugg(mode, cid);
+  const tip = s ? ` title="suggested ${s.label ? 'Fail' : 'Pass'}: ${esc(s.basis)}"` : (l && l.evidence ? ` title="${esc(l.evidence)}"` : '');
+  const cls = v => (l && l.label === v ? ' on' : '') + (s && s.label === v ? ' sugg' : '');
+  return `<span class="pf"${tip}><button class="pass${cls(0)}" data-lab="${esc(mode)}|0|${cid}">${short ? 'P' : 'Pass'}</button>` +
+         `<button class="fail${cls(1)}" data-lab="${esc(mode)}|1|${cid}">${short ? 'F' : 'Fail'}</button></span>`;
+}
+const pendingSugg = cid => activeModes().filter(m => !labelOf(m.name, cid) && labelSugg(m.name, cid));
 const notesFor = cid => S.ann.filter(a => a.trace_id === cid && !a.deleted);
 const reviewed = cid => notesFor(cid).length > 0;
 const labelOf = (mode, cid) => S.labels.find(l => l.mode === mode && l.trace_id === cid);
@@ -192,9 +203,10 @@ async function saveAnnotations() {
   catch (e) { toast('save failed, kept in browser: ' + e.message); }
 }
 async function loadAll() {
-  const [convs, ann, samples, patterns, sugg, labels, spec] = await Promise.all([
+  const [convs, ann, samples, patterns, sugg, labels, spec, lsugg] = await Promise.all([
     api('/api/conversations'), api('/api/annotations'), api('/api/samples'), api('/api/patterns'),
-    api('/api/suggestions'), api('/api/labels'), api('/api/spec')]);
+    api('/api/suggestions'), api('/api/labels'), api('/api/spec'), api('/api/label_suggestions')]);
+  S.lsugg = lsugg;
   S.convs = convs; S.byId = {}; S.byTrace = {};
   for (const c of convs) { S.byId[c.id] = c; for (const t of c.trace_ids) S.byTrace[t] = c; }
   S.ann = Array.isArray(ann) ? ann : (ann.annotations || []);
@@ -299,12 +311,13 @@ function argLine(a) {
 function labelPanel(c) {
   const modes = activeModes();
   if (!modes.length) return '<div class="panel"><h3>Structured labels</h3><span class="dim">Appears once the taxonomy has modes.</span></div>';
-  return `<div class="panel"><h3>Structured labels · Fail = failure present</h3>` + modes.map(m => {
-    const l = labelOf(m.name, c.id);
+  const pend = pendingSugg(c.id);
+  return `<div class="panel"><h3>Structured labels · Fail = failure present · dashed = evidence-backed suggestion</h3>` + modes.map(m => {
+    const l = labelOf(m.name, c.id), s = l ? null : labelSugg(m.name, c.id);
     return `<div class="labelrow"><span class="mname" title="${esc(m.definition || '')}">${esc(m.name)}</span>
-      <span class="pf"><button class="pass ${l && l.label === 0 ? 'on' : ''}" data-lab="${esc(m.name)}|0|${c.id}">Pass</button><button class="fail ${l && l.label === 1 ? 'on' : ''}" data-lab="${esc(m.name)}|1|${c.id}">Fail</button></span>
-      <span class="dim">${l && l.evidence ? esc(l.evidence) : ''}</span></div>`;
-  }).join('') + '</div>';
+      ${pfButtons(m.name, c.id, false)}
+      <span class="dim">${l ? esc(l.evidence || '') + (l.source === 'accepted_suggestion' ? ' (accepted suggestion)' : '') : s ? 'suggested: ' + esc(s.basis) : ''}</span></div>`;
+  }).join('') + (pend.length ? `<button class="btn" data-acceptrow="${c.id}">Accept ${pend.length} evidence-backed cell${pend.length > 1 ? 's' : ''}</button>` : '') + '</div>';
 }
 
 function addNote(anchor, quote, text, extra = {}) {
@@ -346,11 +359,12 @@ function renderLabels() {
   const el = document.getElementById('v-labels'); const modes = activeModes(); const set = reviewSet();
   if (!modes.length) { el.innerHTML = '<p class="dim">Labels open once the taxonomy has modes.</p>'; return; }
   const counts = modes.map(m => { const ls = S.labels.filter(l => l.mode === m.name); return { f: ls.filter(l => l.label === 1).length, p: ls.filter(l => l.label === 0).length }; });
-  el.innerHTML = `<table><tr><th>Conversation</th>${modes.map((m, i) => `<th title="${esc(m.definition || '')}">${esc(m.name)}<br><span class="dim">${counts[i].f} fail · ${counts[i].p} pass</span></th>`).join('')}</tr>` +
-    set.map(c => `<tr><td>${convLink(c.id)} <span class="dim">${esc(c.role)}</span></td>` + modes.map(m => {
-      const l = labelOf(m.name, c.id);
-      return `<td class="cell"><span class="pf"><button class="pass ${l && l.label === 0 ? 'on' : ''}" data-lab="${esc(m.name)}|0|${c.id}">P</button><button class="fail ${l && l.label === 1 ? 'on' : ''}" data-lab="${esc(m.name)}|1|${c.id}">F</button></span></td>`;
-    }).join('') + '</tr>').join('') + '</table>';
+  el.innerHTML = `<p class="dim">Dashed = evidence-backed suggestion (hover for the evidence). Empty cells need your judgment.</p>` +
+    `<table><tr><th>Conversation</th>${modes.map((m, i) => `<th title="${esc(m.definition || '')}">${esc(m.name)}<br><span class="dim">${counts[i].f} fail · ${counts[i].p} pass</span></th>`).join('')}<th></th></tr>` +
+    set.map(c => { const pend = pendingSugg(c.id).length;
+      return `<tr><td>${convLink(c.id)} <span class="dim">${esc(c.role)}</span></td>` +
+        modes.map(m => `<td class="cell">${pfButtons(m.name, c.id, true)}</td>`).join('') +
+        `<td>${pend ? `<button class="btn" data-acceptrow="${c.id}">accept ${pend}</button>` : ''}</td></tr>`; }).join('') + '</table>';
 }
 function renderProgress() {
   const el = document.getElementById('v-progress'); const modes = activeModes(); const set = reviewSet();
@@ -396,15 +410,27 @@ async function decide(id, accept) {
   }
   await api('/api/suggestions', S.sugg); render();
 }
+async function postLabel(mode, label, c, evidence, source) {
+  const r = await api('/api/labels', { mode, trace_id: c.id, label, evidence, source, scenario_id: c.scenario_id, session_trace_ids: c.trace_ids });
+  S.labels = S.labels.filter(l => !(l.mode === mode && l.trace_id === c.id)); S.labels.push({ ...r.label, mode });
+  return r.label;
+}
 async function setLabel(mode, label, cid) {
   const c = S.byId[cid];
   const evidence = label === 1 ? await ask(`Evidence for ${mode} = Fail (quote or short reason, optional):`) : '';
   if (evidence === null) return;
   try {
-    const r = await api('/api/labels', { mode, trace_id: c.id, label, evidence, scenario_id: c.scenario_id, session_trace_ids: c.trace_ids });
-    S.labels = S.labels.filter(l => !(l.mode === mode && l.trace_id === c.id)); S.labels.push({ ...r.label, mode });
-    toast(r.label.langfuse_synced ? 'saved + Langfuse score' : 'saved locally (Langfuse off)'); render();
+    const l = await postLabel(mode, label, c, evidence, 'human');
+    toast(l.langfuse_synced ? 'saved + Langfuse score' : 'saved locally (Langfuse off)'); render();
   } catch (e) { toast('label not saved: ' + e.message); }
+}
+async function acceptRow(cid) {
+  const c = S.byId[cid]; let n = 0;
+  try {
+    for (const m of pendingSugg(cid)) { const s = labelSugg(m.name, cid); await postLabel(m.name, s.label, c, s.basis, 'accepted_suggestion'); n++; }
+    toast(`${n} label${n === 1 ? '' : 's'} saved`);
+  } catch (e) { toast(`stopped after ${n}: ${e.message}`); }
+  render();
 }
 function go(cid) {
   let i = queue().findIndex(c => c.id === cid);
@@ -435,6 +461,7 @@ document.addEventListener('click', e => {
   else if (d.acc) decide(d.acc, true);
   else if (d.rej) decide(d.rej, false);
   else if (d.lab) { const [m, l, cid] = d.lab.split('|'); setLabel(m, +l, cid); }
+  else if (d.acceptrow) acceptRow(d.acceptrow);
   else if (d.go) go(d.go);
   else if (t.id === 'no-failure') { addNote('conv', '', 'no failure observed', { kind: 'no_failure' }); render(); }
   else if (t.id === 'spec-toggle') document.getElementById('spec').classList.toggle('on');
@@ -466,12 +493,12 @@ document.getElementById('queue-sample').addEventListener('change', () => { S.cur
 
 async function poll() {
   try {
-    const [samples, patterns, sugg, labels] = await Promise.all([api('/api/samples'), api('/api/patterns'), api('/api/suggestions'), api('/api/labels')]);
-    const changed = JSON.stringify([samples, patterns, sugg, labels]) !== JSON.stringify([S.samples, S.patterns, S.sugg, S.labels]);
+    const [samples, patterns, sugg, labels, lsugg] = await Promise.all([api('/api/samples'), api('/api/patterns'), api('/api/suggestions'), api('/api/labels'), api('/api/label_suggestions')]);
+    const changed = JSON.stringify([samples, patterns, sugg, labels, lsugg]) !== JSON.stringify([S.samples, S.patterns, S.sugg, S.labels, S.lsugg]);
     if (changed && !S.composer) {
       const curId = (curConv() || {}).id;
       if (samples.length > S.samples.length) toast(`${samples.length - S.samples.length} traces added to the sample`);
-      S.samples = samples; S.patterns = patterns && patterns.modes ? patterns : { modes: [] }; S.sugg = sugg; S.labels = labels;
+      S.samples = samples; S.patterns = patterns && patterns.modes ? patterns : { modes: [] }; S.sugg = sugg; S.labels = labels; S.lsugg = lsugg;
       if (curId) { const i = queue().findIndex(c => c.id === curId); if (i >= 0) S.cur = i; }
       render();
     }

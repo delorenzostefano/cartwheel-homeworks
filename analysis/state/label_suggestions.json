@@ -1,0 +1,2109 @@
+[
+  {
+    "trace_id": "00f7e69dcd5e46c9639ec1dcb0dc756e",
+    "scenario_id": "support-0079",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-cascade-audio-policy"
+  },
+  {
+    "trace_id": "01eb9ee439619199273852a0359e0e59",
+    "scenario_id": "support-0123",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-juniper-home-goods-policy"
+  },
+  {
+    "trace_id": "0a318f449e08a9dfbf013ab7dd5acffa",
+    "scenario_id": "support-0008",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "0aac067d5dcba9532a3c461c148fddcf",
+    "scenario_id": "support-0201",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "0b40559561510dc60e5b8251f9c81e15",
+    "scenario_id": "support-0202",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "0d1e0f32bfdb4b38fb7b08db179ef455",
+    "scenario_id": "support-0014",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "10b2a9e524fff9646d3b4af04162fee2",
+    "scenario_id": "support-0203",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "1120c65c2f076be9354695b10bdb529c",
+    "scenario_id": "support-0195",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "12bcfa2de5e46aa2d826e99e4416d8fa",
+    "scenario_id": "support-0140",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "13e1808cb1f8c93d5b8690f300955b99",
+    "scenario_id": "support-0044",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "15ac081cf4eb7cc32ce52a024d23d6c5",
+    "scenario_id": "support-0077",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "172b81bdeb0fd34a5583741fced58bcd",
+    "scenario_id": "support-0059",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "17af6e4e2bb4f5f65e54360669c9d06c",
+    "scenario_id": "support-0189",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "17e3c57dde49472bc8ed85de2af311f7",
+    "scenario_id": "support-0055",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "18596d04046e3216411b156ec2fcadea",
+    "scenario_id": "support-0037",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "1aba42988408a1f88328262d8d3ef769",
+    "scenario_id": "support-0226",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "1d1b4a928adef7fa2f7c1908503b1fb3",
+    "scenario_id": "support-0170",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "216d66d067f60d3ac8bedf425ee444c5",
+    "scenario_id": "support-0241",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "2ab2612bb6f054da57e0e463d5c38e1f",
+    "scenario_id": "support-0224",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "3164387a6219d3206373d18a3e1c0fef",
+    "scenario_id": "support-0063",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "324a8ba435eae25316343c8191153f09",
+    "scenario_id": "support-0127",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-cascade-audio-policy"
+  },
+  {
+    "trace_id": "32f0b905e8d7433fb996e4f6d30cfea7",
+    "scenario_id": "support-0071",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "32fc7b7f99c1bd7c6ed19e8621c46cb2",
+    "scenario_id": "support-0221",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "33e498195cb1e2a4b4a94374295f7403",
+    "scenario_id": "support-0122",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "352fd4a6f5fdeea890daa9e23f677667",
+    "scenario_id": "support-0193",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-disputes"
+  },
+  {
+    "trace_id": "35a661f80dd38a129a4769781759a860",
+    "scenario_id": "support-0194",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "36b11027538427d613b2a349100aeb25",
+    "scenario_id": "support-0064",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "370936c53cec7c9f732fd2d9dc3c093d",
+    "scenario_id": "support-0072",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "42ffb657603ccf87035eccb3adb894b6",
+    "scenario_id": "support-0005",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "44b7fd47f55f1b030be5704afdad08c9",
+    "scenario_id": "support-0197",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "47a9ee6333ef794d8a64b2ebb2693f74",
+    "scenario_id": "support-0097",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "4e63970933021fb2254c3aff2ca6d572",
+    "scenario_id": "support-0036",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "4f481d9bee0bed393495b12e5e9fef82",
+    "scenario_id": "support-0218",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "522e5939a1e925d379a0e4d186e06e44",
+    "scenario_id": "support-0150",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-disputes"
+  },
+  {
+    "trace_id": "53315887354965466a990f9cc9f755df",
+    "scenario_id": "support-0233",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "558d9eed727c67fedcabe5bd7fb1a328",
+    "scenario_id": "support-0042",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "55b6a4b41532276ce7627d9d66a925bf",
+    "scenario_id": "support-0156",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "59480262f9a5cbee9d2cc1150d01b5eb",
+    "scenario_id": "support-0214",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "5ab3e2d45d8060d4f92c018500c7566f",
+    "scenario_id": "support-0157",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "5dd6346df85178d0b937ac8e910ab962",
+    "scenario_id": "support-0113",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "5f02c92595ccaef1db77d20ebbed57f1",
+    "scenario_id": "support-0199",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-store-overrides"
+  },
+  {
+    "trace_id": "5fa6518f4639da330807ad4fb60861c0",
+    "scenario_id": "support-0057",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "61875bbb98e76c76c7a543390ff5bb12",
+    "scenario_id": "support-0119",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-restocking-fees"
+  },
+  {
+    "trace_id": "61fc1f7bcdab8f936188ffbf54f70d81",
+    "scenario_id": "support-0116",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-restocking-fees"
+  },
+  {
+    "trace_id": "6350ca477fbd163be30866e43390300b",
+    "scenario_id": "support-0106",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "63c764431e134c0ae4b6ac93e9fcba9a",
+    "scenario_id": "support-0032",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "64a693c674c556ae1ab155fb28c3a07e",
+    "scenario_id": "support-0035",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "653b07c97e40644f0d5c2cf8e4de5916",
+    "scenario_id": "support-0137",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "66ab7efe8d68dfdec4562cd94427cdf3",
+    "scenario_id": "support-0169",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "67fab6364ea249ae09b900925cab5210",
+    "scenario_id": "support-0158",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "6ca048e4b8dc6876c706e03bf38d1aed",
+    "scenario_id": "support-0206",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-northwind-books-policy"
+  },
+  {
+    "trace_id": "6e60159f202efdff2b1f75a1b772608e",
+    "scenario_id": "support-0164",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "73fa91def26b85b32040f12ac522976a",
+    "scenario_id": "support-0172",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "754715d0ab0bdd0ce80970a06890a65a",
+    "scenario_id": "support-0220",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "7773a3708c587398c7ce2823e1ff02fa",
+    "scenario_id": "support-0183",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "77849a3dcc4c15956232c3532ef62dc5",
+    "scenario_id": "support-0016",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "797c45b0f3a14b2a2535b1a3668e3f50",
+    "scenario_id": "support-0192",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "7a4c94e578da987f664239b53c5ee30c",
+    "scenario_id": "support-0200",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-juniper-home-goods-policy"
+  },
+  {
+    "trace_id": "809681af9caaa5491213c4728bffc29d",
+    "scenario_id": "support-0052",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "80daa0d50f33501f2bbc3ef61ed4524b",
+    "scenario_id": "support-0121",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-escalations"
+  },
+  {
+    "trace_id": "83de363a46fbe4d8ddf5fe114d2c2bd8",
+    "scenario_id": "support-0185",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "84e6e8e34d0a8cdcfdc4999fe4f021eb",
+    "scenario_id": "support-0070",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "85a4775b48434eb5ab8d59cb03ed682e",
+    "scenario_id": "support-0053",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "875ac252c8ed30ca73250afd36f7c1a5",
+    "scenario_id": "support-0124",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "880d0ee2b83b506862bc2411d7108de2",
+    "scenario_id": "support-0216",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "8c139867c6b7c9d576537d4f6be90761",
+    "scenario_id": "support-0100",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "8c199dec148035e83dff13f50ca7ca7f",
+    "scenario_id": "support-0174",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "8f301db74b18caeacbaa9892b37cef0a",
+    "scenario_id": "support-0219",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "9027274399da80ea3e6d206442f8d2d6",
+    "scenario_id": "support-0066",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "907955fac67fa1fa7a1a9e20b08e1985",
+    "scenario_id": "support-0094",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "91ce05719354b5bef243f02bd2c1c01f",
+    "scenario_id": "support-0047",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "9499c6198eabd1905da9bd65d2fabcba",
+    "scenario_id": "support-0181",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "952712aef9022d406afa01590717cd2b",
+    "scenario_id": "support-0023",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "99b4becfd409b94ccba474fd00d0f38c",
+    "scenario_id": "support-0154",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-disputes"
+  },
+  {
+    "trace_id": "9a4e71427d514c96967172860d19cf7a",
+    "scenario_id": "support-0211",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-restocking-fees"
+  },
+  {
+    "trace_id": "9c07292123a49d26a641e21bd523fdd7",
+    "scenario_id": "support-0003",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "9c92d7cded7e9efaf89166bfccdf4317",
+    "scenario_id": "support-0144",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "9d26a272622a39d4a7267081fd358488",
+    "scenario_id": "support-0223",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "9f4dd4ad9290e1099d3ed555b673fe3d",
+    "scenario_id": "support-0222",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "a37dbd58b990b330e781251e3428390f",
+    "scenario_id": "support-0043",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-payouts"
+  },
+  {
+    "trace_id": "a3cfa3fa240d8b53844e172d4c50e24f",
+    "scenario_id": "support-0109",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "a6d0a356fae004870480e420561d4315",
+    "scenario_id": "support-0011",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "aacbf13ed03ebc8deecc7d123381eabc",
+    "scenario_id": "support-0198",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "abe445ad3468bb60e4cd22b3ceec05e0",
+    "scenario_id": "support-0051",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "ad6d98edb2e98f6885ca6e4f84606936",
+    "scenario_id": "support-0225",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "ad96f6992f6c8213b5b380e4c66d442f",
+    "scenario_id": "support-0188",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "b3a32da3905379784d0bc8c3ef124d59",
+    "scenario_id": "support-0161",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "b71e82207835f5ab6eced528d5c7202f",
+    "scenario_id": "support-0120",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-store-overrides"
+  },
+  {
+    "trace_id": "b7dc72c71c4d07bf9e2d40bca2e814a8",
+    "scenario_id": "support-0075",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "b8444029be7c844401ceea1f9883603e",
+    "scenario_id": "support-0139",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "bb5b5fb84a3d9677c38383585d4547ab",
+    "scenario_id": "support-0060",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "c006ab6a8b09bf828731c5bc5dc7580b",
+    "scenario_id": "support-0065",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "c54f9b070b7858e05549ad8683533dfc",
+    "scenario_id": "support-0033",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "c648b2cd2c78651057d50ade9593e01d",
+    "scenario_id": "support-0166",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "c899718a52a1504be0e754c73034b04f",
+    "scenario_id": "support-0196",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "c9d1535fccf1d1465cfd40fc395b0f9a",
+    "scenario_id": "support-0232",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "cd1a86b5d1345614cda85646045f9aef",
+    "scenario_id": "support-0207",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-refunds"
+  },
+  {
+    "trace_id": "ce0218ff7cbdee20f75f24c79b5c9cf7",
+    "scenario_id": "support-0099",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "d3828575ed1ba43372b6172be9febed0",
+    "scenario_id": "support-0217",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "d5e32a781114885e6372ab2edc336928",
+    "scenario_id": "support-0143",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "d9b73bf09d9d52713f3404bcd4b6401c",
+    "scenario_id": "support-0056",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-store-overrides"
+  },
+  {
+    "trace_id": "daa8b97ac7d1d2461f1fc2745d9cf857",
+    "scenario_id": "support-0231",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "daac5bd058c1a75f62dec60f8eadb983",
+    "scenario_id": "support-0190",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+    "scenario_id": "support-0246",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "dcb2c8bf0ade0733c3498b1ff6d6b642",
+    "scenario_id": "support-0095",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "de02ff760d078357af0f76ff8e8306c1",
+    "scenario_id": "support-0205",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-northwind-books-policy"
+  },
+  {
+    "trace_id": "e22616d6c880be5853bc0987e7d79bac",
+    "scenario_id": "support-0061",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-store-overrides"
+  },
+  {
+    "trace_id": "e4e40b3e728719f01f485a5b8a0b4685",
+    "scenario_id": "support-0212",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-second-stitch-apparel-policy"
+  },
+  {
+    "trace_id": "e56b962516a5a817c7b13317a8e406ae",
+    "scenario_id": "support-0187",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "e58d1ade85ab4ae94367426d42aaba6f",
+    "scenario_id": "support-0162",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "e591e5f8443e80ce62a24b322d9fe785",
+    "scenario_id": "support-0080",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-cancellations"
+  },
+  {
+    "trace_id": "ec212fc16bdabf6acaf5a5e07140ed4a",
+    "scenario_id": "support-0229",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "edca563c43ba738da90922561d9469da",
+    "scenario_id": "support-0096",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "ee625646413088b00ecfb406b011664c",
+    "scenario_id": "support-0204",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-meridian-cycles-policy"
+  },
+  {
+    "trace_id": "efc0a49f3acceb9bbfacb0f9c4ed4139",
+    "scenario_id": "support-0208",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "f164c8d2dda0ab0b7c744b4bf1b67e24",
+    "scenario_id": "support-0228",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "f28e13dc8507eee52d386a9efefded4a",
+    "scenario_id": "support-0129",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-restocking-fees"
+  },
+  {
+    "trace_id": "f2da13092749bc6c0c4be81b709b280f",
+    "scenario_id": "support-0050",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f2e78ac33fa62cfd6bef6df31e679b5e",
+    "scenario_id": "support-0138",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "f3501b7776ed72964bbba95615b5b15b",
+    "scenario_id": "support-0098",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "f77d1b7e0feeb39f81ab106ad9c40204",
+    "scenario_id": "support-0058",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains cw-returns"
+  },
+  {
+    "trace_id": "f9f7f1a1dca070074c8ffd70ce74b328",
+    "scenario_id": "support-0235",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "fa80e1771f26f3e4a5a2ddc003fdb0f6",
+    "scenario_id": "support-0210",
+    "mode": "policy_id_in_reply",
+    "label": 1,
+    "basis": "code check: reply contains store-second-stitch-apparel-policy"
+  },
+  {
+    "trace_id": "fb7825c123f72400795a357caf51b7f0",
+    "scenario_id": "support-0163",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "fed691c6c97caa84590fbb7d49d47f9c",
+    "scenario_id": "support-0135",
+    "mode": "policy_id_in_reply",
+    "label": 0,
+    "basis": "code check: no policy identifier in the reply"
+  },
+  {
+    "trace_id": "00f7e69dcd5e46c9639ec1dcb0dc756e",
+    "scenario_id": "support-0079",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "0a318f449e08a9dfbf013ab7dd5acffa",
+    "scenario_id": "support-0008",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "17e3c57dde49472bc8ed85de2af311f7",
+    "scenario_id": "support-0055",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "61875bbb98e76c76c7a543390ff5bb12",
+    "scenario_id": "support-0119",
+    "mode": "unrequested_detail",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "73fa91def26b85b32040f12ac522976a",
+    "scenario_id": "support-0172",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "9c92d7cded7e9efaf89166bfccdf4317",
+    "scenario_id": "support-0144",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "a37dbd58b990b330e781251e3428390f",
+    "scenario_id": "support-0043",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "de02ff760d078357af0f76ff8e8306c1",
+    "scenario_id": "support-0205",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "e4e40b3e728719f01f485a5b8a0b4685",
+    "scenario_id": "support-0212",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "ee625646413088b00ecfb406b011664c",
+    "scenario_id": "support-0204",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f28e13dc8507eee52d386a9efefded4a",
+    "scenario_id": "support-0129",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f9f7f1a1dca070074c8ffd70ce74b328",
+    "scenario_id": "support-0235",
+    "mode": "unrequested_detail",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "32fc7b7f99c1bd7c6ed19e8621c46cb2",
+    "scenario_id": "support-0221",
+    "mode": "no_escalation_when_unresolved",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "653b07c97e40644f0d5c2cf8e4de5916",
+    "scenario_id": "support-0137",
+    "mode": "no_escalation_when_unresolved",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "80daa0d50f33501f2bbc3ef61ed4524b",
+    "scenario_id": "support-0121",
+    "mode": "no_escalation_when_unresolved",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "85a4775b48434eb5ab8d59cb03ed682e",
+    "scenario_id": "support-0053",
+    "mode": "no_escalation_when_unresolved",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "8c139867c6b7c9d576537d4f6be90761",
+    "scenario_id": "support-0100",
+    "mode": "no_escalation_when_unresolved",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "ad6d98edb2e98f6885ca6e4f84606936",
+    "scenario_id": "support-0225",
+    "mode": "no_escalation_when_unresolved",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "b71e82207835f5ab6eced528d5c7202f",
+    "scenario_id": "support-0120",
+    "mode": "no_escalation_when_unresolved",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "b8444029be7c844401ceea1f9883603e",
+    "scenario_id": "support-0139",
+    "mode": "no_escalation_when_unresolved",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f164c8d2dda0ab0b7c744b4bf1b67e24",
+    "scenario_id": "support-0228",
+    "mode": "no_escalation_when_unresolved",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f9f7f1a1dca070074c8ffd70ce74b328",
+    "scenario_id": "support-0235",
+    "mode": "no_escalation_when_unresolved",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "1aba42988408a1f88328262d8d3ef769",
+    "scenario_id": "support-0226",
+    "mode": "bad_record_shown_to_user",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "216d66d067f60d3ac8bedf425ee444c5",
+    "scenario_id": "support-0241",
+    "mode": "bad_record_shown_to_user",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "9f4dd4ad9290e1099d3ed555b673fe3d",
+    "scenario_id": "support-0222",
+    "mode": "bad_record_shown_to_user",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "c9d1535fccf1d1465cfd40fc395b0f9a",
+    "scenario_id": "support-0232",
+    "mode": "bad_record_shown_to_user",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "daa8b97ac7d1d2461f1fc2745d9cf857",
+    "scenario_id": "support-0231",
+    "mode": "bad_record_shown_to_user",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+    "scenario_id": "support-0246",
+    "mode": "bad_record_shown_to_user",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "00f7e69dcd5e46c9639ec1dcb0dc756e",
+    "scenario_id": "support-0079",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "01eb9ee439619199273852a0359e0e59",
+    "scenario_id": "support-0123",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "0a318f449e08a9dfbf013ab7dd5acffa",
+    "scenario_id": "support-0008",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "0aac067d5dcba9532a3c461c148fddcf",
+    "scenario_id": "support-0201",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "0b40559561510dc60e5b8251f9c81e15",
+    "scenario_id": "support-0202",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "0d1e0f32bfdb4b38fb7b08db179ef455",
+    "scenario_id": "support-0014",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "10b2a9e524fff9646d3b4af04162fee2",
+    "scenario_id": "support-0203",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "1120c65c2f076be9354695b10bdb529c",
+    "scenario_id": "support-0195",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "12bcfa2de5e46aa2d826e99e4416d8fa",
+    "scenario_id": "support-0140",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "13e1808cb1f8c93d5b8690f300955b99",
+    "scenario_id": "support-0044",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $63.5 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "15ac081cf4eb7cc32ce52a024d23d6c5",
+    "scenario_id": "support-0077",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "172b81bdeb0fd34a5583741fced58bcd",
+    "scenario_id": "support-0059",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "17af6e4e2bb4f5f65e54360669c9d06c",
+    "scenario_id": "support-0189",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "17e3c57dde49472bc8ed85de2af311f7",
+    "scenario_id": "support-0055",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "18596d04046e3216411b156ec2fcadea",
+    "scenario_id": "support-0037",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $47.75 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "1aba42988408a1f88328262d8d3ef769",
+    "scenario_id": "support-0226",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "1d1b4a928adef7fa2f7c1908503b1fb3",
+    "scenario_id": "support-0170",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "216d66d067f60d3ac8bedf425ee444c5",
+    "scenario_id": "support-0241",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "2ab2612bb6f054da57e0e463d5c38e1f",
+    "scenario_id": "support-0224",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "3164387a6219d3206373d18a3e1c0fef",
+    "scenario_id": "support-0063",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "324a8ba435eae25316343c8191153f09",
+    "scenario_id": "support-0127",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "32f0b905e8d7433fb996e4f6d30cfea7",
+    "scenario_id": "support-0071",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "32fc7b7f99c1bd7c6ed19e8621c46cb2",
+    "scenario_id": "support-0221",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "33e498195cb1e2a4b4a94374295f7403",
+    "scenario_id": "support-0122",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "352fd4a6f5fdeea890daa9e23f677667",
+    "scenario_id": "support-0193",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "35a661f80dd38a129a4769781759a860",
+    "scenario_id": "support-0194",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "36b11027538427d613b2a349100aeb25",
+    "scenario_id": "support-0064",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "370936c53cec7c9f732fd2d9dc3c093d",
+    "scenario_id": "support-0072",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "42ffb657603ccf87035eccb3adb894b6",
+    "scenario_id": "support-0005",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "44b7fd47f55f1b030be5704afdad08c9",
+    "scenario_id": "support-0197",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $96.5 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "47a9ee6333ef794d8a64b2ebb2693f74",
+    "scenario_id": "support-0097",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "4e63970933021fb2254c3aff2ca6d572",
+    "scenario_id": "support-0036",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $92.75 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "4f481d9bee0bed393495b12e5e9fef82",
+    "scenario_id": "support-0218",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $41.5 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "522e5939a1e925d379a0e4d186e06e44",
+    "scenario_id": "support-0150",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "53315887354965466a990f9cc9f755df",
+    "scenario_id": "support-0233",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "558d9eed727c67fedcabe5bd7fb1a328",
+    "scenario_id": "support-0042",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "55b6a4b41532276ce7627d9d66a925bf",
+    "scenario_id": "support-0156",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "59480262f9a5cbee9d2cc1150d01b5eb",
+    "scenario_id": "support-0214",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "5ab3e2d45d8060d4f92c018500c7566f",
+    "scenario_id": "support-0157",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "5dd6346df85178d0b937ac8e910ab962",
+    "scenario_id": "support-0113",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "5f02c92595ccaef1db77d20ebbed57f1",
+    "scenario_id": "support-0199",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "5fa6518f4639da330807ad4fb60861c0",
+    "scenario_id": "support-0057",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "61875bbb98e76c76c7a543390ff5bb12",
+    "scenario_id": "support-0119",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "61fc1f7bcdab8f936188ffbf54f70d81",
+    "scenario_id": "support-0116",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "6350ca477fbd163be30866e43390300b",
+    "scenario_id": "support-0106",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "63c764431e134c0ae4b6ac93e9fcba9a",
+    "scenario_id": "support-0032",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $90 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "64a693c674c556ae1ab155fb28c3a07e",
+    "scenario_id": "support-0035",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $71.25 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "653b07c97e40644f0d5c2cf8e4de5916",
+    "scenario_id": "support-0137",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "66ab7efe8d68dfdec4562cd94427cdf3",
+    "scenario_id": "support-0169",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "67fab6364ea249ae09b900925cab5210",
+    "scenario_id": "support-0158",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "6ca048e4b8dc6876c706e03bf38d1aed",
+    "scenario_id": "support-0206",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "6e60159f202efdff2b1f75a1b772608e",
+    "scenario_id": "support-0164",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "73fa91def26b85b32040f12ac522976a",
+    "scenario_id": "support-0172",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "754715d0ab0bdd0ce80970a06890a65a",
+    "scenario_id": "support-0220",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $93 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "7773a3708c587398c7ce2823e1ff02fa",
+    "scenario_id": "support-0183",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "77849a3dcc4c15956232c3532ef62dc5",
+    "scenario_id": "support-0016",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "797c45b0f3a14b2a2535b1a3668e3f50",
+    "scenario_id": "support-0192",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "7a4c94e578da987f664239b53c5ee30c",
+    "scenario_id": "support-0200",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "809681af9caaa5491213c4728bffc29d",
+    "scenario_id": "support-0052",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "80daa0d50f33501f2bbc3ef61ed4524b",
+    "scenario_id": "support-0121",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "83de363a46fbe4d8ddf5fe114d2c2bd8",
+    "scenario_id": "support-0185",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "84e6e8e34d0a8cdcfdc4999fe4f021eb",
+    "scenario_id": "support-0070",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "85a4775b48434eb5ab8d59cb03ed682e",
+    "scenario_id": "support-0053",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "875ac252c8ed30ca73250afd36f7c1a5",
+    "scenario_id": "support-0124",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "880d0ee2b83b506862bc2411d7108de2",
+    "scenario_id": "support-0216",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "8c139867c6b7c9d576537d4f6be90761",
+    "scenario_id": "support-0100",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "8c199dec148035e83dff13f50ca7ca7f",
+    "scenario_id": "support-0174",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "8f301db74b18caeacbaa9892b37cef0a",
+    "scenario_id": "support-0219",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "code check: eligible $13.25 refund, no issue_refund call; escalate_to_human instead"
+  },
+  {
+    "trace_id": "9027274399da80ea3e6d206442f8d2d6",
+    "scenario_id": "support-0066",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "code check: eligible $270.25 refund, no issue_refund call; escalate_to_human instead"
+  },
+  {
+    "trace_id": "907955fac67fa1fa7a1a9e20b08e1985",
+    "scenario_id": "support-0094",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "91ce05719354b5bef243f02bd2c1c01f",
+    "scenario_id": "support-0047",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "9499c6198eabd1905da9bd65d2fabcba",
+    "scenario_id": "support-0181",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "952712aef9022d406afa01590717cd2b",
+    "scenario_id": "support-0023",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "99b4becfd409b94ccba474fd00d0f38c",
+    "scenario_id": "support-0154",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "9a4e71427d514c96967172860d19cf7a",
+    "scenario_id": "support-0211",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "9c07292123a49d26a641e21bd523fdd7",
+    "scenario_id": "support-0003",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "9c92d7cded7e9efaf89166bfccdf4317",
+    "scenario_id": "support-0144",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "9d26a272622a39d4a7267081fd358488",
+    "scenario_id": "support-0223",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "9f4dd4ad9290e1099d3ed555b673fe3d",
+    "scenario_id": "support-0222",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "a37dbd58b990b330e781251e3428390f",
+    "scenario_id": "support-0043",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $61.75 refund sent through issue_refund (auto_approved)"
+  },
+  {
+    "trace_id": "a3cfa3fa240d8b53844e172d4c50e24f",
+    "scenario_id": "support-0109",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "a6d0a356fae004870480e420561d4315",
+    "scenario_id": "support-0011",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "aacbf13ed03ebc8deecc7d123381eabc",
+    "scenario_id": "support-0198",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "abe445ad3468bb60e4cd22b3ceec05e0",
+    "scenario_id": "support-0051",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "ad6d98edb2e98f6885ca6e4f84606936",
+    "scenario_id": "support-0225",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "ad96f6992f6c8213b5b380e4c66d442f",
+    "scenario_id": "support-0188",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "b3a32da3905379784d0bc8c3ef124d59",
+    "scenario_id": "support-0161",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "b71e82207835f5ab6eced528d5c7202f",
+    "scenario_id": "support-0120",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "b7dc72c71c4d07bf9e2d40bca2e814a8",
+    "scenario_id": "support-0075",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "b8444029be7c844401ceea1f9883603e",
+    "scenario_id": "support-0139",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "bb5b5fb84a3d9677c38383585d4547ab",
+    "scenario_id": "support-0060",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "c006ab6a8b09bf828731c5bc5dc7580b",
+    "scenario_id": "support-0065",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $275.25 refund sent through issue_refund (queued_for_approval)"
+  },
+  {
+    "trace_id": "c54f9b070b7858e05549ad8683533dfc",
+    "scenario_id": "support-0033",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "c648b2cd2c78651057d50ade9593e01d",
+    "scenario_id": "support-0166",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "c899718a52a1504be0e754c73034b04f",
+    "scenario_id": "support-0196",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "c9d1535fccf1d1465cfd40fc395b0f9a",
+    "scenario_id": "support-0232",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "cd1a86b5d1345614cda85646045f9aef",
+    "scenario_id": "support-0207",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "ce0218ff7cbdee20f75f24c79b5c9cf7",
+    "scenario_id": "support-0099",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "d3828575ed1ba43372b6172be9febed0",
+    "scenario_id": "support-0217",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: $85 refund sent through issue_refund (auto_approved, auto_approved)"
+  },
+  {
+    "trace_id": "d5e32a781114885e6372ab2edc336928",
+    "scenario_id": "support-0143",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "d9b73bf09d9d52713f3404bcd4b6401c",
+    "scenario_id": "support-0056",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "daa8b97ac7d1d2461f1fc2745d9cf857",
+    "scenario_id": "support-0231",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "daac5bd058c1a75f62dec60f8eadb983",
+    "scenario_id": "support-0190",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+    "scenario_id": "support-0246",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "dcb2c8bf0ade0733c3498b1ff6d6b642",
+    "scenario_id": "support-0095",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "de02ff760d078357af0f76ff8e8306c1",
+    "scenario_id": "support-0205",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "e22616d6c880be5853bc0987e7d79bac",
+    "scenario_id": "support-0061",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "e4e40b3e728719f01f485a5b8a0b4685",
+    "scenario_id": "support-0212",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "e56b962516a5a817c7b13317a8e406ae",
+    "scenario_id": "support-0187",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "e58d1ade85ab4ae94367426d42aaba6f",
+    "scenario_id": "support-0162",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "e591e5f8443e80ce62a24b322d9fe785",
+    "scenario_id": "support-0080",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "ec212fc16bdabf6acaf5a5e07140ed4a",
+    "scenario_id": "support-0229",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "edca563c43ba738da90922561d9469da",
+    "scenario_id": "support-0096",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "ee625646413088b00ecfb406b011664c",
+    "scenario_id": "support-0204",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "efc0a49f3acceb9bbfacb0f9c4ed4139",
+    "scenario_id": "support-0208",
+    "mode": "refund_threshold_misrouted",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f164c8d2dda0ab0b7c744b4bf1b67e24",
+    "scenario_id": "support-0228",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "f28e13dc8507eee52d386a9efefded4a",
+    "scenario_id": "support-0129",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "f2da13092749bc6c0c4be81b709b280f",
+    "scenario_id": "support-0050",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "f2e78ac33fa62cfd6bef6df31e679b5e",
+    "scenario_id": "support-0138",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "f3501b7776ed72964bbba95615b5b15b",
+    "scenario_id": "support-0098",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "f77d1b7e0feeb39f81ab106ad9c40204",
+    "scenario_id": "support-0058",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "f9f7f1a1dca070074c8ffd70ce74b328",
+    "scenario_id": "support-0235",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "fa80e1771f26f3e4a5a2ddc003fdb0f6",
+    "scenario_id": "support-0210",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "fb7825c123f72400795a357caf51b7f0",
+    "scenario_id": "support-0163",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "fed691c6c97caa84590fbb7d49d47f9c",
+    "scenario_id": "support-0135",
+    "mode": "refund_threshold_misrouted",
+    "label": 0,
+    "basis": "code check: not an eligible refund request with a known amount"
+  },
+  {
+    "trace_id": "0aac067d5dcba9532a3c461c148fddcf",
+    "scenario_id": "support-0201",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "10b2a9e524fff9646d3b4af04162fee2",
+    "scenario_id": "support-0203",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "172b81bdeb0fd34a5583741fced58bcd",
+    "scenario_id": "support-0059",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "17e3c57dde49472bc8ed85de2af311f7",
+    "scenario_id": "support-0055",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "2ab2612bb6f054da57e0e463d5c38e1f",
+    "scenario_id": "support-0224",
+    "mode": "routes_around_clear_denial",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "352fd4a6f5fdeea890daa9e23f677667",
+    "scenario_id": "support-0193",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "4f481d9bee0bed393495b12e5e9fef82",
+    "scenario_id": "support-0218",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "5f02c92595ccaef1db77d20ebbed57f1",
+    "scenario_id": "support-0199",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "5fa6518f4639da330807ad4fb60861c0",
+    "scenario_id": "support-0057",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "797c45b0f3a14b2a2535b1a3668e3f50",
+    "scenario_id": "support-0192",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "7a4c94e578da987f664239b53c5ee30c",
+    "scenario_id": "support-0200",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "809681af9caaa5491213c4728bffc29d",
+    "scenario_id": "support-0052",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "85a4775b48434eb5ab8d59cb03ed682e",
+    "scenario_id": "support-0053",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "8f301db74b18caeacbaa9892b37cef0a",
+    "scenario_id": "support-0219",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "907955fac67fa1fa7a1a9e20b08e1985",
+    "scenario_id": "support-0094",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "99b4becfd409b94ccba474fd00d0f38c",
+    "scenario_id": "support-0154",
+    "mode": "routes_around_clear_denial",
+    "label": 0,
+    "basis": "close negative in the taxonomy"
+  },
+  {
+    "trace_id": "d9b73bf09d9d52713f3404bcd4b6401c",
+    "scenario_id": "support-0056",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "daac5bd058c1a75f62dec60f8eadb983",
+    "scenario_id": "support-0190",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "dcb2c8bf0ade0733c3498b1ff6d6b642",
+    "scenario_id": "support-0095",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "e591e5f8443e80ce62a24b322d9fe785",
+    "scenario_id": "support-0080",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "edca563c43ba738da90922561d9469da",
+    "scenario_id": "support-0096",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "ee625646413088b00ecfb406b011664c",
+    "scenario_id": "support-0204",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  },
+  {
+    "trace_id": "f77d1b7e0feeb39f81ab106ad9c40204",
+    "scenario_id": "support-0058",
+    "mode": "routes_around_clear_denial",
+    "label": 1,
+    "basis": "positive in the taxonomy (your note or an accepted suggestion)"
+  }
+]
