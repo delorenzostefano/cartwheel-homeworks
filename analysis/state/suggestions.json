@@ -26,8 +26,10 @@
     "retrieval": "unfinished batch 2",
     "source": "agent",
     "round": 1,
-    "status": "pending",
-    "created_at": "2026-10-15T09:40:00+00:00"
+    "status": "rejected",
+    "created_at": "2026-10-15T09:40:00+00:00",
+    "decided_at": "2026-10-15T12:35:47.009Z",
+    "decision_note": "it includes details that weren't explicitly asked for"
   },
   {
     "id": "s1-02",
