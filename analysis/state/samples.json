@@ -820,5 +820,275 @@
     "scenario_id": "support-0225",
     "batch": "d-search",
     "reason": "Part D: close-negative search for no_escalation_when_unresolved"
+  },
+  {
+    "trace_id": "522e5939a1e925d379a0e4d186e06e44",
+    "scenario_id": "support-0150",
+    "batch": "hw5-recheck",
+    "reason": "HW5: re-check under the refined unrequested_detail definition"
+  },
+  {
+    "trace_id": "dc454f3833f72ea9c69a1d2825c81bb0",
+    "scenario_id": "support-0246",
+    "batch": "hw5-recheck",
+    "reason": "HW5: re-check under the refined unrequested_detail definition"
+  },
+  {
+    "trace_id": "1120c65c2f076be9354695b10bdb529c",
+    "scenario_id": "support-0195",
+    "batch": "hw5-recheck",
+    "reason": "HW5: re-check under the refined unrequested_detail definition"
+  },
+  {
+    "trace_id": "60a8d262715b431824e297b2ad5bee61",
+    "scenario_id": "support-0012",
+    "batch": "hw5-recheck",
+    "reason": "HW5: re-check under the refined unrequested_detail definition"
+  },
+  {
+    "trace_id": "e591e5f8443e80ce62a24b322d9fe785",
+    "scenario_id": "support-0080",
+    "batch": "hw5-recheck",
+    "reason": "HW5: re-check under the refined unrequested_detail definition"
+  },
+  {
+    "trace_id": "a700af77cddd23e5e7888faf178156b7",
+    "scenario_id": "support-0184",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "8124ecb26b60c47182358fc26cbc0415",
+    "scenario_id": "support-0026",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "c0a288c22869aa90b3bbd69aee339f3c",
+    "scenario_id": "support-0182",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "5709f343d3d0ecc3ff5451924dce0a81",
+    "scenario_id": "support-0103",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "92622171a2a74e5b48cbd08c7c020476",
+    "scenario_id": "support-0186",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "1367d50e8e400a95af174e41589981f6",
+    "scenario_id": "support-0159",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "282f61850fdef787761d27a1729de9e3",
+    "scenario_id": "support-0155",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "be8689f8280b22add3c10a41b65341fb",
+    "scenario_id": "support-0209",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "efe0a9a685c42ff76996fc6ecc6df898",
+    "scenario_id": "support-0088",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "87f15730e126804017cb85dcf0e15c91",
+    "scenario_id": "support-0087",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "54dea9826e10342cbb7fa71a93dd6611",
+    "scenario_id": "support-0086",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "be54598b578070deef4b962f81afe87b",
+    "scenario_id": "support-0091",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "3c07e3129d34fed7a169dbc4b4f208b3",
+    "scenario_id": "support-0128",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "f0ef2c283032cc780ac8579ca26e8dde",
+    "scenario_id": "support-0090",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "f7f7377c642441a446773b47237f9a6e",
+    "scenario_id": "support-0092",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "c7b24d376a6622dcb646dfe15a87d771",
+    "scenario_id": "support-0048",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "ef89f603b9f1a6ed9ebcc1c91949ba42",
+    "scenario_id": "support-0093",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "4db4ae3a1bf3a3d8aa708b13218e0820",
+    "scenario_id": "support-0180",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "74bfae8eafefc2aa302b88143dcffee8",
+    "scenario_id": "support-0049",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "477c11f57fcbf6a92904aeafbfec11f5",
+    "scenario_id": "support-0191",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "1670c69cf6dee7688eb8d3b1d6c7f0c8",
+    "scenario_id": "support-0179",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "98a2a23867af57051d758b19e7dd3626",
+    "scenario_id": "support-0034",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "ea0705f353a8d837905433102b1942de",
+    "scenario_id": "support-0030",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "d9ff88746f678eac005f880b7b16567d",
+    "scenario_id": "support-0039",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "e15d8514ec2056274673269880ef7112",
+    "scenario_id": "support-0160",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "0f1b8ff6f13bd14201c554b06e3993c2",
+    "scenario_id": "support-0054",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "9fbd0d42497b97830f7483cbf07ffb0e",
+    "scenario_id": "support-0176",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "e21db5ad1fa0b6cb3b0d74ae6a20d327",
+    "scenario_id": "support-0125",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "c1a22fda3f4b5d332c5394800e72cd07",
+    "scenario_id": "support-0126",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "6ea9411e648e5ed71de5bceb1fea865e",
+    "scenario_id": "support-0078",
+    "batch": "hw5-enrich",
+    "reason": "HW5 next_to_label(strategy='enrich'): semantic neighbor of a confirmed failure"
+  },
+  {
+    "trace_id": "0ddcfa179df4ded02709e39aa6385fbe",
+    "scenario_id": "support-0151",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "0fa68f47b31899c7695593e744c5d110",
+    "scenario_id": "support-0136",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "f1eea2664edb623a1d65134562a507cf",
+    "scenario_id": "support-0083",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "f92c04aa47bae25c86dbca6f9fa80d16",
+    "scenario_id": "support-0244",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "625081781cdc834f66c48e8a377af62e",
+    "scenario_id": "support-0240",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "46898c21b9a809c1112c8b331605515f",
+    "scenario_id": "support-0105",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "5260a2311015317ce95e6dbcaab04d0f",
+    "scenario_id": "support-0237",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "5be48da17418b8e3c1d4a04a57e2a3c2",
+    "scenario_id": "support-0146",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "767e54338a749542bc429a235596849a",
+    "scenario_id": "support-0243",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
+  },
+  {
+    "trace_id": "997966e0c0e07bf178335fc933983885",
+    "scenario_id": "support-0111",
+    "batch": "hw5-random",
+    "reason": "HW5 next_to_label(strategy='random'): uniform sample for calibration"
   }
 ]

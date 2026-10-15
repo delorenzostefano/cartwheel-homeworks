@@ -123,8 +123,28 @@
         {
           "ts": "2026-10-15T10:49:21+00:00",
           "change": "Part D: requirement source set to RESP-6 (new) after the SPEC revision."
+        },
+        {
+          "ts": "2026-10-15T12:33:26+00:00",
+          "change": "HW5 Part A boundary check: student decided (1) RESP-3 statements of missing information Pass, (2) another mode's failure is not counted here, (3) requested details Pass, (5) one short next step Pass. Applied to HW5 labels only: 0008, 0129, 0235, 0119, 0137 become Pass; 0012, 0150, 0246, 0080, 0195 held for re-check. HW4 labels unchanged."
         }
-      ]
+      ],
+      "hw5_definition": {
+        "question": "Does the final reply include information the user did not ask for and that is not needed to answer the question or explain the decision? (RESP-6)",
+        "fail": [
+          "Policy, order, or listing details beyond those that decide the answer.",
+          "Advice or commentary the user did not ask for."
+        ],
+        "pass": [
+          "Answers the question.",
+          "Explains the decision (why, and which policy decides it; titles allowed).",
+          "States that required information is missing or inconsistent (RESP-3).",
+          "Offers one short next step.",
+          "Gives details the user asked for."
+        ],
+        "excluded": "Content that is another mode's failure (bad record, route around a denial, threshold, missing escalation) is judged under that mode, not here.",
+        "evidence": "User messages, final reply, and tool results (to see what was looked up and what decides the answer)."
+      }
     },
     {
       "name": "no_escalation_when_unresolved",

@@ -102,3 +102,13 @@ def test_label_rejects_bad_input(state, body):
 def test_spec_ids_parse():
     ids = {item["id"] for item in server.parse_spec(server.SPEC_PATH.read_text())}
     assert {"RESP-2", "ESC-1", "AUTH-1", "SCOPE-2", "TOOL-7"} <= ids
+
+
+def test_hw5_label_uses_pass_convention_and_separate_file(state):
+    server.record_label({"mode": "unrequested_detail", "trace_id": "t1", "label": 1, "hw5": True})
+    server.record_label({"mode": "unrequested_detail", "trace_id": "t2", "label": 0, "hw5": True})
+    stored = {r["trace_id"]: r["label"] for r in server._state.read_jsonl(state / "hw5_labels" / "unrequested_detail.jsonl")}
+    assert stored == {"t1": 0, "t2": 1}  # 1 = Pass, 0 = Fail in the HW5 file
+    assert not (state / "labels" / "unrequested_detail.jsonl").exists()
+    ui = {r["trace_id"]: (r["label"], r["pass"]) for r in server.current_hw5_labels()}
+    assert ui == {"t1": (1, 0), "t2": (0, 1)}

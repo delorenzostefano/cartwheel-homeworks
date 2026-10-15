@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T10:31:23+00:00",
+  "updated_at": "2026-10-15T12:33:13+00:00",
   "total": 127,
   "pool": "250 complete support-* conversations from Langfuse (stale support-0031 first attempt excluded)",
   "batches": {
@@ -212,6 +212,60 @@
         "support-0225"
       ],
       "routes_search_1": "routes search 1: denial signal (eligible false / not_eligible / disputable false) AND reply offers human review, exception, ticket or dispute"
+    },
+    "hw5": {
+      "method": "HW5 label collection for unrequested_detail: next_to_label enrich (semantic neighbours of the confirmed HW5 failures) and random, over conversations not yet labelled; plus 5 re-checks",
+      "enrich": [
+        "support-0184",
+        "support-0026",
+        "support-0182",
+        "support-0103",
+        "support-0186",
+        "support-0159",
+        "support-0155",
+        "support-0209",
+        "support-0088",
+        "support-0087",
+        "support-0086",
+        "support-0091",
+        "support-0128",
+        "support-0090",
+        "support-0092",
+        "support-0048",
+        "support-0093",
+        "support-0180",
+        "support-0049",
+        "support-0191",
+        "support-0179",
+        "support-0034",
+        "support-0030",
+        "support-0039",
+        "support-0160",
+        "support-0054",
+        "support-0176",
+        "support-0125",
+        "support-0126",
+        "support-0078"
+      ],
+      "random": [
+        "support-0151",
+        "support-0136",
+        "support-0083",
+        "support-0244",
+        "support-0240",
+        "support-0105",
+        "support-0237",
+        "support-0146",
+        "support-0243",
+        "support-0111"
+      ],
+      "recheck": [
+        "support-0150",
+        "support-0246",
+        "support-0195",
+        "support-0012",
+        "support-0080"
+      ]
     }
   },
   "picks": [
