@@ -151,7 +151,9 @@ td.cell { text-align: center; } td a, .link { color: var(--accent); cursor: poin
 const S = { convs: [], byId: {}, byTrace: {}, ann: [], samples: [], patterns: { modes: [] },
             sugg: [], labels: [], lsugg: [], spec: [], cur: 0, composer: null,
             // ?hw5=<mode>: label one mode into state/hw5_labels (1 = Pass) and queue the hw5-* batches.
-            hw5: new URLSearchParams(location.search).get('hw5') };
+            hw5: new URLSearchParams(location.search).get('hw5'),
+            // ?batch=<name>: restrict the queue to one sample batch (e.g. hw5-test-recheck).
+            batch: new URLSearchParams(location.search).get('batch') };
 const LABELS_API = S.hw5 ? '/api/hw5_labels' : '/api/labels';
 S.judges = [];
 // The judge shown beside the label: the latest version of this mode that has predictions.
@@ -209,7 +211,7 @@ const labelOf = (mode, cid) => S.labels.find(l => l.mode === mode && l.trace_id 
 function queue() {
   if (S.hw5 && document.getElementById('queue-dis').checked) return disagreements();
   if (S.hw5 && document.getElementById('queue-sample').checked)
-    return S.samples.filter(s => String(s.batch || '').startsWith('hw5')).map(s => S.byId[s.trace_id]).filter(Boolean);
+    return S.samples.filter(s => S.batch ? s.batch === S.batch : String(s.batch || '').startsWith('hw5')).map(s => S.byId[s.trace_id]).filter(Boolean);
   if (document.getElementById('queue-sample').checked && S.samples.length)
     return S.samples.map(s => S.byId[s.trace_id]).filter(Boolean);
   return S.convs.filter(c => !c.incomplete);
@@ -278,7 +280,7 @@ function renderReview() {
   const q = queue(), c = curConv();
   if (!c) { el.innerHTML = '<p class="dim">No conversations in the queue. Untick “sample only” or add a batch.</p>'; return; }
   const notes = notesFor(c.id), suggs = convSuggestions(c);
-  const pick = S.samples.find(s => s.trace_id === c.id);
+  const pick = (S.hw5 && S.samples.find(s => s.trace_id === c.id && String(s.batch || '').startsWith('hw5'))) || S.samples.find(s => s.trace_id === c.id);
   const h = [`<div class="conv-head">
     <button class="btn" data-nav="-1">◀</button><span class="dim">${S.cur + 1} / ${q.length}</span><button class="btn" data-nav="1">▶</button>
     <span class="sid">${esc(c.scenario_id)}</span>
