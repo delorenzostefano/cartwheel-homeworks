@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-10-15T10:01:10+00:00",
+  "updated_at": "2026-10-15T10:16:42+00:00",
   "modes": [
     {
       "name": "policy_id_in_reply",
@@ -39,7 +39,7 @@
       "name": "unrequested_detail",
       "definition": "The reply adds policy or order detail the user did not ask for and that is not needed to answer the question or explain the decision.",
       "status": "candidate",
-      "count": 7,
+      "count": 11,
       "example_trace_ids": [
         "0a318f449e08a9dfbf013ab7dd5acffa",
         "17e3c57dde49472bc8ed85de2af311f7",
@@ -47,7 +47,11 @@
         "f9f7f1a1dca070074c8ffd70ce74b328",
         "00f7e69dcd5e46c9639ec1dcb0dc756e",
         "9c92d7cded7e9efaf89166bfccdf4317",
-        "f28e13dc8507eee52d386a9efefded4a"
+        "f28e13dc8507eee52d386a9efefded4a",
+        "73fa91def26b85b32040f12ac522976a",
+        "a37dbd58b990b330e781251e3428390f",
+        "de02ff760d078357af0f76ff8e8306c1",
+        "ee625646413088b00ecfb406b011664c"
       ],
       "example_quotes": [
         "Blue Heron Ceramics doesn't override the default window.",
@@ -67,7 +71,11 @@
         "a-mv9a1g0rlf22",
         "a-mv9bcs93jtqk",
         "a-mv9bv5ujd37p",
-        "a-mv9cb54aryab"
+        "a-mv9cb54aryab",
+        "a-mv9dhxr4pnll",
+        "a-mv9dk6wcxql8",
+        "a-mv9dlx63xw9s",
+        "a-mv9dngruchp1"
       ],
       "close_negatives": [
         "61875bbb98e76c76c7a543390ff5bb12"
@@ -87,6 +95,10 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: 0119 accepted as a close negative."
+        },
+        {
+          "ts": "2026-10-15T10:16:42+00:00",
+          "change": "Round 4: added batch 4 notes 0172, 0043, 0205, 0204."
         }
       ]
     },
@@ -269,15 +281,18 @@
       "name": "refund_threshold_misrouted",
       "definition": "An eligible refund is not routed by the threshold: at or below $100 it is not executed with issue_refund, or above $100 it is not queued with issue_refund (for example a ticket instead).",
       "status": "candidate",
-      "count": 1,
+      "count": 2,
       "example_trace_ids": [
-        "aacbf13ed03ebc8deecc7d123381eabc"
+        "aacbf13ed03ebc8deecc7d123381eabc",
+        "1120c65c2f076be9354695b10bdb529c"
       ],
       "example_quotes": [
-        "Order 1825 is eligible for a return. Under Cartwheel's return policy (cw-returns), items can be returned within 30 days of delivery, counted from the delivery d"
+        "Order 1825 is eligible for a return. Under Cartwheel's return policy (cw-returns), items can be returned within 30 days of delivery, counted from the delivery d",
+        "I haven't issued the refund myself"
       ],
       "created_from": [
-        "a-mv9c4ukq9dlh"
+        "a-mv9c4ukq9dlh",
+        "a-mv9d8301h8mc"
       ],
       "close_negatives": [
         "bb5b5fb84a3d9677c38383585d4547ab",
@@ -295,6 +310,10 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: close negatives 0060, 0033, 0194. 0195 and 0198 suggestions are pending."
+        },
+        {
+          "ts": "2026-10-15T10:16:42+00:00",
+          "change": "Round 4: added 0195 (accepted suggestion: ticket instead of a queued issue_refund above $100)."
         }
       ]
     },
@@ -302,7 +321,7 @@
       "name": "routes_around_clear_denial",
       "definition": "Policy or a tool result clearly denies the request (window closed, eligible false, not refundable), and the reply offers or opens a human review, exception, or dispute as a way to get the denied outcome anyway.",
       "status": "candidate",
-      "count": 9,
+      "count": 10,
       "example_trace_ids": [
         "0aac067d5dcba9532a3c461c148fddcf",
         "17e3c57dde49472bc8ed85de2af311f7",
@@ -312,7 +331,8 @@
         "85a4775b48434eb5ab8d59cb03ed682e",
         "8f301db74b18caeacbaa9892b37cef0a",
         "907955fac67fa1fa7a1a9e20b08e1985",
-        "f77d1b7e0feeb39f81ab106ad9c40204"
+        "f77d1b7e0feeb39f81ab106ad9c40204",
+        "ee625646413088b00ecfb406b011664c"
       ],
       "example_quotes": [
         "You still have two routes that can get a human looking at the \"not as described\" problem:\n\n1. **Escalate to a human support agent.** I'd send them your claim th",
@@ -335,7 +355,8 @@
         "a-mv9crme6okty",
         "a-mv9ct50vn4yi",
         "a-mv9d1bmt01p2",
-        "a-mv9cqht3epbd"
+        "a-mv9cqht3epbd",
+        "a-mv9dngruchp1"
       ],
       "close_negatives": [
         "99b4becfd409b94ccba474fd00d0f38c"
@@ -347,6 +368,10 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: created by merging offers_route_around_policy and unneeded_escalation; moved 0053 and 0201 here from no_escalation_when_unresolved because both are 'window closed, exception suggested', like 0052."
+        },
+        {
+          "ts": "2026-10-15T10:16:42+00:00",
+          "change": "Round 4: added 0204 (note says the extra info 'adds a way to go around the policy')."
         }
       ]
     },
@@ -401,6 +426,33 @@
         {
           "ts": "2026-10-15T10:01:10+00:00",
           "change": "Round 3: drafted from the student's 0163 note."
+        }
+      ]
+    },
+    {
+      "name": "write_stacked_after_correction",
+      "definition": "After a completed write, the user corrects which item or order they meant, and the agent performs another write without first escalating or resolving the earlier, now-unwanted one.",
+      "status": "candidate",
+      "count": 1,
+      "example_trace_ids": [
+        "d3828575ed1ba43372b6172be9febed0"
+      ],
+      "example_quotes": [
+        "Your Modern Trowel Set refund is done: $83.00 from Petal & Stem, refund ID 600. It was approved automatically and should return to your original payment method "
+      ],
+      "created_from": [
+        "a-mv9dp2ienk0e"
+      ],
+      "close_negatives": [
+        "754715d0ab0bdd0ce80970a06890a65a"
+      ],
+      "requirement": "ESC-4 (unsure whether policy allows the action); spec revision to record: a correction after a write is escalated before a new write.",
+      "boundary": "Versus write_on_unconfirmed_order: there the first write targets an order the user never identified; here the user did identify it and then changed it.",
+      "evaluator": "code check (two writes in one session after a correction) + LLM judge",
+      "revisions": [
+        {
+          "ts": "2026-10-15T10:16:42+00:00",
+          "change": "Round 4: accepted by the student from the 0217 note; the only new mode in the final 15 (batch 4). 0220 is a close negative (the agent escalated after the correction)."
         }
       ]
     }
