@@ -4,6 +4,8 @@ Run from the repository root:
 
     uv run python -m analysis.run_judges prepare
     uv run python -m analysis.run_judges split unrequested_detail
+    uv run --env-file .env python -m analysis.run_judges dev unrequested_detail analysis/prompts/unrequested_detail-v0.txt
+    uv run --env-file .env python -m analysis.run_judges test unrequested_detail-v<N>
 
 Every judge input comes from the committed trace exports, so each prompt
 version sees exactly the same records. Labels, review notes, and scenario
@@ -14,16 +16,21 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
-from analysis.helpers import _state, split_labels
+from analysis.helpers import _state, freeze_judge, judge_alignment, register_judge, run_judge, split_labels
 from analysis.review_app import conversations as conv
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 INPUTS_PATH = REPO_ROOT / "analysis" / "state" / "hw5_trace_inputs.json"
+REPORT_DIR = REPO_ROOT / "analysis" / "report"
+JUDGE_MODEL = "gpt-4o-mini"
 MODES = ("unrequested_detail",)
+# Judge runs read the saved inputs, never live Langfuse, so every version sees the same records.
+os.environ.setdefault("CARTWHEEL_JUDGE_TRACE_SOURCE", str(INPUTS_PATH))
 
 
 def _hw5_labels(mode: str) -> dict[str, int]:
@@ -118,16 +125,70 @@ def split_data(mode: str) -> dict[str, list[str]]:
     return splits
 
 
+def _class_counts(mode: str, split: str) -> dict[str, int]:
+    ids = _state.read_json(_state.state_path("splits.json"))[mode][split]
+    labels = _hw5_labels(mode)
+    return {"pass": sum(labels[t] == 1 for t in ids), "fail": sum(labels[t] == 0 for t in ids)}
+
+
+def _save_metrics(name: str, metrics: dict[str, Any], **extra: Any) -> Path:
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    path = REPORT_DIR / f"{name}.json"
+    path.write_text(json.dumps({**metrics, **extra}, indent=2) + "\n")
+    return path
+
+
+def _print_metrics(m: dict[str, Any]) -> None:
+    print(f"TP {m['tp']}  FN {m['fn']}  TN {m['tn']}  FP {m['fp']}  (n={m['n']})")
+    print(f"TPR {m['tpr']:.3f}  95% Wilson {m['tpr_interval']}")
+    print(f"TNR {m['tnr']:.3f}  95% Wilson {m['tnr_interval']}")
+
+
+def run_development(mode: str, prompt_path: str) -> dict[str, Any]:
+    """Register a prompt version, run it on dev, and save its metrics."""
+    record = register_judge(mode=mode, prompt_text=Path(prompt_path).read_text(), judge_model=JUDGE_MODEL)
+    judge_id = record["judge_id"]
+    run_judge(judge_id, split="dev", batch_size=10)
+    metrics = judge_alignment(judge_id, split="dev")
+    path = _save_metrics(f"dev-{judge_id}", metrics, prompt_path=prompt_path, model=JUDGE_MODEL,
+                         prompt_hash=record["prompt_hash"], class_counts=_class_counts(mode, "dev"))
+    print(f"judge {judge_id} -> {path.relative_to(REPO_ROOT)}")
+    _print_metrics(metrics)
+    return metrics
+
+
+def run_test(judge_id: str) -> dict[str, Any]:
+    """Freeze the chosen version, run it once on test, and save its metrics.
+
+    Call once. To resume an interrupted test run, call run_judge and
+    judge_alignment directly; never freeze again.
+    """
+    freeze_judge(judge_id)
+    run_judge(judge_id, split="test", batch_size=10)
+    metrics = judge_alignment(judge_id, split="test")
+    mode = judge_id.rsplit("-v", 1)[0]
+    path = _save_metrics(f"test-{judge_id}", metrics, model=JUDGE_MODEL, class_counts=_class_counts(mode, "test"))
+    print(f"judge {judge_id} -> {path.relative_to(REPO_ROOT)}")
+    _print_metrics(metrics)
+    return metrics
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("prepare"); p.add_argument("mode", nargs="?", default=MODES[0])
     s = sub.add_parser("split"); s.add_argument("mode")
+    d = sub.add_parser("dev"); d.add_argument("mode"); d.add_argument("prompt_path")
+    t = sub.add_parser("test"); t.add_argument("judge_id")
     args = parser.parse_args()
     if args.command == "prepare":
         prepare_inputs(args.mode)
-    else:
+    elif args.command == "split":
         split_data(args.mode)
+    elif args.command == "dev":
+        run_development(args.mode, args.prompt_path)
+    else:
+        run_test(args.judge_id)
 
 
 if __name__ == "__main__":
