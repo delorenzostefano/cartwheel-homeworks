@@ -333,6 +333,33 @@ def escalate_to_human_logic(
 # ---------------------------------------------------------------------------
 
 
+POLICY_ID_NOTE = "internal key for get_policy; do not show to users"
+
+
+def _with_policy_citation(result: dict[str, Any]) -> dict[str, Any]:
+    """Add the title to cite next to every policy id the model reads.
+
+    Additive only: policy_id and title stay in place, so get_policy chaining
+    and anything that reads the tool output keep working.
+    """
+    def annotate(doc: dict[str, Any]) -> dict[str, Any]:
+        if "policy_id" in doc and "title" in doc:
+            return {**doc, "cite_as": doc["title"], "policy_id_note": POLICY_ID_NOTE}
+        return doc
+
+    if not result.get("ok"):
+        return result
+    if isinstance(result.get("results"), list):
+        return {
+            **result,
+            "results": [
+                annotate(doc) if isinstance(doc, dict) else doc
+                for doc in result["results"]
+            ],
+        }
+    return annotate(result)
+
+
 def _call(
     wrapper: RunContextWrapper[AuthContext], fn: Any, /, *args: Any
 ) -> dict[str, Any]:
@@ -341,7 +368,7 @@ def _call(
     except NotImplementedError as exc:
         result = {"ok": False, "error": "not_implemented", "reason": str(exc)}
     record_tool_result(wrapper.context, result)
-    return result
+    return _with_policy_citation(result)
 
 
 @function_tool
