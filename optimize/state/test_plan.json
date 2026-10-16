@@ -1,0 +1,34 @@
+{
+  "configurations": [
+    {
+      "configuration": 1,
+      "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+      "model": "claude-opus-5-5",
+      "name": "starting-version-model-1",
+      "parent": ""
+    },
+    {
+      "configuration": 2,
+      "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+      "model": "claude-sonnet-5-5",
+      "name": "starting-version-model-2",
+      "parent": ""
+    },
+    {
+      "configuration": 3,
+      "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+      "model": "claude-haiku-5-5",
+      "name": "starting-version-model-3",
+      "parent": ""
+    },
+    {
+      "configuration": 4,
+      "git_commit": "9e3041440cd32615ee3a955faa8faee15e109afd",
+      "model": "claude-haiku-5-5",
+      "name": "final-version-model-3",
+      "parent": "starting-version-model-3"
+    }
+  ],
+  "created_at": "2026-10-16T17:02:27.515353+00:00",
+  "plan_sha256": "035442ac9d167a87e6789f4df5e9f4e6e332be46e7d87423224c017d83325a42"
+}
