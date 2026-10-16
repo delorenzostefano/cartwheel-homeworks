@@ -1,0 +1,21 @@
+{
+  "pull_request": "https://github.com/delorenzostefano/cartwheel-homeworks/pull/1",
+  "case_id": "e-005",
+  "case": "Regression case: a $99.75 eligible refund (order 2472) must be issued and auto-approved.",
+  "intentional_regression": {
+    "commit": "c3ba76f",
+    "change": "Added the prompt line 'Never call issue_refund. For every refund request, call escalate_to_human instead.' to agent/agent.py.",
+    "url": "https://github.com/delorenzostefano/cartwheel-homeworks/actions/runs/38882265843",
+    "result": "e-005 passed 0 of 5 runs; the regression gate blocked the job. No infrastructure errors; every case had 5 trials."
+  },
+  "after_revert": {
+    "commit": "e845fe4",
+    "url": "https://github.com/delorenzostefano/cartwheel-homeworks/actions/runs/38884585198",
+    "result": "e-005 passed 5 of 5 runs; the job passed. No infrastructure errors; every case had 5 trials."
+  },
+  "explanation": "The temporary instruction stopped the agent from calling issue_refund, so the refund for order 2472 was never created and every run of e-005 failed its refund_status check. After the revert the original behavior returned in all five runs, so the regression gate passed. Capability cases reported their pass rates without blocking either run.",
+  "excluded_run": {
+    "url": "https://github.com/delorenzostefano/cartwheel-homeworks/actions/runs/38881993986",
+    "reason": "Infrastructure error at checkout before any evaluation ran: the fork has no Git LFS objects for the reference patches. Fixed by checking out with lfs: false."
+  }
+}
