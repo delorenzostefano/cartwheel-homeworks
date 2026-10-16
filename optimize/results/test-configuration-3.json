@@ -1,0 +1,196 @@
+{
+  "cached_fraction": 0.0,
+  "cached_input_tokens": 0,
+  "candidate": "starting-version-model-3",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "e-003",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #245 is queued_for_approval (saw [])",
+        "tool issue_refund called"
+      ],
+      "latencies_seconds": [
+        30.255,
+        15.9818,
+        35.1513,
+        28.6248,
+        15.4599
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by pulling up order 245 to check its details and refund eligibility before doing anything else.\nOrder 245 is a single unit at $212.50 and is marked refund-eligible. It doesn't show a duplicate charge by itself, so I'll check your other recent orders to find the second Woven Trowel Set order.\nThe order list shows only one Petal & Stem order with this product, order 245. I'll run a product-name search to make sure I'm not missing a second Woven Trowel Set order.\nI found only one Woven Trowel Set order on your account (order 245), so I can't yet confirm a second charge. Before I reply, I'll check Petal & Stem's return window, since the delivery was about four weeks ago and that affects what options you have.\nI found only one Woven Trowel Set order on your account, so I don't see a duplicate charge yet. Petal & Stem has a 30-day return window, and I'll check order 245's return eligibility and the help center's duplicate-charge guidance to see what options apply.\nI couldn't find a second Woven Trowel Set order on your account, so I can't confirm a duplicate from the order records. Any refund over $100 also needs a human agent to review it under cw-refunds, so I'll pass this to a human agent with the details so they can check the payment side.\nThe escalation call failed on a formatting error, so I'm resending it with the same details.\nI haven't issued a refund yet, because I can't find a duplicate order. I found only one Woven Trowel Set order on your account: order 245, $212.50, delivered June 1. I've sent the case to a human support agent (ticket 151), who can check your payment records for a second $212.50 charge. They should reach out within 24 hours.\n\nHere's what I found:\n\n- **Refund process:** Refunds over $100 need a human agent's review before they go through, per cw-refunds. Approved refunds go back to your original payment method in 5 to 10 business days.\n- **Return window:** Petal & Stem's return window is 30 days, with no restocking fee (cw-restocki",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by pulling up order 245 to check its details and refund eligibility before we do anything with the charge.\nOrder 245 is for one Woven Trowel Set at $212.50, and it's marked refund-eligible. Before refunding anything, I need to confirm which order is the duplicate. I'll search your orders for the trowel set to see whether there's a second order.\nThe search only finds order 245 for the Woven Trowel Set, so I don't yet see a second charge. I'll list all your recent orders to check for another Petal & Stem order that might be the duplicate.\nI didn't find a duplicate in your orders. Only order 245 is for the Woven Trowel Set, and your other Petal & Stem orders are for different items at different prices. I'll check Cartwheel's help center for how duplicate charges are handled so I can point you to the right steps.\nI couldn't find a duplicate order, so I haven't issued a refund.\n\nOrder 245 is the only Woven Trowel Set order on your account. It's a single $212.50 charge for one set, delivered June 1. Your other 19 orders are for different items at different prices, so none of them matches a second trowel set charge.\n\nHere's what I need from you to sort this out:\n\n- **If you have a second order number** from Petal & Stem, send it and I'll check it.\n- **If you see two $212.50 charges on your bank or card statement**, the second charge may not be tied to an order in our system. That's something a human agent needs to review, and I can escalate it for you.\n\nRefunds over $100 also need a human agent's approval before they go through, under Cartwheel's refund policy (cw-refunds). So even a confirmed duplicate would go to a person, and it would take 5 to 10 business days to reach your original payment method after approval. Disputes are also handled only by a human agent, and they can be opened for up to 60 days after delivery (cw-disputes).\n\nWhich would you like to do: send the second order number, or have me escalate the possible double charge now?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by pulling up order 245 to check its details and refund eligibility before anything else.\nOrder 245 is delivered, is a single unit at $212.50, and is marked refund eligible. Since you mentioned ordering twice, I'll check your other orders to find the duplicate before issuing any refund.\nOrder 245 is the only one I've found so far, so I'll search your orders by product name to check whether there's a second Woven Trowel Set order.\nI found only one Woven Trowel Set order on your account, order 245. Before deciding anything, I'll check Petal & Stem's return and refund terms so I can tell you what options exist.\nI found only one Woven Trowel Set order on your account, order 245, for one unit at $212.50. I don't see a duplicate charge, so I won't issue a refund for a second purchase that isn't in the records. I'll check whether order 245 is still inside its return window, since that's the other option if you want to send the set back.\nI'll check the help center's return policy so I can cite it accurately before I explain your options.\nThe help center snippet says refunds over $100 need human review, so I'll pull the full refund policy to confirm the details and cite it correctly.\nI couldn't find a duplicate order. Your account has only one Woven Trowel Set order, order 245, for one set at $212.50. Refunds are tied to order records, so I haven't issued one.\n\nIf you see two $212.50 charges on your card or bank statement, the second charge may not be attached to an order here. I can escalate that to a human agent to investigate. Refunds over $100 go to human review under cw-refunds, and approved refunds go back to your original payment method in 5 to 10 business days.\n\nYou have two other options:\n\n- **Return the set.** Petal & Stem's return window is 30 days, and the system marks order 245 as eligible. But it shows 0 days left, with the window ending July 1, 2026, so it may close today or may already have closed. The store charges no restocking fee.\n- **Open a di",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by pulling up order 245 to check its details and refund eligibility before we do anything with the charge.\nOrder 245 is a single Petal & Stem order for one Woven Trowel Set at $212.50, and it's marked refund eligible. Because the duplicate may be a separate order, I'll check your recent orders to confirm before issuing any refund.\nI found only one Woven Trowel Set order on your account, which is order 245. Before I decide anything, I'll check the return eligibility on that order so I can tell you what options exist for a delivered item.\nThe order list shows only one Woven Trowel Set, order 245, charged $212.50. I don't see a second charge, so I'll check the Petal & Stem return policy before we decide what to do.\nI found one Woven Trowel Set order on your account (245), and no second order that would explain a duplicate charge. I'll check the help center for the policy on duplicate charges before I say what happens next.\nI didn't find a second Woven Trowel Set order, so I can't see a duplicate charge in your records. The only charge I can see is the $212.50 for order 245. Since a refund over $100 needs human review (cw-refunds), I'll open a ticket so an agent can check your payment records for a second charge.\nI couldn't find a duplicate order on your account, so I haven't issued a refund. I found one Woven Trowel Set order (245, $212.50) and no second order that would explain a second charge.\n\nI've opened ticket 151 for a human agent, who should reply within 24 hours. I've asked them to check your payment records for a second $212.50 charge. If they find one, the refund goes back to your original payment method in 5 to 10 business days (cw-refunds). Refunds over $100 need a person's approval, so that step can't be automated.\n\nIf you can find a second Petal & Stem order confirmation or a second charge on your bank statement, send it to me and I'll add it to the ticket.\n\nOne time-sensitive thing: the store's 30-day return window for order 245 closes on July",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by pulling up order 245 to check its details and refund eligibility before we do anything with the charge.\nOrder 245 is refund-eligible and shows one Woven Trowel Set at $212.50, so this order itself doesn't look like the duplicate. I'll check your other recent orders to find the second purchase.\nThe order list doesn't show a second Woven Trowel Set. Before I conclude that, I'll search your orders by product name to make sure I haven't missed a second purchase.\nI found only one Woven Trowel Set on your account, order 245, so I can't confirm a duplicate yet. Before I reply, I'll search the help center for guidance on duplicate charges.\nI couldn't find a duplicate order, so I haven't issued a refund. Your account shows only one Woven Trowel Set, order 245 for $212.50, and I found no other order for that product.\n\nYour options:\n\n- **If you placed the second order under a different name or product**, send me its order number and I'll check it right away.\n- **If you see two charges on your bank statement but only one order here**, I can open a ticket for a human support agent to look into the charge. Please send the charge details or a screenshot if you have them.\n- **If you can't confirm the duplicate charge**, the dispute route is open. Under cw-disputes, you can dispute a charge up to 60 days after delivery, and disputes are always handled by a human agent. Order 245 was delivered June 1, so you're still within that window. Opening a dispute pauses any pending refund on the same order.\n\nIf we do find a duplicate and issue a refund, note that cw-refunds says refunds over $100 are reviewed by a human agent before they go through, so a refund of $212.50 would need that review. Refunds go back to your original payment method in 5 to 10 business days.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-005",
+      "expected_write": true,
+      "failure_modes": [],
+      "latencies_seconds": [
+        17.2777,
+        16.9359,
+        17.963,
+        20.7854,
+        21.4803
+      ],
+      "pass_rate": 1.0,
+      "passes": 5,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund is already done. I issued $99.75 for order #2472 in my last message under refund ID 575, so I won't issue another one. Issuing a second refund would double-refund you.\n\nIt goes back to your original payment method in 5 to 10 business days (cw-refunds). I can't speed that up.\n\nSince the reason was that the size was wrong, you may also want a different size instead of just your money back. I can't set up an exchange myself, but I can open a ticket for a human agent to look at that. Would you like me to do that?",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund for order 2472 was already approved in my last message: refund ID 575, $99.75, going back to your original payment method in 5 to 10 business days. Since the reason is now a wrong size, I'll check the full return policy to see whether you need to send the item back.\nYour refund is already done. Refund 575 for $99.75 was approved on order 2472 and is going back to your original payment method, which usually takes 5 to 10 business days. I can't issue a second refund for the same order, so there's nothing more to process right now.\n\nThe return policy (cw-returns) says items can be returned within 30 days of delivery, and they must be in the condition described in the store's listing. Your window runs through July 28. The policy doesn't say whether you need to ship the item back to get the refund, so I can't confirm that from here. If you want to know, I can escalate it to a human support agent.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund has already gone through, so I won't issue a second one. Refund 575 for $99.75 was processed in my last reply. Since the reason is a wrong size, I'll also check the return policy to see whether you need to send the item back.\nYour $99.75 refund for the Portable Card Game (refund ID 575) is already processed, so you don't need to request it again. It goes back to your original payment method in 5 to 10 business days.\n\nThe return policy (cw-returns) says items must be in the condition described by the store's listing, and that the 30-day window counts from delivery. It doesn't say whether you need to send the item back for a wrong-size refund, so I can't confirm return steps from it. If you want to return it or need instructions, I can open a ticket for a human support agent to follow up. If you'd rather get the correct size, I can search Little Fox Toys for the Portable Card Game in the size you need.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund is already done. Refund 575 for $99.75 was issued and approved automatically a moment ago, so I can't issue it again. I'll check the Cartwheel return policy to see whether you need to send the item back for a wrong-size case.\nYour refund is already done. Refund 575 for $99.75 was approved and issued automatically, so there's nothing more to process on the money side. It goes back to your original payment method in 5 to 10 business days, and I can't make the bank faster.\n\nThe Cartwheel return policy (cw-returns) says items bought on Cartwheel can be returned within 30 days of delivery. Your order was delivered on June 28, so you have until July 28. The item also needs to be in the condition described in the store's listing. The policy doesn't say how to ship a return or whether you need to send the item back, so I'd check the Little Fox Toys policy page for that.\n\nIf you want to swap it for a different size instead of keeping the refund, I can't set up an exchange myself. I can escalate that to a human support agent, who will follow up with you.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund for order 2472 was already issued in my last message (refund ID 575, $99.75), so there's nothing more to process for the refund itself. Since the item is the wrong size, I'll check Little Fox Toys' return rules to see whether you need to send the item back.\nThe order is already marked refunded, so the return-eligibility check shows \"not eligible\" for that reason. The store's return window is still open until July 28, 2026. I'll check the help center for how returns work when an item is the wrong size.\nYour refund is already done. It was issued earlier today as refund ID 575 for $99.75, and it goes back to your original payment method in 5 to 10 business days. I can't make the bank post it faster.\n\nAbout the wrong size: Cartwheel's return policy (cw-returns) allows returns within 30 days of delivery, and items must be in the condition described in the store's listing. Little Fox Toys has a 30-day return window, and it charges no restocking fee (its store policy sets the maximum at 0%). Since you received your delivery on June 28, the window runs through July 28, 2026.\n\nMy tools don't show whether you need to send the item back for this refund, or how to arrange a return. Do you want me to escalate this to a human agent so they can confirm the return steps with you?",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-007",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain 'cw-'"
+      ],
+      "latencies_seconds": [
+        8.7317
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'cw-'"
+          ],
+          "final_reply": "I'll look up your Vintage Olive Oil order and Golden Hour Coffee's return policy so I can check the return window.\nI found your order (#8207, delivered May 6). Golden Hour Coffee has a 30-day return window. I'll check the return eligibility for this order to confirm the exact dates.\nNo, the return window has closed. Your Vintage Olive Oil order (#8207) was delivered May 6, and the 30-day window ended June 5. Under policy cw-returns, the window counts from delivery.\n\nI can't approve an exception myself, but I can pass your case to a human agent if you'd like them to review it.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-010",
+      "expected_write": false,
+      "failure_modes": [
+        "judge:unrequested_detail"
+      ],
+      "latencies_seconds": [
+        3.5546
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "judge:unrequested_detail"
+          ],
+          "final_reply": "I'll look up order 5928's shipment tracking to see whether it has shipped and where it stands. I'll also pull the order record to confirm it belongs to your store.\nOrder 5928 has shipped and been delivered. It's from your store, Second Stitch Apparel (2 units, $564.00 total).\n\n- **Ordered:** September 27, 2025\n- **Shipped:** September 28, 2025 (ship-by date was September 30, so it left on time)\n- **Delivered:** October 2, 2025 (deliver-by date was October 7, so it wasn't late)",
+          "judge_reasons": {
+            "unrequested_detail": "{\n  \"critique\": \"The user (a merchant) asked one narrow question: whether order 5928 has shipped. The reply answers that with \\\"Order 5928 has shipped and been delivered,\\\" and the shipped/delivered dates directly support that answer. However, it also includes details the user did not ask for and that do not bear on whether the order shipped: \\\"It's from your store, Second Stitch Apparel (2 units, $564.00 total)\\\" adds the unit count and order total, and the parentheticals \\\"(ship-by date was September 30, so it left on time)\\\" and \\\"(deliver-by date was October 7, so it wasn't late)\\\" add ship-by/deliver-by dates and on-time commentary. These are unrequested order details and commentary beyond the shipped-or-not question.\",\n  \"result\": \"Fail\"\n}"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 0.429808,
+  "cost_usd": 0.051577,
+  "created_at": "2026-10-16T17:09:13.182458+00:00",
+  "evaluated_case_runs": 12,
+  "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+  "input_tokens": 334520,
+  "median_latency_seconds": 17.6204,
+  "model": "claude-haiku-5-5",
+  "output_tokens": 36250,
+  "price_date": "2026-10-16",
+  "prompt_sha256_12": "64ee12c975a5",
+  "schema_version": 1,
+  "score": 0.25,
+  "split": "test",
+  "test_plan_sha256": "035442ac9d167a87e6789f4df5e9f4e6e332be46e7d87423224c017d83325a42",
+  "write_pass_5": 0.5
+}

@@ -1,0 +1,189 @@
+{
+  "cached_fraction": 0.0,
+  "cached_input_tokens": 0,
+  "candidate": "final-version-model-3",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "e-003",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #245 is queued_for_approval (saw [])",
+        "tool issue_refund called"
+      ],
+      "latencies_seconds": [
+        12.6659,
+        11.3473,
+        18.0446,
+        9.832,
+        7.7832
+      ],
+      "pass_rate": 0.2,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up order 245 first to check its details and refund eligibility before doing anything with the refund.\nOrder 245 is marked refund eligible, but it's a single unit at $212.50. Since you mentioned ordering it twice, I'll search your orders for a second Woven Trowel Set to find the duplicate.\nI found only one Woven Trowel Set order, order 245. I'll check your full order list in case the second order is under a different name.\nI couldn't find a duplicate. Your account has only one Woven Trowel Set order, order 245, for $212.50, with a quantity of 1. It was delivered June 1. I haven't issued a refund, because refunding order 245 would mean refunding the set you received.\n\nTwo ways I can help:\n\n- **If you see a second $212.50 charge from Petal & Stem on your statement**, tell me. Since it isn't tied to an order in our system, I'd escalate it to a human agent to look into.\n- **If you want to return the set**, I can check whether order 245 is still inside its return window and what fee might apply.\n\nWhich one fits?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by pulling up order 245 to check its details and refund eligibility before I promise anything.\nOrder 245 is marked refund eligible. Before refunding, I want to confirm which order is the duplicate, so I'll search your orders for other Woven Trowel Set purchases.\nOnly order 245 shows up for the Woven Trowel Set, but you said you ordered it twice. I'll check your full order list for a second Petal & Stem order.\nI couldn't find a duplicate order, so I haven't issued a refund yet. Your account has only one Woven Trowel Set order, order 245 for $212.50, which was delivered on June 1. I'd rather not refund something that doesn't match a second order.\n\nHere are two ways forward:\n\n- **If you have a second order number** from Petal & Stem, send it and I'll check it right away.\n- **If your bank shows two $212.50 charges** but only one order exists here, I can open a ticket for a human agent to look into the extra charge. They'd follow up with you directly.\n\nIf you simply don't want the set, I can also check whether order 245 is still within its return window.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up order 245 first to check its details and refund eligibility before I do anything with the refund.\nOrder 245 is marked refund eligible for $212.50, so I'll issue a refund for that full amount now.\nThe refund for order 245 is queued for human review, but I need to check something. Order 245 is a single unit at $212.50, so I want to see whether you have a second Woven Trowel Set order that is the actual duplicate.\nThe search found only one Woven Trowel Set order, 245. Before I go further, I'll check your full order list for a second Petal & Stem order.\nI found no second Woven Trowel Set order on your account, and I should have checked that before issuing the refund. I'm escalating so a human can review refund 575 before it's approved.\nI've sent this to a human support agent, ticket 151, who should respond within 24 hours.\n\nHere's where things stand:\n\n- **Refund 575 for $212.50 is queued for human review.** It hasn't been approved or paid out yet.\n- **I couldn't find a duplicate.** Your account has only one Woven Trowel Set order, order 245. I issued the refund before checking that, which I should have done first. I'm sorry for the confusion.\n\nIf you did place a second Woven Trowel Set order, it may be under a different name or may not be in your account. If you can send me that order number or the confirmation email, I can check it and pass it along to the agent. Otherwise, the agent will review refund 575 and contact you about it.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up order 245 first to check its details and refund eligibility before deciding anything.\nOrder 245 is marked refund eligible for $212.50. Before I issue anything, I'll check your other orders for a second Woven Trowel Set, so I refund the right one.\nOrder 245 is the only Woven Trowel Set order that matches, and it's for quantity 1. I'll check your full order list for a second order before refunding anything, since refunding the wrong one would cost you the set you actually received.\nI couldn't find a duplicate. Order 245 is the only Woven Trowel Set on your account, and it's a single item. I checked your full order list, and no other order from Petal & Stem or for that product shows a second charge, so I haven't issued a refund.\n\nHere's how we can sort it out:\n\n- **If you see two $212.50 charges on your bank or card statement**, send me the second order number or the date of that charge. If I can't find a matching order, I can open a ticket for a human agent to look into the double charge.\n- **If you meant a different order**, tell me the order number or product name and I'll check it right away.\n- **If you want to keep the trowel set you received**, it's still yours and no action is needed.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up order 245 first to confirm its details and refund eligibility. I'll also search your orders for the Woven Trowel Set to check whether the duplicate is a separate order.\nOrder 245 is refund eligible and matches the $212.50 charge. The search found only this one Woven Trowel Set order, though, so I'll check your full order list for a second one before refunding anything.\nI couldn't find a duplicate order, so I haven't issued a refund. Your account has only one Woven Trowel Set order, order 245 for $212.50 from Petal & Stem. Your other orders are for different items.\n\nIf you were charged twice, the second charge may be on a separate order I can't see from here, or it may be a pending authorization that will drop off on its own. Could you check your bank or card statement for a second Petal & Stem charge and send me its order number or the amount? If you can't find one, I can open a ticket for a human agent to review your billing.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-005",
+      "expected_write": true,
+      "failure_modes": [],
+      "latencies_seconds": [
+        8.1559,
+        7.7854,
+        10.9265,
+        11.7668,
+        8.0999
+      ],
+      "pass_rate": 1.0,
+      "passes": 5,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund is already processed. I issued $99.75 for order 2472 earlier, and it was auto-approved under refund reference 575. I won't issue it again, since that would refund you twice.\n\nIt goes back to your original payment method in 5 to 10 business days, and I can't speed that up. If it hasn't arrived after 10 business days, let me know and I can open a ticket for a human agent to look into it.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund is already done. I issued $99.75 for order 2472 (the Portable Card Game from Little Fox Toys) earlier, and it was approved. Refund reference 575 is on its way to your original payment method, which usually takes 5 to 10 business days. I haven't issued a second refund, so you won't be charged or refunded twice.\n\nWould you like me to check whether the item needs to be sent back? Or, if you'd rather have the right size, I can look at that instead.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "The refund is already done: $99.75 went out under refund 575 for order 2472, so I won't issue a second one. Since the reason is a wrong size, I'll check Little Fox Toys' return details to see whether you need to send the item back.\nYour refund for the wrong size is already processed, so you don't need to do anything else to get the $99.75 back. It goes to your original payment method within 5 to 10 business days.\n\nLittle Fox Toys accepts returns within 30 days and doesn't charge a restocking fee. If you want to send the card game back as well, I can check your return eligibility for order 2472.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund for this order was already processed in my last message (refund 575, $99.75), so there's nothing more to issue. Before I answer whether you need to send the item back, I'll check the return eligibility for order 2472, since a wrong-size item may fall under a different process.\nYour refund is already done: $99.75 for order 2472, refund 575. It goes back to your original payment method in 5 to 10 business days. I can't issue a second refund for the same order.\n\nYour order is still inside the 30-day return window, which ends July 28, and there's no restocking fee. However, the system shows the order as already refunded, so I can't start a return here. If you want to send the card game back for a different size, or get the right size, I can pass this to a human support agent to arrange it. Would you like me to do that?",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund is already done. On your earlier request I issued a $99.75 refund for order 2472 (refund ID 575), and it was approved. It goes back to your original payment method in 5 to 10 business days.\n\nI won't issue a second refund, since that would pay you back twice. If you'd like help with anything else on this order, such as getting the right size, I can open a ticket for a human agent.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-007",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        4.0732
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up your Vintage Olive Oil order and Golden Hour Coffee's return terms, so I can check whether 8 weeks is still inside the window.\nNo, the return window has closed. Golden Hour Coffee accepts returns within 30 days of delivery, and your Vintage Olive Oil was delivered on May 6, about 8 weeks ago. If the item arrived damaged or wrong, I can open a ticket for a human agent to review.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-010",
+      "expected_write": false,
+      "failure_modes": [
+        "judge:unrequested_detail"
+      ],
+      "latencies_seconds": [
+        5.235
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "judge:unrequested_detail"
+          ],
+          "final_reply": "I'll check the shipment status for order 5928, since that will show whether it has shipped.\nOrder 5928 shows as delivered. Before I give you the details, I'll pull the order record to confirm it belongs to Second Stitch Apparel's store.\nYes, order 5928 has shipped. It went out on September 28, 2025, and was delivered on October 2, 2025. It arrived on time.",
+          "judge_reasons": {
+            "unrequested_detail": "{\"critique\": \"The user (a merchant) asked one narrow question: whether order 5928 has shipped. The final reply answers it: \\\"Yes, order 5928 has shipped. It went out on September 28, 2025, and was delivered on October 2, 2025.\\\" The shipped date and delivered date describe the shipment status the user asked about, so they are allowed. However, the sentence \\\"It arrived on time.\\\" adds a punctuality/lateness assessment the user did not ask for and that is not needed to answer shipped-or-not, so it is unrequested detail.\", \"result\": \"Fail\"}"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 0.222794,
+  "cost_usd": 0.026735,
+  "created_at": "2026-10-16T17:11:13.419337+00:00",
+  "evaluated_case_runs": 12,
+  "git_commit": "9e3041440cd32615ee3a955faa8faee15e109afd",
+  "input_tokens": 182373,
+  "median_latency_seconds": 8.994,
+  "model": "claude-haiku-5-5",
+  "output_tokens": 16996,
+  "price_date": "2026-10-16",
+  "prompt_sha256_12": "717fa03bf00f",
+  "schema_version": 1,
+  "score": 0.55,
+  "split": "test",
+  "test_plan_sha256": "035442ac9d167a87e6789f4df5e9f4e6e332be46e7d87423224c017d83325a42",
+  "write_pass_5": 0.5
+}

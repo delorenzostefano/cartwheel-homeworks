@@ -1,0 +1,192 @@
+{
+  "cached_fraction": 0.0,
+  "cached_input_tokens": 0,
+  "candidate": "starting-version-model-2",
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "e-003",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #245 is queued_for_approval (saw [])",
+        "tool issue_refund called"
+      ],
+      "latencies_seconds": [
+        2.2894,
+        1.1179,
+        1.0816,
+        1.2581,
+        1.214
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #245 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-005",
+      "expected_write": true,
+      "failure_modes": [],
+      "latencies_seconds": [
+        13.3796,
+        13.6652,
+        11.9896,
+        18.6402,
+        17.7875
+      ],
+      "pass_rate": 1.0,
+      "passes": 5,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund has already been processed, so you don't need to ask again. I approved it in my last message, and the reason doesn't change anything.\n\n- **Order:** #2472, Portable Card Game\n- **Amount:** $99.75\n- **Refund ID:** 575\n- **Status:** Approved\n\nI can't make the money arrive faster. The refund goes back to your original payment method, and your bank usually takes 5 to 10 business days to post it (cw-refunds). If it hasn't shown up after 10 business days, message me with the refund ID and I'll escalate it to a human agent.\n\nI can also look up how returning the item works, or find a different size from Little Fox Toys, if you'd like.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund is already done, so you don't need to ask again. It was approved immediately in my last message.\n\n- **Refund ID:** 575\n- **Amount:** $99.75, for order 2472\n- **Arrival:** The money goes back to your original payment method within 5 to 10 business days (cw-refunds). I can't make it arrive faster, because that part depends on your bank or card issuer.\n\nI'm sorry the size was wrong. I've noted that as the reason. I can't issue a second refund for the same order.\n\nIf you want, I can look for the right size in Little Fox Toys' catalog.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Thanks for telling me why. Your refund has already gone through, so there's nothing more to process. The $99.75 for order 2472 was approved a moment ago (refund ID 575), and a second refund isn't possible.\n\nThe only wait left is the bank. Refunds reach your original payment method in 5 to 10 business days (cw-refunds). I can't make that part faster.\n\nIf you want the right size instead, I can look for it in Little Fox Toys' catalog. Would you like me to do that?",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund has already gone through, so there's nothing more to process. The wrong size doesn't change anything. Refund 575 for $99.75 was approved right away and is on its way to your original payment method.\n\nThe only wait left is on the bank's side. Refunds usually show up within 5 to 10 business days (cw-refunds), and I can't speed that up from here.\n\nI also need to correct my last message. I cited cw-returns for the return window and the no-fee detail, but those came from your order and the store's record, not from that policy document. The details are right: 30 days, with no restocking fee at Little Fox Toys.\n\nIf you'd like the right size instead, I can look for it in the store's catalog. Would that help?",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "Your refund was already issued in my last message, so there's nothing left to process. I'll check whether the item needs to be sent back, since you said it's the wrong size.\nYour refund is already done, so you don't need to ask again. It's refund ID 575 for $99.75, and I can't make the money arrive faster than the 5 to 10 business days (cw-refunds). Asking twice won't create a second refund.\n\nSince it's the wrong size, the item should be in the condition the store's listing describes (cw-returns). The help center doesn't give me return-shipping steps, so I won't guess at them. If you'd like, I can pass this to a human agent to confirm whether the store wants the item sent back and how to do it.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-007",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain 'cw-'"
+      ],
+      "latencies_seconds": [
+        8.5504
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'cw-'"
+          ],
+          "final_reply": "I'll look up your orders to find the Vintage Olive Oil purchase, and check Golden Hour Coffee's return policy at the same time.\nI'll check the return eligibility for order 8207 to confirm the window.\nI'll look up the return policy so I can cite it.\nNo, it's too late to return it. Golden Hour Coffee uses the standard 30-day return window, which starts on the delivery date (cw-returns). Your order (#8207) was delivered May 6, so the window closed June 5.\n\nIf something is wrong with the item, like damage or a wrong item, I can send this to a human agent to review. Do you want me to do that?",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-010",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        1.515
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "",
+          "judge_reasons": {
+            "unrequested_detail": "{\"critique\":\"The trace contains no user message and no assistant final reply \u2014 only a header line \\\"Agent reply:\\\" followed by a note that no policy documents were retrieved. There is no final reply text to assess for unrequested detail, so there is nothing that violates RESP-6.\",\"result\":\"Pass\"}"
+          },
+          "passed": true
+        }
+      ],
+      "runs": 1
+    }
+  ],
+  "cost_per_100_conversations_usd": 2.7327,
+  "cost_usd": 0.327924,
+  "created_at": "2026-10-16T17:05:15.990347+00:00",
+  "evaluated_case_runs": 12,
+  "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+  "input_tokens": 134892,
+  "median_latency_seconds": 5.4199,
+  "model": "claude-sonnet-5-5",
+  "output_tokens": 5814,
+  "price_date": "2026-10-16",
+  "prompt_sha256_12": "64ee12c975a5",
+  "schema_version": 1,
+  "score": 0.5,
+  "split": "test",
+  "test_plan_sha256": "035442ac9d167a87e6789f4df5e9f4e6e332be46e7d87423224c017d83325a42",
+  "write_pass_5": 0.5
+}
