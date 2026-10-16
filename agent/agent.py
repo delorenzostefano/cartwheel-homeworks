@@ -348,7 +348,7 @@ def _call(
 def search_help_center(
     wrapper: RunContextWrapper[AuthContext], query: str
 ) -> dict[str, Any]:
-    """Search Cartwheel's help-center policy docs. Returns top matches with policy ids."""
+    """Search Cartwheel's help-center policy docs. Returns top matches with title and policy_id. policy_id is an internal key for get_policy; refer to the policy by its title in replies."""
     return _call(wrapper, search_help_center_logic, query)
 
 
@@ -385,7 +385,7 @@ def escalate_to_human(
 
 @function_tool
 def get_policy(wrapper: RunContextWrapper[AuthContext], policy_id: str) -> dict[str, Any]:
-    """Fetch the full text of one policy doc by its exact policy id."""
+    """Fetch the full text of one policy doc by its exact policy_id (an internal key; never show it to the user, use the title)."""
     return _call(wrapper, hw_tools.get_policy, policy_id)
 
 
@@ -455,7 +455,7 @@ def order_history_summary(
 def get_store_info(
     wrapper: RunContextWrapper[AuthContext], store: str
 ) -> dict[str, Any]:
-    """Look up a store by name or slug: category, return window, restocking fee, and its policy id"""
+    """Look up a store by name or slug: category, return window, and restocking fee"""
     return _call(wrapper, hw_tools.get_store_info, store)
 
 @function_tool
