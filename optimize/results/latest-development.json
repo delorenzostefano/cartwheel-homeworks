@@ -1,0 +1,399 @@
+{
+  "cached_fraction": 0.0,
+  "cached_input_tokens": 0,
+  "candidate": "starting",
+  "case_count": 9,
+  "cases": [
+    {
+      "case_id": "e-001",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #1749 is queued_for_approval (saw [])",
+        "tool issue_refund called"
+      ],
+      "latencies_seconds": [
+        18.7166,
+        12.9292,
+        14.2988,
+        14.1042,
+        16.1788
+      ],
+      "pass_rate": 0.2,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1749 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by finding your Clover Field Naturals order for the travel bath salts so I can check its details and refund eligibility.\nI found one matching order, #1749, for $278.00, delivered June 22. Next I'll pull the full order record and the Clover Field Naturals return policy to check eligibility for a damage claim.\nClover Field Naturals has a 30-day return window with no restocking fee, and your order was delivered 9 days ago, so it's inside that window. Next I'll check the help center for how damaged-item refunds are handled.\nThe search shows refunds over $100 go to a human agent for review. I'll read the full refund policy to confirm the details before I act.\nYour order is eligible, but the $278 refund is above the $100 auto-approval limit in cw-refunds, so a human agent has to review it. I'll send it to the support team with the details.\nI'm sorry the travel bath salts arrived damaged. I've passed your request for a full $278.00 refund on order #1749 to a human support agent, ticket #151. Because the amount is over $100, a person has to approve it before any money moves, and they should follow up within 24 hours.\n\nUnder cw-refunds, approved refunds go back to your original payment method and usually arrive in 5 to 10 business days. Clover Field Naturals has a 30-day return window with no restocking fee, so you're well within it.\n\nIf you can, send photos of the damage to the agent, since that may speed up the review. Is there anything else I can help you with?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1749 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up your Clover Field Naturals order for the travel bath salts so I can check its details and refund eligibility.\nI found one matching order, 1749, for $278.00, delivered June 22. Next I'll pull the full order record to confirm refund eligibility, and check the store's return policy.\nOrder 1749 is marked refund-eligible, and the store has a 30-day return window with no restocking fee. Next I'll check the return eligibility details and the returns policy for damaged items.\nThe refund policy says refunds over $100 go to human review, so I'll read the full policy to confirm the details before I do anything.\nOrder 1749 is $278, which is above the $100 auto-approval limit in cw-refunds. That means a human agent has to review it before any money moves. I'll open an escalation with the details so the refund can be reviewed.\nI've opened ticket 151 with a human support agent to review your $278.00 refund for order 1749. They should follow up within 24 hours.\n\nYour order passed the eligibility check. It was delivered June 22, and the return window at Clover Field Naturals runs 30 days, through July 22. The store charges no restocking fee. Under Cartwheel's refund policy (cw-refunds), refunds over $100 need a human to approve them before any money moves. Once approved, the refund goes back to your original payment method within 5 to 10 business days.\n\nTo help the reviewer, it would be useful if you could send photos of the damaged salts and the packaging. Reply here with them, and I'll add them to the ticket.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'm going to look up your travel bath salts order so I can check its details and refund eligibility.\nI found your order for the travel bath salts (order 1749). Next I'll pull the full order record and the store's return policy, since the refund depends on both.\nYour order is marked refund-eligible, and Clover Field Naturals has a 30-day return window with no restocking fee. Next I'll read the returns policy to see how damaged items are handled.\nYour order is inside the 30-day window, which counts from delivery (cw-returns). Next I'll check the return eligibility record for any restocking fee or other conditions before issuing anything.\nYour order is eligible for a full refund: it's inside the 30-day window (ends 2026-07-22), and the store charges no restocking fee. I'll issue a refund of the full $278 for the damaged item.\nYour refund of $278.00 for order 1749 has been submitted, but it isn't confirmed yet. Because it's above our $100 auto-approval limit, a human support agent will review it and follow up with you.\n\nYour order is inside the 30-day return window, which runs to July 22, 2026 (cw-returns). Clover Field Naturals charges no restocking fee. Refund reference: 575.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1749 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up your Clover Field Naturals order for the travel bath salts so I can check its details and refund eligibility.\nI found one matching order, #1749, for $278.00, delivered on June 22. Next I'll pull the full order record to confirm its refund eligibility before we talk about amounts.\nOrder #1749 from Clover Field Naturals is marked refund-eligible. Next I'll check this store's return policy for damaged items and any restocking fee, so I can tell you the right amount.\nOrder #1749 is inside the 30-day return window, which ends July 22, and this store charges no restocking fee. Next I'll check the help center for how damaged-on-arrival items are handled, so I can cite the right policy.\nOrder #1749 is for $278.00, which is above the $100 automatic-refund limit. Under cw-refunds, refunds over $100 go to a human support agent for review before any money moves, so I'll send your request to one.\nI've sent your request to a human support agent (ticket #151). Here's where things stand:\n\n- **Order #1749:** travel bath salts from Clover Field Naturals, $278.00, delivered June 22.\n- **Eligibility:** The order is inside the store's 30-day return window, which ends July 22. The store charges no restocking fee.\n- **Next step:** Under cw-refunds, refunds above $100 must be reviewed by a human before any money moves. Because your refund is $278, a human agent will review the damage report and follow up within about 24 hours.\n- **Once approved:** The refund goes back to your original payment method and usually arrives in 5 to 10 business days.\n\nIt would help the agent if you can reply with a few photos of the damaged jar or packaging, if you still have them. Those can speed up the review.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1749 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up your Clover Field Naturals order for the travel bath salts so I can check its refund eligibility.\nI found one order for travel bath salts, #1749. Next I'll pull up the full order record to confirm its refund eligibility before we talk about any amount.\nOrder #1749 is marked refund-eligible. Next I'll check Clover Field Naturals' return policy to see how damaged items are handled and whether a full refund applies.\nThe store's return window is 30 days with no restocking fee, and your order was delivered on June 22. Next I'll check the return eligibility record and the help center's damaged-item policy.\nThe refund policy says refunds above $100 go to human review, and your $278 order is above that. I'll read the full policy to confirm the details before I do anything.\nYour order is eligible, and the full $278 is above the $100 auto-approval limit in cw-refunds, so a human agent needs to review it. I'll send it to them now with the details.\nI've sent your request to a human support agent, ticket #151. They'll follow up within 24 hours.\n\nHere's what I found:\n- **Order #1749** (travel bath salts, $278.00) was delivered June 22 and is still inside the 30-day return window, which ends July 22.\n- Clover Field Naturals charges no restocking fee, so the full amount is possible.\n- Under cw-refunds, any refund over $100 needs a human to approve it before money moves. That's why I couldn't approve it myself.\n- If it's approved, the money goes back to your original payment method in 5 to 10 business days.\n\nIt would help the agent if you have a photo of the damaged jars or packaging and a short description of the damage. You can reply here to add them to your case. I can't promise the full amount will be approved, since the agent will review the damage first.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-002",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #3568 is queued_for_approval (saw [])",
+        "tool issue_refund called"
+      ],
+      "latencies_seconds": [
+        14.1814,
+        12.401,
+        13.8426,
+        14.6705,
+        15.1809
+      ],
+      "pass_rate": 0.4,
+      "passes": 2,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #3568 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by searching your orders for the Classic Screwdriver Set so I can find the right purchase and check its refund eligibility.\nI found one matching order, 3568, for $129.50, marked as delivered. Before I talk about any refund, I'll pull the full order record to confirm its refund eligibility.\nOrder 3568 from Copperline Tools is marked refund-eligible. Next I'll check its return window and any restocking fee, since a fee could change the refund amount.\nOrder 3568 is inside its 30-day return window, which ends July 9, 2026, and Copperline Tools charges no restocking fee. Next I'll check the help center's returns policy so I can cite it accurately.\nThe search shows that refunds over $100 go to a human reviewer under cw-refunds. I'll pull the full policy to confirm the details before I go further.\nYour order is eligible, but the $129.50 refund is above the $100 limit for automatic refunds. Under cw-refunds, refunds over $100 go to a human reviewer before any money moves. I'll open a ticket so a human support agent can review and approve it.\nYour order is eligible for a full refund, but I can't approve it myself because it's above $100. I've opened ticket 151 for a human support agent, who should follow up within 24 hours.\n\nHere's what I checked:\n- **Order 3568**: Classic Screwdriver Set from Copperline Tools, $129.50, delivered June 9, 2026.\n- **Return window**: 30 days under the Copperline Tools store policy, ending July 9, 2026. You have 8 days left, so please don't wait much longer.\n- **Restocking fee**: none.\n\nOnce the agent approves it, the refund goes back to your original payment method under cw-refunds, usually within 5 to 10 business days. I haven't issued any refund yet.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up your order for the Classic Screwdriver Set so I can check its refund eligibility before anything else.\nI found your order for the Classic Screwdriver Set (order 3568, $129.50, delivered June 9). Next I'll pull up the full order record to confirm its refund eligibility before issuing anything.\nOrder 3568 from Copperline Tools is marked refund-eligible and was delivered June 9. Before I issue a refund, I'll check the store's return window and restocking fee, since those can affect the amount.\nOrder 3568 is eligible: it's within the 30-day return window (8 days left) and Copperline Tools charges no restocking fee. I'll check the help center's returns policy so I can cite it correctly before issuing the refund.\nOrder 3568 is eligible and Copperline Tools charges no restocking fee, so I'll issue the full $129.50 refund. Under Cartwheel's restocking fee policy (cw-restocking-fees), unopened items are never charged a fee, and Copperline hasn't opted in to one anyway.\nYour refund of $129.50 for order 3568 is submitted, but it isn't issued yet. Because it's above the $100 auto-approval limit, a human support agent has to approve it first (refund ID 575). I don't have a timeline for their review, so I can't say exactly when the money will reach you.\n\nYour order is within the return window, which ends July 9, 2026. Copperline Tools charges no restocking fee, so you should get the full amount. The restocking fee policy is cw-restocking-fees.\n\nI haven't checked the return steps for this order, such as whether you need to ship the set back. If you tell me you're returning it, I can look into that next.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll start by finding your Classic Screwdriver Set order so I can check its details and refund eligibility.\nI found your order (3568) for the Classic Screwdriver Set at $129.50. Next I'll pull the full order record to confirm its refund eligibility before I promise anything.\nOrder 3568 from Copperline Tools is marked refund eligible. Before issuing anything, I'll check the return window and any restocking fee, since those could change the refund amount.\nOrder 3568 is eligible, the return window runs until 2026-07-09, and Copperline Tools charges no restocking fee. Next I'll check the returns policy in the help center so I can cite it for the refund.\nOrder 3568 is eligible, Copperline Tools charges no restocking fee (cw-restocking-fees allows fees only where a store opts in), and the full $129.50 is available. I'll issue the refund for the full amount now.\nYour refund of $129.50 for order 3568 has been submitted, but it isn't approved yet. Refunds over $100 need a human support agent's sign-off, so it's queued as refund 575 and someone will review it.\n\nOrder 3568 is inside the 30-day return window, which runs until July 9, 2026. Copperline Tools doesn't charge a restocking fee, so you'll get the full amount. Under the Cartwheel restocking fee policy (cw-restocking-fees), fees apply only where a store has opted in.\n\nOne correction: the refund note says the item was \"returned,\" but I don't know whether you've sent it back yet. I haven't checked the return shipping steps. I can look those up in the returns policy (cw-returns) if you'd like, so you know what to do with the screwdriver set.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #3568 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up your order for the Classic Screwdriver Set so I can check its refund eligibility before doing anything else.\nI found one matching order, 3568, for $129.50. Next I'll pull the full order record and check its refund eligibility before I promise anything.\nOrder 3568 is eligible: it was delivered June 9 and the return window runs through July 9, with no restocking fee. Next I'll check Copperline Tools' return policy so I can cite it correctly.\nCopperline Tools has a 30-day return window with no restocking fee. Next I'll search the help center for the returns policy so I can cite its ID.\nThe search shows that refunds above $100 go to a human agent for review. I'll read the full refund policy to confirm the details before I act.\nYour refund is $129.50, which is above the $100 limit I can approve on my own. Under cw-refunds, refunds over $100 go to a human support agent before any money moves. I'll open a ticket for a human to review it.\nYour order is eligible for a full refund, but I can't approve $129.50 myself. I've sent it to a human support agent (ticket 151), who should follow up within 24 hours.\n\n- **Eligibility:** Order 3568 was delivered June 9. Copperline Tools has a 30-day return window, so it's open until July 9, and there's no restocking fee.\n- **Why a human is involved:** Under the Cartwheel refund policy (cw-refunds), refunds over $100 are reviewed by a human agent before any money moves. Yours is $129.50.\n- **What happens next:** Once approved, the refund goes back to your original payment method in 5 to 10 business days.\n\nI haven't issued the refund yet, so please wait for the agent's follow-up rather than starting a new return.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #3568 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by finding your Classic Screwdriver Set order so I can check its details and refund eligibility.\nI found one matching order, 3568, for $129.50, delivered June 9. Before I can offer a refund, I need to confirm its refund eligibility, so I'm looking up the full order record now.\nOrder 3568 is marked refund-eligible. Before I process anything, I want to check the return window and any restocking fee for Copperline Tools, since those can change the final amount.\nThe order is inside its 30-day return window, which closes July 9, and Copperline Tools charges no restocking fee. Next I'm checking the help center's returns policy so I can cite it correctly before the refund goes through.\nThe search shows the Cartwheel refund policy (cw-refunds) sends refunds over $100 to a human agent. Your $129.50 refund is over that, so I'm pulling the full policy text to confirm the details before I decide how to proceed.\nYour refund is $129.50, which is above the $100 auto-approval limit in cw-refunds. That means a human agent has to review it, so I'm opening a ticket for them now with the order details.\nI've sent your request to a human support agent, ticket 151, for the full $129.50 refund on order 3568 (Classic Screwdriver Set). I haven't issued the refund myself because the amount is over the $100 limit that lets me approve refunds automatically.\n\nHere's what I checked:\n- **Order 3568** is delivered (June 9) and marked refund-eligible.\n- **Return window:** 30 days under the Cartwheel default, ending July 9. You have 8 days left.\n- **Restocking fee:** Copperline Tools charges none.\n- **Refund timing:** Once approved, the money goes back to your original payment method in 5 to 10 business days (cw-refunds).\n\nA human agent should follow up within 24 hours. Please keep the item until the refund is approved, and check the return window before July 9. If you want, I can also look up the return steps for this order.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-004",
+      "expected_write": true,
+      "failure_modes": [
+        "refund for #1082 is queued_for_approval (saw [])",
+        "tool issue_refund called"
+      ],
+      "latencies_seconds": [
+        15.161,
+        14.3904,
+        13.517,
+        13.1229,
+        14.4162
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by finding your Everyday Atlas order so I can check its details and refund eligibility.\nI found your Everyday Atlas order (#1082, $104.25). Next I'll pull the full order record and the Northwind Books return rules, so I can confirm whether a change-of-mind refund is allowed.\nNorthwind Books has a 45-day return window and no restocking fee. Next I'll check the return eligibility for order #1082 to see whether it's still inside that window.\nYour order is still inside the return window, with about 4 days left, and Northwind Books charges no restocking fee. Before I issue anything, I'll check the help center's return policy so I can cite it correctly.\nYour refund is $104.25, which is above $100, so I'll read the full refund policy and the Northwind Books store policy to confirm the approval process.\nYour order is eligible, but the $104.25 amount is above the $100 auto-approval limit, so a human agent has to review it. I'll open an escalation with the details so they can process the refund.\nI've sent your refund request to a human support agent (ticket #151). Your order is eligible, but because $104.25 is over $100, a person has to approve it before any money moves. Expect a response within about 24 hours.\n\nHere's what I checked:\n- **Return window:** Northwind Books accepts returns within 45 days of delivery (`store-northwind-books-policy`). Your order was delivered May 21, so the window closes July 5. That's about 4 days from now, so please keep an eye out for the agent's reply.\n- **Restocking fee:** Northwind Books charges none (its maximum is 0%, and that applies to opened items only).\n- **Refund timing:** Approved refunds go back to your original payment method and usually arrive in 5 to 10 business days (`cw-refunds`).\n\nI haven't issued the refund myself, and I can't guarantee the outcome, but the agent has everything they need. If you hear nothing within a day, reply here and I can check on the ticket.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up your order for the Everyday Atlas so I can check its refund eligibility before we go further.\nI found your order (#1082) for the Everyday Atlas, $104.25, delivered May 21. Next I'll check the order's refund eligibility and its return window, since the return terms depend on the store's policy.\nYour order is eligible: the return window is 45 days and ends July 5, 2026, with 4 days left, and there's no restocking fee. I'll pull Northwind Books' store info to get the policy id for the return terms.\nThe store info doesn't include a policy id, so I'll search the help center for Northwind Books' return policy to cite.\nYour order is within the 45-day Northwind Books window (store-northwind-books-policy). The refund amount is $104.25, which is over $100, so I'll check the full Cartwheel refund policy to see how over-$100 refunds are handled.\nYour order is eligible, but the $104.25 refund is over the $100 automatic limit. Under cw-refunds, refunds above $100 go to a human agent for review before any money moves, so I'll open a ticket for that now.\nYour order is eligible for a refund, but because the amount is over $100, a human support agent has to approve it before any money moves. I've opened ticket #151 with the details.\n\n- **Order:** #1082, Everyday Atlas from Northwind Books, $104.25\n- **Return window:** Northwind Books accepts returns within 45 days of delivery (store-northwind-books-policy). Your window ends July 5, 2026, so you have about 4 days left.\n- **Restocking fee:** None.\n\nA human agent should follow up within 24 hours. Once approved, the refund goes back to your original payment method and usually arrives in 5 to 10 business days (cw-refunds). Please send the item back before the window closes, and keep an eye out for return instructions from the agent.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by looking through your recent orders to find the Everyday Atlas purchase from Northwind Books.\nI see one order for $104.25 (order 1082), placed about six weeks ago. I'll check that it's the Everyday Atlas from Northwind Books, and pull its details and refund eligibility.\nOrder 1082 is from Northwind Books, $104.25, and the system marks it as refund-eligible. Next I'll check the return window and any restocking fee for this store.\nNorthwind Books has a 45-day return window with no restocking fee. The window ends July 5, so you have 4 days left. Before I issue anything, I'll check the returns policy in the help center.\nI'll read the full Northwind Books and Cartwheel refund policies so I can confirm the exact terms before I act.\nYour order is $104.25, which is above the $100 threshold for automatic refunds. Under cw-refunds, refunds over $100 go to a human support agent for review before any money moves. I'll send your request to a human agent now, and I'll flag that the return window closes in 4 days.\nI've sent your request to a human support agent (ticket 151). Here's where things stand:\n\n- **Order:** 1082, Everyday Atlas from Northwind Books, $104.25, delivered May 21.\n- **Eligibility:** Northwind Books accepts returns within 45 days of delivery (store-northwind-books-policy). Your window closes **July 5, 2026**, so you have 4 days left. There's no restocking fee.\n- **Next step:** Because the refund is over $100, cw-refunds requires a human agent to approve it before any money moves. The agent should respond within about 24 hours.\n- **If approved:** The refund goes back to your original payment method and usually arrives in 5 to 10 business days.\n\nSince the window is closing soon, I'd suggest you also keep an eye out for a reply from the support team in the next day or so. Is there anything else I can help with?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up your Everyday Atlas order so I can check its refund eligibility.\nI found your order (#1082, $104.25, delivered May 21). Next I'll pull the full order record and Northwind Books' return policy to confirm the refund terms.\nYour order is inside Northwind Books' return window, which closes in 4 days. Next I'll check Cartwheel's return policy so I can cite it correctly.\nYour refund is $104.25, which is above the $100 auto-approval limit, so I'll read the full refund policy to confirm how large refunds are handled.\nYour refund is $104.25, which is above the $100 limit I can approve myself, so I'll pass it to a human support agent. Since the return window closes in 4 days, I'll flag that as urgent.\nI've passed your refund request to a human support agent, since $104.25 is above the $100 limit I can approve myself. I haven't issued the refund yet.\n\n- **Order:** #1082, Everyday Atlas from Northwind Books, $104.25, delivered May 21\n- **Eligibility:** Northwind Books accepts returns within 45 days of delivery (store-northwind-books-policy). That's longer than the usual 30 days, and your order is still within it.\n- **Deadline:** The window closes July 5, which is 4 days from now. I've marked the ticket as time-sensitive.\n- **Restocking fee:** Northwind Books charges none.\n- **Next steps:** A human agent should respond within 24 hours (ticket #151). Under cw-refunds, approved refunds go back to your original payment method within 5 to 10 business days.",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll start by finding your Everyday Atlas order so I can check its details and refund eligibility.\nI found your Everyday Atlas order (#1082, $104.25). Next I'll pull the full order record and its return eligibility to see whether a refund for a change of mind is possible.\nYour order is still inside its return window, which closes on July 5, 2026, with 4 days left. Next I'll check the help center for Northwind Books' return policy so I can confirm the terms for a change-of-mind return.\nYour order is within Northwind Books' 45-day return window (`store-northwind-books-policy`). Because your refund is above $100, I also need to check how large refunds are handled, so I'll pull the full Cartwheel refund policy.\nYour order is eligible and the return window closes July 5, 2026. Because the refund is $104.25, which is above the $100 automatic limit, a human agent needs to approve it. I'll open a ticket for them with the order details.\nI've opened a ticket (#151) for a human agent to approve your refund. They should get back to you within 24 hours.\n\n- **Order:** #1082, Everyday Atlas from Northwind Books, $104.25\n- **Return window:** Northwind Books accepts returns within 45 days of delivery (`store-northwind-books-policy`). Your window closes **July 5, 2026**, with about 4 days left, so please keep an eye on that date.\n- **Restocking fee:** Under the return policy, there is no restocking fee (0% maximum), and that only applies to opened items.\n- **Why a human is involved:** Refunds over $100 are reviewed by a human agent before any money moves (`cw-refunds`). Once approved, the refund goes back to your original payment method in 5 to 10 business days.\n\nThe agent may ask whether the book has been opened. Please don't wait on that to reach out if you have questions about the return.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 5
+    },
+    {
+      "case_id": "e-006",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain 'cw-'"
+      ],
+      "latencies_seconds": [
+        4.3705
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'cw-'"
+          ],
+          "final_reply": "I'll search the help center for the restocking fee policy, so I can answer from the official rules.\nYes, with conditions. Under the Cartwheel restocking fee policy (cw-restocking-fees), a store can charge up to 15 percent on returned items that have been opened. Some key points:\n\n- **Opt-in required:** The store has to opt in to the fee.\n- **Must be published:** The fee has to be stated on the store's policy page.\n- **Opened items only:** Unopened items are never charged a restocking fee.\n\nIf you want to start charging one, check that your store's policy page lists the fee. If you tell me your store's name or slug, I can pull up its current return terms and restocking fee setting.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-008",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain '-policy'"
+      ],
+      "latencies_seconds": [
+        7.3832
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain '-policy'"
+          ],
+          "final_reply": "I'll look up Juniper Home Goods in our store directory to find its return window, any restocking fee, and its policy id.\nThe store lookup shows a 14-day return window and no restocking fee. I'll check the help center for the Juniper-specific return policy so I can cite it.\nThe help center has a Juniper-specific policy. I'll open the full text to confirm the details before answering.\nJuniper Home Goods accepts returns within **14 days of delivery**, shorter than the Cartwheel platform default of 30 days. This store window applies to all Juniper orders (policy `store-juniper-home-goods-policy`).\n\nOn fees, Juniper does not charge a restocking fee. Its store settings are not opted in to one, with a maximum of 0%. I don't have details on return shipping costs, so check the store's terms before you buy if that matters to you.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-009",
+      "expected_write": false,
+      "failure_modes": [
+        "reply does not contain '-policy'",
+        "reply does not contain 'cw-'"
+      ],
+      "latencies_seconds": [
+        10.6262
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "reply does not contain 'cw-'",
+            "reply does not contain '-policy'"
+          ],
+          "final_reply": "I'll start by finding your Walnut Jam Trio order so I can check it against the return policy.\nThe order that matches your $145.50 Walnut Jam Trio is #262, delivered June 3. Next I'll check its return eligibility to see whether the window is still open.\nThe answer is no: the return window for order #262 closed June 10, and it's now 21 days past that. I'll look up Saltbox Pantry's store info so I can cite the policy that sets this window.\nThe answer is no. Saltbox Pantry's return window is 7 days, and it ended June 10. To cite the policy behind that window, I'll search the help center for Saltbox Pantry's return terms.\n**No.** The return window for order #262 closed on June 10.\n\nSaltbox Pantry sets a 7-day return window instead of Cartwheel's 30-day default, and that store policy takes precedence (store-saltbox-pantry-policy, cw-returns, cw-store-overrides). The window counts from delivery, which was June 3.\n\nIf you'd like, I can send your request to a human agent to ask whether an exception is possible. I can't promise they'll approve it.",
+          "judge_reasons": {},
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-011",
+      "expected_write": false,
+      "failure_modes": [],
+      "latencies_seconds": [
+        2.4067
+      ],
+      "pass_rate": 1.0,
+      "passes": 1,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll look up order 8228 and check its shipment tracking, so I can give you the current status.\nOrder 8228 (Heavy-Duty Webcam, from Pocket Arcade) is shipped and in transit. It isn't delivered yet and isn't late. It should arrive by July 8, 2026.",
+          "judge_reasons": {
+            "unrequested_detail": "{\"critique\": \"The user asked for the current status of order 8228 and wanted a short, plain answer with no fluff. The reply states the status: \\\"Order 8228 ... is shipped and in transit,\\\" and adds \\\"It isn't delivered yet and isn't late. It should arrive by July 8, 2026.\\\" These facts describe the current status (in transit, not late, expected arrival) and come directly from the tracking result, so they answer the question rather than adding unrequested policy, refund, or order details. The product name and store are identifying details tied to the order the user referenced. No advice, options, or unrelated policy terms are included. Every sentence answers the status question or explains it.\", \"result\": \"Pass\"}"
+          },
+          "passed": true
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-012",
+      "expected_write": false,
+      "failure_modes": [
+        "judge:unrequested_detail"
+      ],
+      "latencies_seconds": [
+        13.8626
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [
+            "judge:unrequested_detail"
+          ],
+          "final_reply": "I'll look up order 7852 and check its return eligibility, since that will show whether the return window is still open.\nThe order tool says it's refund-eligible, but the return window math is close, so I'll check the store's return policy to confirm the window and cite it.\nThe store's 7-day return window is confirmed. I'll pull the returns policy from the help center so I can cite its ID.\n**Yes, but it's right at the deadline.** Saltbox Pantry's 7-day return window for order 7852 ends July 1, 2026, and the system shows 0 days left, so you'd need to start the return today.\n\nSaltbox doesn't charge a restocking fee, so you shouldn't lose any of the $266 order total to a fee. Under the Cartwheel restocking fee policy (cw-restocking-fees), fees apply only to stores that opt in, and unopened items are never charged one.\n\nAlso, the order total is $266, which seems high for granola. I haven't checked the item name on the order, so please confirm it's the right order before you start the return.",
+          "judge_reasons": {
+            "unrequested_detail": "{\n  \"critique\": \"The user asked a narrow yes/no question: whether they can still return order 7852 (Everyday Granola from Saltbox Pantry), delivered about a week ago. The reply's first paragraph answers that: \\\"Yes, but it's right at the deadline,\\\" with the 7-day window ending July 1, 2026 and 0 days left \u2014 this explains the decision and is allowed. The second paragraph, however, adds unrequested detail: \\\"Saltbox doesn't charge a restocking fee, so you shouldn't lose any of the $266 order total to a fee. Under the Cartwheel restocking fee policy (cw-restocking-fees), fees apply only to stores that opt in, and unopened items are never charged one.\\\" Restocking-fee terms and the order total were not asked about and do not decide whether a return is possible. The third paragraph adds commentary the user did not ask for: \\\"the order total is $266, which seems high for granola\\\" and a request to confirm the item name \u2014 an unrequested remark about the price. These are unrequested details b"
+          },
+          "passed": false
+        }
+      ],
+      "runs": 1
+    },
+    {
+      "case_id": "e-013",
+      "expected_write": true,
+      "failure_modes": [],
+      "latencies_seconds": [
+        12.2098,
+        13.1438,
+        14.7352,
+        18.6366,
+        12.4447
+      ],
+      "pass_rate": 1.0,
+      "passes": 5,
+      "run_details": [
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll start by looking up your Everyday Plush Fox order so I can check its details and refund eligibility.\nI found one matching order, 4205, for $53.75, delivered on June 26. Next I'll pull its full details and check the return window and any restocking fee, since I need that before I can offer a refund.\nYour order is eligible: it's inside the 30-day return window, which ends July 26, and there's no restocking fee. Next I'll pull the store's return policy so I can cite it correctly.\nYour order is eligible for a refund. Next I'll check the help center's returns policy so I can cite it correctly.\nYour order is eligible, and $53.75 is under the $100 auto-approval limit in cw-refunds, so I can process this now.\nYour refund is approved: $53.75 for order 4205 (refund ID 575). It goes back to your original payment method within 5 to 10 business days.\n\nRefunds of $100 or less are processed automatically once an order passes the eligibility check (cw-refunds). Your order was delivered June 26, which is inside the 30-day return window (cw-returns). The store charges no restocking fee.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll search your orders for the Everyday Plush Fox so I can find the right order and check its refund eligibility.\nI found one matching order, 4205, for $53.75, delivered on June 26. Next I'll pull the full order record and the return eligibility to confirm the refund before I do anything.\nOrder 4205 is eligible: it's inside the 30-day return window, which ends July 26, and the restocking fee is 0%. Before I issue anything, I'll check the store's return policy so I can cite it correctly.\nOrder 4205 is eligible and the store has no restocking fee. Next I'll look up Cartwheel's return policy so I can cite the right policy ID for the refund.\nYour order is eligible and the refund is $53.75, which is under the $100 automatic threshold in the Cartwheel refund policy (cw-refunds). I'll issue the refund now.\nYour refund went through automatically. I'll check the full return policy to see whether you need to send the fox back.\nYour refund of $53.75 for order 4205 (Everyday Plush Fox, Wooden Whale Workshop) has been approved. It's refund ID 575, and it goes back to your original payment method in 5 to 10 business days.\n\nUnder the Cartwheel return policy (cw-returns), items can be returned within 30 days of delivery, and the item must be in the condition described in the store's listing. The policy I pulled doesn't say whether you need to ship the fox back, so I can't confirm that from here. If you'd like return instructions, I can open a ticket for a human support agent to follow up.",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll start by finding your Everyday Plush Fox order so I can check its details and refund eligibility before anything else.\nI found your order (#4205, $53.75, delivered June 26). Next I'll pull the full order record and its return eligibility to confirm the refund terms before I promise anything.\nYour order is eligible: it's inside the 30-day return window, which ends July 26, 2026, with no restocking fee. Next I'll pull the store's return policy so I can cite it.\nYour order is eligible, and the store has no restocking fee. Next I'll check the help center's returns policy so I can cite it correctly.\nYour order is eligible, and the refund of $53.75 is under the $100 auto-approval limit in the refund policy (cw-refunds), so it can go through directly. I'll issue the refund now.\nYour refund is approved. Before I wrap up, I want to read the full return policy to check whether you need to send the plush back.\nYour refund of $53.75 for order #4205 (Everyday Plush Fox from Wooden Whale Workshop) is approved. Refund ID is 575.\n\nThe money goes back to your original payment method within 5 to 10 business days. Refunds of $100 or less are approved automatically once the order passes the eligibility check (cw-refunds), and this one did.\n\nYour order was delivered June 26, so it was inside the 30-day return window (cw-returns). The store has no restocking fee.\n\nThe return policy I checked doesn't say anything about sending the plush back, so I can't tell you whether you need to ship it. If the store asks for it, the one condition is that the item be in the condition shown in its listing (cw-returns).",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll start by finding your Everyday Plush Fox order so I can check its details and refund eligibility.\nI found one matching order, 4205, for $53.75, delivered on June 26. Next I'll pull the full order record to confirm its refund eligibility before we go any further.\nOrder 4205 is marked refund-eligible. Before I issue anything, I'll check the store's return window and any restocking fee, since those could change the amount.\nThe return window is open with 25 days left and no restocking fee. Next I'll look up the store's policy so I can cite the right policy id for the return.\nThe store's return window is 30 days with no restocking fee. Next I'll search the help center for the returns policy so I can cite its id.\nThe refund policy snippet says refunds of $100 or less process automatically once eligibility checks pass. I'll read the full refund policy to confirm the details before I issue anything.\nOrder 4205 is eligible, and $53.75 is under the $100 auto-approval limit in cw-refunds, so I'll issue the full refund now. It goes back to your original payment method in 5 to 10 business days.\nYour refund of $53.75 (refund ID 575) went through automatically. Before I tell you what to do with the plush, I'll check the full return policy to see whether the fox needs to be sent back.\nYour refund of $53.75 for the Everyday Plush Fox (order 4205, refund ID 575) has been approved. It goes back to your original payment method in 5 to 10 business days. Refunds of $100 or less are processed automatically under cw-refunds.\n\nOur return policy (cw-returns) allows returns within 30 days of delivery, and yours was delivered June 26, so the window is open. The policy doesn't say whether you need to send the fox back or how to do it. If you need return shipping instructions, I can pass that question to a human support agent.\n\nI also need to correct something. The refund record says you're returning the fox, but you didn't say that, so the note is inaccurate. I can't edit the record, but I",
+          "judge_reasons": {},
+          "passed": true
+        },
+        {
+          "error": null,
+          "failure_modes": [],
+          "final_reply": "I'll start by finding your Everyday Plush Fox order so I can check its details and refund eligibility.\nI found your Everyday Plush Fox order (#4205) for $53.75. Next I'll pull the full order record to confirm its refund eligibility, and check the store's return policy for Wooden Whale Workshop.\nThe order is marked refund-eligible and the store has a 30-day return window with no restocking fee. Next I'll check the return eligibility and the store's policy so I can cite it accurately.\nThe order is eligible and $53.75 is under the $100 auto-approval threshold in the refund policy. I'll pull the full refund policy (cw-refunds) to confirm the terms before issuing anything.\nYour order is eligible and $53.75 is under the $100 automatic-approval limit, so I'll issue the full refund now. Refunds go back to your original payment method in 5 to 10 business days (cw-refunds).\nYour refund is done. I issued $53.75 for order #4205 (refund ID 575). It's going back to your original payment method and should arrive in 5 to 10 business days.\n\nThe refund was approved automatically because it's under $100 (cw-refunds). The store's return window is 30 days and there's no restocking fee, so you didn't lose anything on the return.\n\nOne note: the reason I logged on the refund cites our return policy (cw-returns). I didn't open that policy text myself. The window and fee details came from the store and return-eligibility records.",
+          "judge_reasons": {},
+          "passed": true
+        }
+      ],
+      "runs": 5
+    }
+  ],
+  "cost_per_100_conversations_usd": 0.307825,
+  "cost_usd": 0.076956,
+  "created_at": "2026-10-16T13:57:56.294689+00:00",
+  "evaluated_case_runs": 25,
+  "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+  "input_tokens": 535332,
+  "median_latency_seconds": 13.8626,
+  "model": "claude-haiku-5-5",
+  "output_tokens": 46846,
+  "price_date": "2026-10-16",
+  "prompt_sha256_12": "64ee12c975a5",
+  "schema_version": 1,
+  "score": 0.288889,
+  "split": "development",
+  "test_plan_sha256": null,
+  "write_pass_5": 0.25
+}

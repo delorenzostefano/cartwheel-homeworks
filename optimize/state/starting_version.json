@@ -1,0 +1,18 @@
+{
+  "comparison_models": [
+    "claude-opus-5-5",
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "created_at": "2026-10-16T13:58:04.285110+00:00",
+  "development_model": "claude-haiku-5-5",
+  "development_result": "/Users/stefanodelorenzo/dev/cartwheel-homeworks/optimize/results/latest-development.json",
+  "development_score": 0.288889,
+  "git_commit": "7b644793981485c78376eb5d2447c82d7e9654ae",
+  "grader_sha256": "83fe8ecd4bb3b118f2cf1448f48de8709b037d53051d293b483f5e6e39d7e037",
+  "kind": "starting",
+  "model_selection_sha256": "941252faeda3cab1b3e93f8d50e1ab2747af0d49d81ea00c2675bf8989718c32",
+  "prompt_sha256_12": "64ee12c975a5",
+  "split_membership_sha256": "c4450738a65fb4280bab6d892d961c0c0239afdd272cba6f26f11c058af5af44",
+  "write_pass_5": 0.25
+}
