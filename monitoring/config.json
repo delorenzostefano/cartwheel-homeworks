@@ -1,0 +1,22 @@
+{
+  "judge_id": "unrequested_detail-v0",
+  "judge_mode": "unrequested_detail",
+  "model": "claude-haiku-5-5",
+  "random_rate": 0.2,
+  "risk_groups": [
+    "policy_lookup"
+  ],
+  "threshold": 0.3,
+  "periods": [
+    {
+      "label": "before",
+      "from": "2026-10-12T18:36:00Z",
+      "to": "2026-10-12T19:15:00Z"
+    },
+    {
+      "label": "after",
+      "from": "2026-10-16T12:08:00Z",
+      "to": "2026-10-16T12:16:00Z"
+    }
+  ]
+}

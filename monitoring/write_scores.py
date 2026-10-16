@@ -70,14 +70,42 @@ def build_score_records(
         A list of score record dicts with keys: score_id, name, value,
         data_type, trace_id, comment (comment is None for verdicts).
     """
-    ### YOUR CODE HERE (hw7)
-    raise NotImplementedError("hw7: implement build_score_records")
+    def verdict(kind: str, name: str, trace_id: str, value: int) -> dict[str, Any]:
+        return {"score_id": _stable_id(mode, kind, trace_id), "name": name, "value": float(value),
+                "data_type": "NUMERIC", "trace_id": trace_id, "comment": None}
+
+    records = [verdict("verdict", f"{mode}_verdict", t, v) for t, v in random_verdicts.items()]
+    records += [verdict("risk_verdict", f"{mode}_risk_verdict", t, v) for t, v in risk_verdicts.items()]
+    records.append({
+        "score_id": _stable_id(mode, "prevalence", batch_label),
+        "name": f"{mode}_corrected_prevalence",
+        "value": estimate["corrected"],
+        "data_type": "NUMERIC",
+        "trace_id": None,
+        "comment": f"95% CI {estimate['ci_low']}-{estimate['ci_high']}, raw {estimate['raw']}, n={estimate['n_sample']}",
+    })
+    return records
 
 
 # ---------------------------------------------------------------------------
 # The POST wiring (instructor-provided). Gated on the LANGFUSE_* env vars the
 # same way analysis/helpers/langfuse_io.py is, so nothing here runs offline.
 # ---------------------------------------------------------------------------
+
+
+def _monitoring_trace(client: Any, record: dict[str, Any]) -> str:
+    """Create (or update) the trace that carries one period-level score."""
+    trace_id = client.create_trace_id(seed=record["score_id"])
+    mode = record["name"].removesuffix("_corrected_prevalence")
+    with client.start_as_current_span(
+        name=f"cartwheel.monitor.{mode}", trace_context={"trace_id": trace_id}
+    ) as span:
+        span.update_trace(
+            name=f"cartwheel.monitor.{mode}",
+            metadata={"score_name": record["name"], "summary": record.get("comment")},
+            tags=["cartwheel-monitor"],
+        )
+    return trace_id
 
 
 def post_scores(records: list[dict[str, Any]]) -> int:
@@ -105,6 +133,11 @@ def post_scores(records: list[dict[str, Any]]) -> int:
         }
         if record.get("trace_id") is not None:
             kwargs["trace_id"] = record["trace_id"]
+        else:
+            # Self-hosted Langfuse drops a score with no target, so a period
+            # score is attached to one monitoring trace per batch. Its id is
+            # derived from the score id, so a rerun updates the same trace.
+            kwargs["trace_id"] = _monitoring_trace(client, record)
         if record.get("comment"):
             kwargs["comment"] = record["comment"]
         client.create_score(**kwargs)
