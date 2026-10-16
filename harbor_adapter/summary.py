@@ -12,6 +12,24 @@ from harbor_adapter.export import load_export_cases
 from replay.rollout import load_cases
 
 
+def job_trials(job_dir: Path, result: dict[str, Any]) -> list[dict[str, Any]]:
+    """Trial results for a job, in trial order.
+
+    Harbor 0.23.0 leaves ``trial_results`` out of the job's ``result.json``
+    and writes each trial's result to ``<job>/<trial>/result.json``. Fall back
+    to those files, ordered by ``started_at``, when the list is missing.
+    """
+    trials = result.get("trial_results")
+    if trials:
+        return list(trials)
+    found = []
+    for path in job_dir.glob("*/result.json"):
+        trial = json.loads(path.read_text())
+        if isinstance(trial, dict) and "task_name" in trial:
+            found.append(trial)
+    return sorted(found, key=lambda t: (str(t.get("started_at") or ""), str(t.get("trial_name") or "")))
+
+
 def _case_id(task_name: str, known_ids: set[str]) -> str | None:
     matches = [case_id for case_id in known_ids if task_name.endswith(case_id)]
     return max(matches, key=len) if matches else None
@@ -49,7 +67,7 @@ def summarize_job(
     result = json.loads(result_path.read_text())
     trials: dict[str, list[dict[str, Any]]] = defaultdict(list)
     unknown: list[str] = []
-    for trial in result.get("trial_results", []):
+    for trial in job_trials(job_dir, result):
         case_id = _case_id(str(trial.get("task_name", "")), set(by_id))
         if case_id is None:
             unknown.append(str(trial.get("task_name", "")))

@@ -29,6 +29,8 @@ jobs:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
       TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      # The accepted HW5 judge (unrequested_detail-v0) runs on deepseek/deepseek-chat.
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -36,9 +38,34 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - run: uv sync
 
-      # Homework 6: install Harbor 0.23.0.
-      # Generate the classified tasks in eval_cases/cases.jsonl.
-      # Run five attempts per task in fresh Docker containers.
-      # Pass the agent and judge provider keys to Harbor.
-      # Summarize the job and upload the job files with `if: always()` so a
-      # failed regression keeps its evidence.
+      - name: Install Harbor
+        run: uv tool install 'harbor==0.23.0'
+
+      - name: Generate the classified Harbor tasks
+        run: uv run python scripts/export_harbor_tasks.py
+
+      # Keys reach Harbor through the job environment above; the generated
+      # task.toml forwards the judge key to the verifier by name.
+      - name: Run every case five times in fresh Docker containers
+        run: >
+          harbor run
+          -p .harbor/tasks
+          -a harbor_adapter.agent:CartwheelAgent
+          -m "$CARTWHEEL_MODEL"
+          -e docker
+          --n-attempts 5
+          --job-name hw6-evals
+          --jobs-dir "$GITHUB_WORKSPACE/.harbor/jobs"
+          --yes
+
+      - name: Summarize results and apply the regression gate
+        if: always()
+        run: uv run python scripts/summarize_harbor_job.py .harbor/jobs/hw6-evals --expected-attempts 5
+
+      - name: Upload the Harbor job
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hw6-evals
+          path: .harbor/jobs/hw6-evals
+          if-no-files-found: warn

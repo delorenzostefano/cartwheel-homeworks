@@ -326,3 +326,17 @@ def test_capability_analysis_uses_5_10_and_15_observed_runs(
         "10",
         "15",
     }
+
+
+def test_summary_reads_per_trial_results_when_job_result_omits_them(tmp_path):
+    """Harbor 0.23.0 writes trials to <job>/<trial>/result.json only."""
+    from harbor_adapter.summary import job_trials
+
+    job = tmp_path / "job"
+    for name, started in (("e-001__b", "2026-01-01T00:00:02"), ("e-001__a", "2026-01-01T00:00:01")):
+        (job / name).mkdir(parents=True)
+        (job / name / "result.json").write_text(json.dumps(
+            {"task_name": "cartwheel/evals__e-001", "trial_name": name, "started_at": started}))
+    (job / "result.json").write_text(json.dumps({"stats": {}}))
+    trials = job_trials(job, json.loads((job / "result.json").read_text()))
+    assert [t["trial_name"] for t in trials] == ["e-001__a", "e-001__b"]
