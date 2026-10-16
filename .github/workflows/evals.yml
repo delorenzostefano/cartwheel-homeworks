@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          # The reference patches are not needed here, and this fork has no LFS objects.
+          lfs: false
       - uses: astral-sh/setup-uv@v5
       - run: uv sync
       - name: Run checks that do not call a model
@@ -34,7 +35,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          lfs: true
+          # The reference patches are not needed here, and this fork has no LFS objects.
+          lfs: false
       - uses: astral-sh/setup-uv@v5
       - run: uv sync
 
