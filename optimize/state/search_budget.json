@@ -10,7 +10,12 @@
       "calls": 25,
       "label": "loop_escalation_esc1",
       "reserved_at": "2026-10-16T16:49:23.774129+00:00"
+    },
+    {
+      "calls": 25,
+      "label": "loop_resp6_answer_only",
+      "reserved_at": "2026-10-16T16:53:55.888449+00:00"
     }
   ],
-  "used_calls": 50
+  "used_calls": 75
 }
