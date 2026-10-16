@@ -1,0 +1,43 @@
+name: monitor
+
+# Homework 7: run the frozen unrequested_detail judge over the last day of
+# Cartwheel conversations. Langfuse runs on the student's machine, so the
+# job runs on a self-hosted runner there. It never runs on pull requests, so
+# nobody can execute code on that machine by opening one.
+on:
+  schedule:
+    - cron: "17 6 * * *"   # daily, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  monitor:
+    runs-on: self-hosted
+    timeout-minutes: 60
+    env:
+      LANGFUSE_HOST: ${{ vars.LANGFUSE_HOST }}
+      LANGFUSE_PUBLIC_KEY: ${{ secrets.LANGFUSE_PUBLIC_KEY }}
+      LANGFUSE_SECRET_KEY: ${{ secrets.LANGFUSE_SECRET_KEY }}
+      # The frozen judge (unrequested_detail-v0) runs on deepseek/deepseek-chat.
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      PYTHONPATH: ${{ github.workspace }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - uses: astral-sh/setup-uv@v5
+      - name: Install the repository dependencies
+        run: uv sync
+
+      - name: Sample, judge, correct, and score the last 24 hours
+        run: uv run python -m monitoring.run --last-hours 24 --yes
+
+      - name: Upload the monitoring output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: monitor-output
+          path: monitoring/output
+          if-no-files-found: warn
