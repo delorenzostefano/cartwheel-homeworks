@@ -1,13 +1,13 @@
 {
-  "price_date": "REPLACE_WITH_YYYY-MM-DD",
+  "price_date": "2026-10-16",
   "models": {
-    "development_and_search": "glm-5.2",
-    "comparison": ["gpt-5.5", "claude-opus-4-6", "glm-5.2"],
-    "gepa_reflection": "anthropic/claude-opus-4-6"
+    "development_and_search": "claude-haiku-5-5",
+    "comparison": ["claude-opus-5-5", "claude-sonnet-5-5", "claude-haiku-5-5"],
+    "gepa_reflection": "anthropic/claude-opus-5-5"
   },
   "prices_per_million_tokens_usd": {
-    "claude-opus-4-6": {"input": null, "output": null},
-    "glm-5.2": {"input": null, "output": null},
-    "gpt-5.5": {"input": null, "output": null}
+    "claude-haiku-5-5": {"input": 0.10, "output": 0.50},
+    "claude-opus-5-5": {"input": 4.00, "output": 20.00},
+    "claude-sonnet-5-5": {"input": 2.00, "output": 10.00}
   }
 }
