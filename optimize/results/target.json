@@ -1,0 +1,12 @@
+{
+  "failure_mode": "policy_id_in_reply",
+  "source": "Homework 4/5 failure taxonomy; prevalence from the policy_id_in_reply code check over all 251 conversations in traces/support_traces.json (prompt 64ee12c975a5), which agrees with all 128 human-reviewed labels",
+  "prevalence": 0.4502,
+  "requirement": "RESP-1",
+  "example_trace_ids": [
+    "f9f7f1a1dca070074c8ffd70ce74b328",
+    "17e3c57dde49472bc8ed85de2af311f7",
+    "f2da13092749bc6c0c4be81b709b280f"
+  ],
+  "why_agent_can_change_it": "In all three replies the agent writes the internal id (cw-returns) next to the policy it cites, because SYSTEM_PROMPT_TEMPLATE tells it to 'Cite the policy id (for example cw-returns) for every policy claim', and the policy tools return the id with each match. Changing the prompt instruction, what the tool returns, or a reply check in the harness can each stop the id from reaching the user."
+}
