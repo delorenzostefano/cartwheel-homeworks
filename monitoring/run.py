@@ -142,7 +142,7 @@ def window_records(config: dict[str, Any], hours: float) -> tuple[list[dict[str,
     by_id = {t["id"]: t for t in traces}
     conversations = [c for c in _session_conversations(traces) if not c["incomplete"]]
     records = [r for r in build_records(conversations, by_id) if r["models"] == [config["model"]]]
-    return records, len(traces), f"last-{hours:g}h-{end:%Y-%m-%dT%H:%MZ}"
+    return records, len(traces), f"last-{hours:g}h-{end:%Y-%m-%dT%H%MZ}"  # no colon: artifact names reject it
 
 
 def _save_history(entry: dict[str, Any]) -> None:
