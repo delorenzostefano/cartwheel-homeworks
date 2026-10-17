@@ -30,6 +30,9 @@ from seed.eligibility import effective_return_window_days, is_refund_eligible
 
 MAX_SEARCH_LIMIT = 25
 DEFAULT_ORDER_LIMIT = 20
+# list_my_orders identifies orders; get_order, check_return_eligibility, and
+# track_shipment return the remaining fields when the agent needs them.
+LIST_ORDER_FIELDS = ("order_id", "store_id", "product_id", "total_usd", "status", "delivered_at")
 
 
 def get_policy(ctx: AuthContext, policy_id: str) -> dict[str, Any]:
@@ -201,10 +204,13 @@ def list_my_orders(ctx: AuthContext) -> dict[str, Any]:
     finally:
         conn.close()
 
-    public = [o.to_public_dict()  for o in orders]
+    public = [
+        {field: o.to_public_dict()[field] for field in LIST_ORDER_FIELDS}
+        for o in orders
+    ]
 
     return {
-        "ok": True, 
+        "ok": True,
         "orders": public,
         "count": len(public)
     }
