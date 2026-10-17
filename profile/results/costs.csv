@@ -1,0 +1,8 @@
+cost_category,call_site,purpose,model,calls,input_tokens,output_tokens,cost_usd
+customer_conversation,replay/rollout.py:210,HW8 development and test runs; API-reported tokens; calls = conversations (one conversation makes several model requests),claude-haiku-5-5,224,3691836,301777,0.520072
+customer_conversation,replay/rollout.py:210,HW8 development and test runs; API-reported tokens; calls = conversations (one conversation makes several model requests),claude-sonnet-5-5,12,134892,5814,0.327924
+customer_conversation,replay/rollout.py:210,HW8 development and test runs; API-reported tokens; calls = conversations (one conversation makes several model requests),claude-opus-5-5,12,43675,0,0.1747
+customer_conversation,server/app.py:212,HW3 support scenarios via the server; tokens ESTIMATED with tiktoken from saved text (Langfuse recorded 0); excludes tool definitions,claude-haiku-5-5,907,935985,101954,0.144575
+judge,analysis/helpers/scale.py:201,"HW5 judge development and test runs, HW7 monitoring; tokens ESTIMATED (prompt + mean trace text in, mean saved critique out); priced off_peak",deepseek/deepseek-chat,467,1415042,172790,0.31593
+judge,harbor_adapter/export.py:305,"HW6 Harbor baselines, 15-run analysis, smoke and two CI runs (CI times from commits; infra-error job counted in full); tokens ESTIMATED (prompt + mean trace text in, mean saved critique out); priced off_peak/peak",deepseek/deepseek-chat,76,225644,28120,0.071406
+judge,replay/rollout.py:426,"HW8 runner, one call per judged case run; tokens ESTIMATED (prompt + mean trace text in, mean saved critique out); priced off_peak",deepseek/deepseek-chat,20,59380,7400,0.013347
