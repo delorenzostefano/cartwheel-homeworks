@@ -1,0 +1,5 @@
+candidate,model,development_score,write_pass_5,cost_per_100_conversations_usd,median_latency_seconds,frontier_status
+hw8_final,claude-haiku-5-5,1.0,1,0.161967,6.6964,frontier
+fewer-tokens,claude-haiku-5-5,1.0,1,0.162534,6.0625,dominated
+cache-before,deepseek/deepseek-chat,0.822222,0.75,0.040677,4.6008,frontier
+cache-after,deepseek/deepseek-chat,0.755556,0.75,0.041881,4.7851,dominated
