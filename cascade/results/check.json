@@ -1,0 +1,23 @@
+{
+  "required_agreement_with_oracle": 0.95,
+  "traces": 79,
+  "chosen": {
+    "threshold": 1.01,
+    "agreement_with_oracle": 1.0,
+    "agreement_with_human_labels": 0.5949,
+    "proxy_share": 0.0,
+    "cost_per_1000_verdicts_usd": 0.6765,
+    "disagreements_with_oracle": 0,
+    "meets_requirement": true
+  },
+  "informational": {
+    "threshold": 0.99,
+    "agreement_with_oracle": 0.7468,
+    "agreement_with_human_labels": 0.6709,
+    "proxy_share": 0.6835,
+    "cost_per_1000_verdicts_usd": 0.2141,
+    "disagreements_with_oracle": 20,
+    "meets_requirement": false
+  },
+  "decision": "rejected: no proxy threshold met the agreement requirement on the development labels"
+}
