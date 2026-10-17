@@ -1,7 +1,7 @@
 {
-  "cached_fraction": 0.0,
-  "cached_input_tokens": 0,
-  "candidate": "fewer-tokens",
+  "cached_fraction": 0.818167,
+  "cached_input_tokens": 152832,
+  "candidate": "cache-before",
   "case_count": 9,
   "cases": [
     {
@@ -9,11 +9,11 @@
       "expected_write": true,
       "failure_modes": [],
       "latencies_seconds": [
-        8.1681,
-        6.8492,
-        8.2123,
-        7.3068,
-        6.2661
+        7.2113,
+        5.2749,
+        5.0996,
+        5.0074,
+        4.9648
       ],
       "pass_rate": 1.0,
       "passes": 5,
@@ -21,35 +21,35 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up your travel bath salts order so I can check its refund eligibility.\nI found one matching order, 1749, for $278.00 and marked as delivered. Before any refund, I'll pull the full order record to confirm its refund eligibility.\nOrder 1749 from Clover Field Naturals is marked refund-eligible, so I'll submit a refund for the full $278.00 with the reason that the item arrived damaged.\nI've submitted a full refund of $278.00 for order 1749 (travel bath salts from Clover Field Naturals). Because it is above our $100 auto-approval limit, it's queued for review by a human support agent. Refund reference: 575.\n\nI'm sorry the bath salts arrived damaged. Since the refund is pending review, I can't give you a timeline for when the money will reach your account, but a human agent will follow up on it.",
+          "final_reply": "I'll look up this order to check its refund eligibility. Let me find it first.\nI found the order and it's marked refund-eligible. Let me check the order details and the damaged-item policy to confirm what you're entitled to.\nEverything checks out. Let me pull the full refund policy so I can tell you exactly how the process works for your amount.\nGood news \u2014 your order qualifies. It was delivered on June 22, which puts you well inside Clover Field Naturals' 30-day return window, and the order is confirmed refund-eligible. There's no restocking fee for a damaged item.\n\nI'll issue the full refund of $278.00 now.\nDone \u2014 your full refund of $278.00 for the travel bath salts (order 1749) has been submitted.\n\nBecause it's over $100, it's been queued for review by a human support agent rather than processed automatically. Once approved, the money goes back to your original payment method and typically arrives in 5 to 10 business days.\n\nIs there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up your order for the travel bath salts so I can check its details and refund eligibility.\nI found the order for the travel bath salts. Next I'll pull its full details to confirm refund eligibility before anything is issued.\nYour order #1749 from Clover Field Naturals is marked refund eligible, so I'll issue a full refund of $278 for the damaged item.\nYour refund of $278 for order #1749 has been submitted, and it's queued for review by a human support agent because the amount is over our $100 auto-approval limit. I don't have a timeline for that review, but you'll get updates on the refund.\n\nI'm sorry the bath salts arrived damaged.",
+          "final_reply": "I'm sorry your order arrived damaged. Let me look into it \u2014 first I'll find the order with Clover Field Naturals so I can check its details and refund eligibility.\nI found the order. Let me pull its full details and check the return eligibility for the damaged item.\nYour order is eligible \u2014 it was delivered within the 30-day return window (which ends July 22), and since the bath salts arrived damaged, the restocking fee doesn't apply. I'll issue a full refund of $278.00 now.\nGood news \u2014 I've submitted your full refund of $278.00 for the damaged travel bath salts. Because the amount is above our automatic-approval threshold, it's been **queued for a human agent to review**. You'll get the refund once they approve it.\n\nIs there anything else I can help you with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll start by pulling up your recent orders so I can find the Clover Field Naturals order for the travel bath salts.\nThe order list doesn't show store names, so I'll search my orders for the bath salts and look up the Clover Field Naturals store to match them up.\nThe bath salts match order 1749, which is from Clover Field Naturals (store 18). Before anything else, I'll pull the full order record to confirm its refund eligibility.\nOrder 1749 is eligible for a refund, and it's within Clover Field Naturals' 30-day return window. I'll issue a refund for the full $278.00 since the item arrived damaged.\nYour refund of $278.00 for order 1749 (the travel bath salts) has been submitted. Because it's above the $100 auto-approval limit, a human support agent needs to review it before it goes through. Your refund reference is 575.\n\nI'm sorry the bath salts arrived damaged.",
+          "final_reply": "I'm sorry your order arrived damaged \u2014 let me look into it. First I'll find the order for the travel bath salts from Clover Field Naturals.\nFound it \u2014 order 1749, delivered June 22, refund-eligible. Let me check the full order details and the return policy before I do anything.\nGood news: the order is well inside the return window (21 days left), and this store has no restocking fee \u2014 so you're due the full $278.00. I'll issue that refund now.\nI've submitted a full refund of **$278.00** for your travel bath salts order (order 1749), citing the damage.\n\nBecause that amount is above our auto-approval limit, it's **queued for review** by a human support agent rather than approved instantly \u2014 they'll be in touch to confirm it goes through. You don't need to do anything else on your end.\n\nIs there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the travel bath salts so I can find the Clover Field Naturals order and check its refund eligibility.\nI found an order for travel bath salts (order 1749, $278.00, delivered June 22). Before I can talk about a refund, I need to check the full order record and its refund eligibility.\nOrder 1749 is eligible for a refund, and you asked for the full amount back for a damaged item. I'll issue a refund of $278.00 for the order.\nYour refund of $278.00 for order 1749 (travel bath salts from Clover Field Naturals) is queued for review. Because it is above our $100 auto-approval limit, a human support agent will check it before it goes through. I don't have a timeline for that review, but you don't need to do anything else for now.\n\nI'm sorry the bath salts arrived damaged.",
+          "final_reply": "I'm sorry your bath salts arrived damaged \u2014 let's get that sorted. First I'll find the order and check its refund eligibility.\nFound it \u2014 order #1749, delivered June 22, marked refund eligible. Let me confirm the details and the store's return terms.\nYou're well within the return window and the order is refund-eligible, with no restocking fee. Since it arrived damaged, I'll issue the full refund of $278.00 now.\nYour full refund of $278.00 for order #1749 (Clover Field Naturals) has been submitted. Because it's above the amount I can approve automatically, it's now queued for review by a human support agent \u2014 they'll follow up to finish it off.\n\nSorry again about the damaged bath salts, and thanks for your patience. Anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the travel bath salts so I can find the Clover Field Naturals order and check its refund eligibility.\nI found an order for travel bath salts, #1749, for $278.00. Next I'll pull the full order record to confirm its refund eligibility before we go further.\nOrder #1749 from Clover Field Naturals is marked refund-eligible for the full $278.00. I'll submit the refund for that amount, noting that the item arrived damaged.\nYour refund of $278.00 for order #1749 (travel bath salts from Clover Field Naturals) has been submitted. Because it's above our $100 auto-approval limit, it's queued for review by a human support agent, who will confirm it.\n\nI'm sorry the bath salts arrived damaged. If you have a photo of the damage, it may help the reviewer, though I can't tell from here whether one is needed.",
+          "final_reply": "I'm sorry about the damaged bath salts \u2014 let me look up your order first before saying anything about a refund.\nFound it. Now let me check the order details and the store's return terms, since damage claims depend on the return window and any restocking fee.\nYour order is eligible \u2014 I'm issuing a full refund of $278.00 now.\nDone \u2014 I've submitted a full refund of $278.00 for your Clover Field Naturals travel bath salts (order 1749).\n\nBecause the amount is over the auto-approval limit, it's been queued for a human agent to review rather than approved instantly. You'll get word once that review goes through. Your order is well within the return window, so there's no issue there, and there's no restocking fee.\n\nIs there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         }
@@ -61,11 +61,11 @@
       "expected_write": true,
       "failure_modes": [],
       "latencies_seconds": [
-        5.6044,
-        6.1465,
-        6.0625,
-        5.4991,
-        7.7448
+        4.4298,
+        4.7213,
+        4.5801,
+        4.6008,
+        5.1313
       ],
       "pass_rate": 1.0,
       "passes": 5,
@@ -73,35 +73,35 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up your order for the Classic Screwdriver Set so I can check its refund eligibility before anything else.\nI found one matching order, 3568, for $129.50. Next I'll pull the full order record to confirm its refund eligibility before I issue anything.\nOrder 3568 is from Copperline Tools, delivered on June 9, and it's marked refund eligible. I'll issue a full refund of $129.50 for the wrong-size set.\nYour refund of $129.50 for order 3568 (Classic Screwdriver Set from Copperline Tools) is in. Because it's above our $100 auto-approval limit, it's queued for review by a human support agent, who will process it from there. Refund reference: 575.",
+          "final_reply": "I'll look into this for you. First, let me find that order so I can check its refund eligibility before doing anything.\nFound it \u2014 order #3568, delivered June 9, and it's marked as refund eligible. Next I'll check the return window details to see if any restocking fee applies before I process the refund.\nGood news \u2014 it's within the return window (8 days left), no restocking fee applies, and the order is fully refund eligible. I'll issue the full refund of $129.50 now.\nAll set! I've submitted a full refund of **$129.50** for the Classic Screwdriver Set (order #3568).\n\nSince the amount is above our auto-approval limit, it's been **queued for review by a human support agent** \u2014 they'll approve it and you'll be notified. The order was within the return window with no restocking fee, so there shouldn't be any issues.\n\nIs there anything else I can help you with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up your order for the Classic Screwdriver Set so I can check its refund eligibility before anything else.\nI found one matching order, 3568, for $129.50. Next I'll pull up the full order record to confirm its refund eligibility before I issue anything.\nOrder 3568 is marked refund eligible, so I'll issue a full refund of $129.50 for the wrong-size item.\nYour refund of $129.50 for order 3568 (Classic Screwdriver Set, Copperline Tools) is queued for review. Because it's above our $100 auto-approval limit, a human support agent will check it before the money goes back to you. Your refund reference is 575.",
+          "final_reply": "I'll look up your order to check its refund eligibility before promising anything.\nLet me pull the full order details and check the return window for this store.\nYou're within the return window (it closes July 9, so 8 days left), and this order is refund-eligible. Copperline Tools charges no restocking fee, so a full $129.50 refund is fine. Let me process that now.\nDone \u2014 your refund of $129.50 for the Classic Screwdriver Set (order #3568) has been submitted. Because it's over $100, it's queued for a human agent to approve rather than going through automatically. You should hear back once it's reviewed, and the refund will go back to your original payment method.\n\nOne note: you're on a 30-day return window that ends July 9, so keep the set and its packaging handy in case the reviewer needs anything. Anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the Classic Screwdriver Set so I can find the Copperline Tools purchase and check whether it's eligible for a refund.\nI found one order for the Classic Screwdriver Set, order 3568, for $129.50. Next I'll pull up the full order record to confirm its refund eligibility before we do anything.\nOrder 3568 is from Copperline Tools, is marked refund eligible, and the total is $129.50. I'll issue the full refund now.\nYour refund of $129.50 for order 3568 (Classic Screwdriver Set, Copperline Tools) is in. Because it's above our $100 auto-approval limit, it's queued for review by a human support agent, who will follow up. Refund reference: 575.",
+          "final_reply": "I'll look up that order and check its refund eligibility before promising anything. Let me find it first.\nI found the order. Now let me pull its full details and confirm refund eligibility before I do anything.\nThe order is eligible for a refund, so I'll go ahead and issue the full $129.50 back to you.\nAll set \u2014 your full refund of $129.50 for the Classic Screwdriver Set from Copperline Tools is in the works. Because it's over $100, it's been queued for human review rather than approved automatically, so a support agent will confirm it. You'll see the refund come through once that's approved.\n\nIs there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll start by searching your orders for the Classic Screwdriver Set so I can find the right purchase and check whether it's eligible for a refund.\nI found one matching order, 3568, for $129.50. Next I'll pull up the full order record to confirm its refund eligibility before doing anything else.\nOrder 3568 from Copperline Tools is eligible for a refund, so I'll issue the full $129.50 now with the reason you gave, that the set was the wrong size.\nYour refund of $129.50 for the Classic Screwdriver Set (order 3568) from Copperline Tools is queued for review. Because it's above our $100 auto-approval limit, a human support agent will need to approve it before it goes through. I don't have a timeline for that review, so I can't say exactly when the money will reach you.",
+          "final_reply": "I'll look up that order first so I can check its refund eligibility.\nFound it \u2014 order 3568, delivered June 9th, and it's marked refund-eligible. Let me pull the order details and the return eligibility to confirm before I issue anything.\nEverything checks out \u2014 it's still inside the 30-day return window (ends July 9th), and there's no restocking fee. I'll issue the full $129.50 refund now.\nDone \u2014 I've submitted a full refund of $129.50 for your Classic Screwdriver Set (order 3568). Since that's above our automatic approval limit, it's been queued for a human support agent to review. You'll get confirmation once it's approved.\n\nYou're well inside the return window (it ends July 9th), so you're covered either way.\n\nIs there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll start by searching your orders for the Classic Screwdriver Set so I can find the right purchase.\nI found one order for the Classic Screwdriver Set, order 3568. Before I can promise anything, I need to check its full details and refund eligibility.\nOrder 3568 is from Copperline Tools, is for $129.50, and is marked refund eligible. I'll issue the full refund now, with the wrong size as the reason.\nYour refund of $129.50 for the Classic Screwdriver Set (order 3568) is in. Because it's above our $100 auto-approval limit, it's queued for review by a human support agent, who will follow up. Your refund reference is 575.",
+          "final_reply": "I'll look up that order and check its refund eligibility first.\nFound it \u2014 order 3568, delivered June 9, marked refund-eligible. Let me check the order details and return window before issuing anything.\nThe order is inside its 30-day return window (ends July 9) and there's no restocking fee. Issuing the full refund now.\nDone \u2014 your full refund of $129.50 for the Classic Screwdriver Set is submitted.\n\nBecause it's over $100, it's been queued for a human agent to review and approve rather than approved automatically. You're well within the return window (which closes July 9), and no restocking fee applies.\n\nAnything else I can help with?",
           "judge_reasons": {},
           "passed": true
         }
@@ -111,49 +111,61 @@
     {
       "case_id": "e-004",
       "expected_write": true,
-      "failure_modes": [],
-      "latencies_seconds": [
-        10.4042,
-        9.8298,
-        8.1875,
-        11.5618,
-        7.0686
+      "failure_modes": [
+        "refund for #1082 is queued_for_approval (saw [])",
+        "tool issue_refund called"
       ],
-      "pass_rate": 1.0,
-      "passes": 5,
+      "latencies_seconds": [
+        3.8246,
+        3.5008,
+        5.3097,
+        3.7839,
+        4.6576
+      ],
+      "pass_rate": 0.4,
+      "passes": 2,
       "run_details": [
         {
           "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look into your order and the return policy for that store before anything else.\nFound it \u2014 order 1082, delivered May 21. Let me confirm the return window and refund eligibility.\nYes, you're still inside the return window \u2014 Northwind Books allows 45 days, and your window closes July 5, so you have 4 days left. You're eligible for the refund, with no restocking fee.\n\nOne thing to note: a change of mind usually means sending the item back rather than keeping it. Do you want me to go ahead and start the refund for $104.25 on order 1082?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look up the order and the store's return policy to see where you stand.\nI found the order \u2014 let me confirm it's still inside the return window and check the refund details.\nGood news \u2014 you're still inside the return window. Northwind Books gives 45 days, and your window closes in 4 days (July 5). The order is $104.25 and eligible for a refund.\n\nI do want to flag one thing: Northwind Books' policy applies a restocking fee on opened items. Has the book been opened or unwrapped?\n\nEither way, I can go ahead and issue the refund now for $104.25 \u2014 the amount will be queued for a quick human review since it's above the auto-approval threshold. Want me to submit it?",
+          "judge_reasons": {},
+          "passed": false
+        },
+        {
+          "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up your recent orders to find the Everyday Atlas purchase from Northwind Books.\nI found the order. Next I'll pull up order 1082 to confirm its refund eligibility before we go further.\nThe order is marked refund-eligible. Before issuing anything, I'll check the return eligibility to see whether a restocking fee would change the amount.\nOrder 1082 is eligible: it's inside the 45-day return window, which closes July 5, and Northwind Books charges no restocking fee. I'll issue the full $104.25 refund.\nYour refund of $104.25 for the Everyday Atlas (order 1082) has been submitted. Because the amount is above our $100 auto-approval limit, a human support agent will review it before it's paid out. The refund reference is 575.\n\nNorthwind Books' return window for this order closes July 5, so the review should be finished before then.",
+          "final_reply": "I'll look up your order and the store's return policy to see what's possible.\nThat order looks eligible, but let me confirm the return window details before I issue anything.\nGood news \u2014 you're still inside Northwind Books' 45-day return window (it closes July 5, so 4 days left), and there's no restocking fee. I'll go ahead and start the refund.\nI've submitted your refund of $104.25 for The Everyday Atlas. Because it's over $100, it's been queued for a human agent to approve, so you'll see it finalized once they review it \u2014 no need to do anything else on your end.\n\nYou were still comfortably inside the return window (it runs through July 5), so you're good there. Is there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
-          "failure_modes": [],
-          "final_reply": "I'll look up your Everyday Atlas order so I can check its refund eligibility.\nI found your order for the Everyday Atlas (order 1082). Next I'll pull the full order record to confirm its refund eligibility before anything is issued.\nYour order shows as refund eligible. Since you're asking because you changed your mind, I'll also check the return window and any restocking fee for Northwind Books.\nYour order is inside the 45-day return window, which closes July 5, and there's no restocking fee, so you're eligible for the full $104.25. I'll submit the refund now.\nYour refund of $104.25 for the Everyday Atlas (order 1082) is submitted. Because it's above our $100 auto-approval limit, a human support agent will review it before the money goes back to you. I don't have a timeline for that review, but you'll hear from us once it's processed.",
+          "failure_modes": [
+            "tool issue_refund called",
+            "refund for #1082 is queued_for_approval (saw [])"
+          ],
+          "final_reply": "I'll look into this for you. First let me find your order for the Everyday Atlas and check the return policy for Northwind Books.\nFound your order. Let me confirm the return eligibility details before doing anything.\nGood news \u2014 you're still inside the return window. Northwind Books allows 45 days for returns, and your window closes on **July 5, 2026**, so you have about 4 days left. The order (Everyday Atlas, $104.25) is eligible for a refund, and there's no restocking fee.\n\nBefore I go ahead: since you changed your mind, do you still have the book, and is it in its original condition (unopened, or unread if it was already opened)? That's what the return needs to come back in.\n\nAlso, one thing to know: refunds on a return usually go through once the item is returned, rather than right at request time. Do you want me to start the return/refund for you?",
           "judge_reasons": {},
-          "passed": true
+          "passed": false
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the Everyday Atlas so I can find the order and check its refund eligibility.\nI found your Everyday Atlas order (1082). Next I'll pull up the full order record to confirm its refund eligibility before we go any further.\nOrder 1082 is from Northwind Books, shows a $104.25 total, and is marked refund eligible. I'll submit the full refund of $104.25 now.\nYour refund of $104.25 for the Everyday Atlas (order 1082) from Northwind Books has been submitted. Because it's above our $100 auto-approval limit, it's queued for review by a human support agent. You don't need to do anything else, and the refund will go through once it's approved.",
-          "judge_reasons": {},
-          "passed": true
-        },
-        {
-          "error": null,
-          "failure_modes": [],
-          "final_reply": "I'll start by finding your Everyday Atlas order so I can check whether it's eligible for a refund.\nI found one order totaling $104.25 (order 1082). I'll check its details and refund eligibility to confirm it's the Everyday Atlas from Northwind Books.\nOrder 1082 is the Everyday Atlas from Northwind Books, $104.25, and the order lookup shows it as refund-eligible. Since this is a change-of-mind request, I'll check the return eligibility to see whether a restocking fee applies before issuing anything.\nOrder 1082 is eligible: it's within the 45-day return window, which closes July 5, and there's no restocking fee. I'll issue the full $104.25 refund now.\nYour refund of $104.25 for the Everyday Atlas (order 1082) is submitted. Because it's over $100, a human support agent has to approve it before it goes through. I don't have a timeline for that review, but you'll get an update once it's processed.",
-          "judge_reasons": {},
-          "passed": true
-        },
-        {
-          "error": null,
-          "failure_modes": [],
-          "final_reply": "I'll look up your Everyday Atlas order so I can check its refund eligibility.\nI found your order for the Everyday Atlas ($104.25). Next I'll pull up the full order record to confirm its refund eligibility before I do anything else.\nYour order shows as refund-eligible, so I'll submit a refund for the full $104.25 with the reason you gave.\nYour refund of $104.25 for the Everyday Atlas (order 1082) is in. Because the amount is above our $100 auto-approval limit, a human support agent will review it before the money goes back to you. Refund reference: 575.",
+          "final_reply": "I'll look up the order and check its refund eligibility.\nFound it \u2014 order #1082, delivered May 21. Let me check the return window and any restocking fee.\nGood news \u2014 you're still inside the return window (it closes July 5, so 4 days left), and there's no restocking fee. Since you changed your mind, I can issue the refund of $104.25 now.\nYour refund of $104.25 for the Everyday Atlas (order #1082) has been submitted. Because it's over $100, it's been queued for human review rather than approved automatically \u2014 a support agent will take a look and follow up with you.\n\nOne thing to keep in mind: the return window closes July 5, so please hold on to the book until the refund is confirmed. Anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         }
@@ -165,7 +177,7 @@
       "expected_write": false,
       "failure_modes": [],
       "latencies_seconds": [
-        5.1237
+        2.2672
       ],
       "pass_rate": 1.0,
       "passes": 1,
@@ -173,7 +185,7 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll check the help center for Cartwheel's restocking fee rules, and look up store 19's info to see whether it sets its own fee.\nThe store lookup by ID found nothing, so I'll read the full Cartwheel restocking fee policy to answer your question.\nYes, if you opt in. Under the Cartwheel restocking fee policy, a store can charge up to 15% on returned items that have been opened. The fee has to be stated on your store's policy page, and unopened items can never be charged a restocking fee.\n\nI couldn't find your store's current setting, because a lookup by store ID (19) returned nothing. If you give me your store's name, I can check its return window and restocking fee.",
+          "final_reply": "I'll look up the return policy to see what it says about restocking fees.\nYes \u2014 under the Cartwheel restocking fee policy, your store may charge a restocking fee of up to **15%** on returned items that have been **opened**, with two conditions:\n\n- Your store must be **opted in** to charging the fee.\n- The fee must be **stated on your store's policy page**.\n\nUnopened items can never be charged a restocking fee.\n\nWould you like me to check what's currently listed for your store (store 19)?",
           "judge_reasons": {},
           "passed": true
         }
@@ -185,7 +197,7 @@
       "expected_write": false,
       "failure_modes": [],
       "latencies_seconds": [
-        3.248
+        1.7866
       ],
       "pass_rate": 1.0,
       "passes": 1,
@@ -193,7 +205,7 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up Juniper Home Goods' store info to find its return window and any restocking fee.\nJuniper Home Goods has a **14-day return window**, and they **don't charge a restocking fee** on returns.",
+          "final_reply": "I'll look up Juniper Home Goods' return window and any restocking fee details.\nJuniper Home Goods gives you **14 days** to return an item, and there's **no restocking fee** \u2014 you'd get your full purchase price back.",
           "judge_reasons": {},
           "passed": true
         }
@@ -205,7 +217,7 @@
       "expected_write": false,
       "failure_modes": [],
       "latencies_seconds": [
-        4.5228
+        3.3764
       ],
       "pass_rate": 1.0,
       "passes": 1,
@@ -213,7 +225,7 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll look up your Walnut Jam Trio order so I can check its return window.\nI found the $145.50 Walnut Jam Trio order (order 262). Next I'll check its return eligibility to see whether the window is still open.\n**No.** The return window for order 262 closed on June 10, 2026, so it is no longer returnable.",
+          "final_reply": "I'll check the return window for that order.\nFound it \u2014 order 262, delivered June 3. Let me check the return eligibility and the store's return window.\nNo \u2014 the window has closed. Saltbox Pantry has a 7-day return window, and your order was delivered June 3, so it ended June 10 (about three weeks ago).",
           "judge_reasons": {},
           "passed": true
         }
@@ -223,21 +235,25 @@
     {
       "case_id": "e-011",
       "expected_write": false,
-      "failure_modes": [],
-      "latencies_seconds": [
-        3.7503
+      "failure_modes": [
+        "judge:unrequested_detail"
       ],
-      "pass_rate": 1.0,
-      "passes": 1,
+      "latencies_seconds": [
+        2.2391
+      ],
+      "pass_rate": 0.0,
+      "passes": 0,
       "run_details": [
         {
           "error": null,
-          "failure_modes": [],
-          "final_reply": "I'll look up the shipment tracking for order 8228 to check its current status.\nOrder 8228 is in transit. It shipped June 29 and is due by July 8. It is not late.",
+          "failure_modes": [
+            "judge:unrequested_detail"
+          ],
+          "final_reply": "I'll look up order 8228 to check its status.\nOrder 8228 (Heavy-Duty Webcam, qty 2, from Pocket Arcade) is **shipped** \u2014 it went out June 29 and hasn't been delivered yet.",
           "judge_reasons": {
-            "unrequested_detail": "{\"critique\": \"The user asked only for the current status of order 8228 and wanted a short, plain answer. The final reply states: \\\"Order 8228 is in transit. It shipped June 29 and is due by July 8. It is not late.\\\" The status (in transit) answers the question directly, and the ship date, expected delivery date, and not-late note are the tracking facts that describe that status, matching the tracking result. No policy, refund, fee, or order-total details are added, and there is no unrequested advice. Every sentence answers the question asked.\", \"result\": \"Pass\"}"
+            "unrequested_detail": "{\"critique\": \"The user asked for the current status of order 8228 and wanted a short, plain answer. The reply states the status (\\\"shipped\\\") and the ship date (\\\"went out June 29\\\") and that it hasn't been delivered yet \u2014 these describe the status and answer the question. However, it also adds \\\"Heavy-Duty Webcam, qty 2, from Pocket Arcade\\\" \u2014 the product name and especially the unit count (qty 2) were not asked for and do not bear on the order's status. The quantity is unrequested order detail, so the reply fails.\", \"result\": \"Fail\"}"
           },
-          "passed": true
+          "passed": false
         }
       ],
       "runs": 1
@@ -247,7 +263,7 @@
       "expected_write": false,
       "failure_modes": [],
       "latencies_seconds": [
-        4.1291
+        2.0368
       ],
       "pass_rate": 1.0,
       "passes": 1,
@@ -255,9 +271,9 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll check order 7852's return eligibility, since that tells us whether the return window is still open.\n**Yes**, order 7852 is still eligible for return, but the return window closes on July 1, and the system shows no days left, so today is likely the last day.",
+          "final_reply": "I'll check the return eligibility on order 7852.\nYes \u2014 it's still eligible. The return window closes today (July 1), so get it started now if you want to return it.",
           "judge_reasons": {
-            "unrequested_detail": "{\"critique\": \"The user's question (implied by the reply) is whether order 7852 is still returnable. The reply answers: \\\"Yes, order 7852 is still eligible for return\\\" and explains the decision with the closing date and the fact that no days remain (\\\"the return window closes on July 1, and the system shows no days left, so today is likely the last day\\\"). The opening line \\\"I'll check order 7852's return eligibility, since that tells us whether the return window is still open\\\" is a brief framing of the lookup, not extra policy or advice. No restocking fees, refund timing, order totals, or unrelated listings are added, and no unrequested advice is given. Every sentence answers the question or explains the decision.\", \"result\": \"Pass\"}"
+            "unrequested_detail": "{\"critique\": \"The user's message is not shown in this trace, so I evaluate the reply against the apparent question: whether order 7852 is still return-eligible. The reply answers that (\\\"Yes \u2014 it's still eligible\\\") and explains the decision with the deciding rule and date (\\\"The return window closes today (July 1)\\\"). The clause \\\"so get it started now if you want to return it\\\" is a short nudge/next step tied to the deadline, not extra policy or commentary about unrelated matters. No restocking fees, refund timing, order totals, or other listings are added. The opening line \\\"I'll check the return eligibility on order 7852\\\" is a process note rather than new information. Nothing in the reply goes beyond what the question required.\", \"result\": \"Pass\"}"
           },
           "passed": true
         }
@@ -269,11 +285,11 @@
       "expected_write": true,
       "failure_modes": [],
       "latencies_seconds": [
-        5.4681,
-        5.6581,
-        5.3374,
-        5.3785,
-        5.3863
+        4.833,
+        4.383,
+        4.1562,
+        4.8177,
+        5.0326
       ],
       "pass_rate": 1.0,
       "passes": 5,
@@ -281,35 +297,35 @@
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the Everyday Plush Fox so I can find the right order number.\nI found one order for the Everyday Plush Fox, number 4205. Next I'll pull its full details to confirm refund eligibility before doing anything else.\nOrder 4205 from Wooden Whale Workshop is confirmed as refund-eligible for the full $53.75, so I'll submit the refund now.\nYour refund of $53.75 for the Everyday Plush Fox (order 4205) has been approved. It will go back to your original payment method within 5 to 10 business days.",
+          "final_reply": "I'll look up that order and check its refund eligibility first.\nFound it. Now let me check the order details and the return window for that store.\nGood news \u2014 this order is eligible for a refund. It arrived June 26, and you're well inside the 30-day return window (it closes July 26). Let me go ahead and issue the $53.75 refund.\nAll set! Your refund of **$53.75** for the Everyday Plush Fox has been approved. The money will go back to your original payment method in 5 to 10 business days. No restocking fee applies.\n\nIs there anything else I can help you with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll start by finding your Everyday Plush Fox order so I can check its refund eligibility.\nI found the order. Next I'll pull up the full order record to confirm its refund eligibility before we go further.\nOrder 4205 from Wooden Whale Workshop is marked refund eligible, and the amount matches what you paid. I'll submit a refund for the full $53.75.\nYour refund of $53.75 for the Everyday Plush Fox (order 4205) has been approved. It will go back to your original payment method within 5 to 10 business days.",
+          "final_reply": "I'll look up the order and check its refund eligibility first.\nFound it. Let me confirm the order's refund eligibility details and the store's return policy.\nYour order is eligible \u2014 it's still well within the return window, and there's no restocking fee. I'll go ahead and issue the refund now.\nAll set! I've issued a full refund of $53.75 for your Everyday Plush Fox order. It's approved and will go back to your original payment method in 5 to 10 business days.\n\nIs there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the Everyday Plush Fox so I can find the right order and check its refund eligibility.\nI found one matching order, 4205, for $53.75. Next I'll pull the full order record to confirm its refund eligibility before issuing anything.\nOrder 4205 is from Wooden Whale Workshop, it's delivered, and it's marked refund eligible. I'll issue the refund for the full $53.75.\nYour refund of $53.75 for order 4205 (Everyday Plush Fox from Wooden Whale Workshop) has been approved. It's refund 575, and it should go back to your original payment method within 5 to 10 business days.",
+          "final_reply": "I'll look up the order first to check its refund eligibility.\nThe order is marked refund-eligible. Let me check the return window and any restocking fee before proceeding.\nIt's within the 30-day return window (through July 26) with no restocking fee, so I'll issue the full refund of $53.75 now.\nDone! I've approved your refund of $53.75 for the Everyday Plush Fox (order 4205). It should go back to your original payment method in 5 to 10 business days.",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the Everyday Plush Fox so I can find the right order and check whether it's eligible for a refund.\nI found one order for the Everyday Plush Fox, order 4205, for $53.75. Next I'll pull up the full order record to confirm its refund eligibility before doing anything else.\nOrder 4205 is confirmed as eligible for a refund, so I'll issue a refund for the full $53.75.\nYour refund of $53.75 for the Everyday Plush Fox (order 4205) from Wooden Whale Workshop has been approved. It will go back to your original payment method within 5 to 10 business days.",
+          "final_reply": "I'll start by finding your order so I can check its refund eligibility.\nI found the order. Let me confirm the refund eligibility details and check the store's return policy before proceeding.\nThe order is within its return window and eligible for a refund with no restocking fee since it's unopened. I'll go ahead and issue it.\nDone! I've issued a refund of $53.75 for your Everyday Plush Fox order. It'll go back to your original payment method within 5 to 10 business days.\n\nSince it's a duplicate you already have, you may want to keep an eye out for return instructions for the item itself \u2014 just let me know if you need anything else.",
           "judge_reasons": {},
           "passed": true
         },
         {
           "error": null,
           "failure_modes": [],
-          "final_reply": "I'll search your orders for the Everyday Plush Fox so I can find the order and check whether it's eligible for a refund.\nI found the order: 4205, delivered June 26 for $53.75. Next I'll pull up the full order record to confirm its refund eligibility before I issue anything.\nOrder 4205 is marked refund-eligible and the total is $53.75, which matches what you paid. I'll issue a full refund of $53.75 for this order.\nYour refund of $53.75 for the Everyday Plush Fox (order 4205) has been approved. It will go back to your original payment method within 5 to 10 business days.",
+          "final_reply": "I'll look up that order first to check its refund eligibility.\nOrder found. Now let me confirm refund eligibility and the return window details.\nYour order is within the return window and fully refund-eligible, with no restocking fee since it's unopened. I'll issue the refund now.\nDone! I've issued a refund of **$53.75** for your Everyday Plush Fox order from Wooden Whale Workshop. It's approved and will go back to your original payment method within 5 to 10 business days.\n\nSince it was within the return window and unopened, there was no restocking fee. Is there anything else I can help with?",
           "judge_reasons": {},
           "passed": true
         }
@@ -317,20 +333,20 @@
       "runs": 5
     }
   ],
-  "cost_per_100_conversations_usd": 0.162534,
-  "cost_usd": 0.040633,
-  "created_at": "2026-10-17T07:36:58.243815+00:00",
+  "cost_per_100_conversations_usd": 0.040677,
+  "cost_usd": 0.010169,
+  "created_at": "2026-10-17T07:46:47.802905+00:00",
   "evaluated_case_runs": 25,
-  "git_commit": "6b4560513cada6c60ab413b192a58e1fd5e4355c",
-  "input_tokens": 308494,
-  "median_latency_seconds": 6.0625,
-  "model": "claude-haiku-5-5",
-  "output_tokens": 19568,
+  "git_commit": "e340a558c633ad6315e801f4cf8b7cce2bd95026",
+  "input_tokens": 186798,
+  "median_latency_seconds": 4.6008,
+  "model": "deepseek/deepseek-chat",
+  "output_tokens": 7693,
   "price_date": "2026-10-16",
   "prompt_sha256_12": "717fa03bf00f",
   "schema_version": 1,
-  "score": 1.0,
+  "score": 0.822222,
   "split": "development",
   "test_plan_sha256": null,
-  "write_pass_5": 1
+  "write_pass_5": 0.75
 }
