@@ -1,124 +1,62 @@
-# Cartwheel course repository
+# Evaluating and improving an LLM customer-support agent
 
-> [!IMPORTANT]
-> [Watch this video](https://www.loom.com/share/de1cac47e1a44a79a05f8658157968ae) before beginning
+End-to-end evaluation work on a tool-using support agent: error analysis, an LLM judge validated against human labels, CI regression gates, production monitoring, and accuracy and cost optimization measured on a held-out test set.
 
-The repository contains the Cartwheel support agent and starter code for all five modules of "Evaluating and Improving AI Agents." Cartwheel is a fictional commerce platform that hosts independent stores. You begin by completing the agent, then use the same repository for trace analysis, automated evaluation, continuous integration, adversarial evaluation, and improvement experiments.
+> **Context.** This repository is my fork of the starter code for the course *Evaluating and Improving AI Agents*. The course provided the agent scaffolding, the synthetic commerce world, and the evaluation harness. The tools, analyses, judges, CI, monitoring, experiments, and results described below are my work.
 
-Begin with the [homework index](homework/README.md). Each assignment names the code and records required for the corresponding module.
+## The system
 
-## Get started with Homework 1
+**Cartwheel** is a fictional multi-store commerce platform (20 stores, 10,000 orders, 18 policy documents). Its support agent, built on the OpenAI Agents SDK and run on Claude Haiku 5.5, answers shoppers, merchants, and support staff using 14 tools, such as order lookup, refunds, and policy search. Refunds above $100 are queued for human approval, and every tool enforces role-based authorization.
 
-The course instructors put together this [HW1 walkthrough](homework/module-1/hw1-tutorial.md) for anyone who wants a hand, including PMs. Your coding agent handles setup and coding while you decide what to expect and check the results.
+## Results at a glance
 
-Choose the walkthrough for step-by-step help, or ask your agent to jump into a task. You can ask for help whenever you get stuck and switch approaches at any time.
+| Stage | Result |
+| --- | --- |
+| Error analysis | 125 conversations reviewed by hand; 6 failure modes defined, each with a requirement and an evaluator |
+| LLM judge | Validated on 79 held-out labels: it catches 79% of real failures but passes only 48% of good replies, so I report it as not ready for automated decisions |
+| CI | 13 cases run with 5 trials each on every pull request; an intentional regression was blocked (0 of 5 runs passed) and passed again after the revert |
+| Accuracy | Development score **0.29 → 1.00**; refunds passing all 5 runs **25% → 100%** |
+| Held-out test | **0.25 → 0.55** on the same model, at **half the cost** ($0.43 → $0.22 per 100 conversations) |
+| Cost | Cost profiled per call site; prompt caching and a model cascade measured, and the cascade rejected against a requirement set in advance |
 
-Open this repo in Codex, Claude Code, or your preferred coding agent and paste:
+## What I built
 
-```text
-Read AGENTS.md and help me get started with Homework 1.
-```
+| Area | What I did | Where |
+| --- | --- | --- |
+| Agent tools | Implemented the support tools with role-scoped data access and structured results | [`agent/tools.py`](agent/tools.py) |
+| Tracing | Authenticated sessions and per-tool span attributes, exported to Langfuse | [`server/`](server/), [`observability/`](observability/) |
+| Test data | 250 synthetic support scenarios (shoppers, merchants, support staff, damaged records) | [`scenarios/`](scenarios/) |
+| Error analysis | Open coding, a failure taxonomy, and spec revisions grounded in annotated traces | [`analysis/report/review_summary.md`](analysis/report/review_summary.md) |
+| LLM judge | A judge for "unrequested detail", with TPR/TNR on development and test splits and reviewed disagreements | [`analysis/state/judges/`](analysis/state/judges/), [`analysis/report/`](analysis/report/) |
+| CI | Harbor tasks plus a GitHub Actions workflow that separates regression gates from capability tracking | [`eval_cases/`](eval_cases/), [`.github/workflows/evals.yml`](.github/workflows/evals.yml) |
+| Monitoring | A daily monitor on a self-hosted runner, with judge-error-corrected prevalence and confidence intervals | [`monitoring/`](monitoring/README.md) |
+| Accuracy optimization | A locked dev/test split, manual changes at the prompt, tool, and harness layers, an automated improve loop, and a Pareto frontier on held-out data | [`optimize/results/`](optimize/results/) |
+| Cost optimization | Cost per call site, a token-reduction experiment, prompt-cache reordering, and a confidence-threshold model cascade | [`profile/`](profile/), [`cascade/`](cascade/) |
 
-If you haven't downloaded the repo yet, paste this instead:
+## Findings worth highlighting
 
-```text
-Help me get started with Homework 1 in https://github.com/ai-evals-course/cartwheel-homeworks. Use my existing local copy if I have one, or help me clone it. Then read AGENTS.md and help me choose how to proceed.
-```
+- **The biggest accuracy gain came from a prompt bug, not the model.** Refunds above $100 failed because one prompt line told the agent to escalate them, contradicting the spec. Fixing that line took the refund cases from 4 of 15 passing runs to 15 of 15, and lowered cost.
+- **I measured prevalence before fixing.** A reviewed sample suggested 61% of replies leaked internal policy IDs. A code check, validated against 128 human labels with 100% agreement and run over all 251 conversations, gave the real figure: 45%.
+- **Noise was as large as the effects.** The same unchanged agent scored 0.82 and 0.64 on two runs, so I kept only changes whose effect was far larger than that spread, and treated small differences as ties.
+- **I caught an invalid measurement.** One frontier configuration (Claude Opus 5.5) returned empty replies on every run, but still "passed" two checks. I documented it as invalid instead of reporting its score ([`optimize/results/frontier-notes.md`](optimize/results/frontier-notes.md)).
+- **I rejected a cascade on evidence.** A local 8B proxy judge reported 95–100% confidence on almost every verdict, yet agreed with the reference judge only 68–71% of the time. Against a 95% requirement set before the run, I rejected it.
+- **A metric is only as good as its reference.** The reference judge itself agreed with human labels 87% on development but 60% on test, which is the next thing to fix.
 
-## Setup
+## Tech stack
 
-You need Python 3.12 and [uv](https://docs.astral.sh/uv/). Run the commands from the repository root.
+Python 3.12 · OpenAI Agents SDK · LiteLLM · Langfuse · DocETL · Harbor · GitHub Actions · SQLite · Claude (Haiku, Sonnet, Opus 5.5) · DeepSeek · Groq · Ollama
+
+## Run it
 
 ```bash
 uv sync
 uv run python -m seed.generate
 uv run pytest
+uv run python -m agent.cli --role shopper --user 1 --debug
 ```
 
-If `.env` does not exist, copy `.env.example` to `.env`. Add a key for the model provider you will use, and preserve any existing settings. The tests and seed command do not require a model key.
+Copy `.env.example` to `.env` and add a key for one model provider. The full course setup guide is in [`docs/COURSE_README.md`](docs/COURSE_README.md).
 
-The default model is `gpt-4o-mini` with OpenAI. You can select another model, e.g. `claude-haiku-4-5` with Anthropic or `glm-5.2` with Together AI, using `CARTWHEEL_MODEL` in `.env`. The CLI's `--model` flag overrides the default. You need a key for only one provider.
+## Credits
 
-> [!IMPORTANT]
-> Use a small, inexpensive model for the Cartwheel agent, such as `gpt-4o-mini`, `gpt-5-nano`, or `claude-haiku-4-5`. Cartwheel is a synthetic world, and frontier models such as `gpt-5.5` or `claude-opus-4-6` rarely make mistakes in it. The homework depends on observing and analyzing agent failures, so a powerful agent model leaves you too little to study. This applies to the agent model only; judge and reflection models are chosen separately in each assignment.
-
-The starter contains unfinished homework functions. Tests for unfinished functions report expected failures until you implement them. Follow [Homework 1](homework/module-1/hw1.md) to complete the five support tools, then use the chat interface:
-
-```bash
-uv run python -m agent.cli --role shopper --user 1
-```
-
-CLI tracing is off by default. Building a non-OpenAI agent (including Ollama through LiteLLM) also removes the SDK's implicit OpenAI exporter for direct runs. Tracing destinations are process-wide; select Langfuse or explicitly opt into OpenAI tracing before running agents. Add `--debug` to print tool calls and results locally. To send traces to OpenAI, add `--trace-openai` and set `OPENAI_API_KEY`; OpenAI hosted tracing is unavailable for zero-data-retention organizations. For the course's Langfuse setup, use `--trace` instead. The two tracing flags cannot be combined. `OPENAI_AGENTS_DISABLE_TRACING=1` disables SDK tracing for either destination.
-
-The default development seed is the executable course world: 20 stores, 800
-products, 525 users, 10,000 orders, and 18 policy documents. The seed script
-is deterministic. Two runs produce identical data, and the
-three demo orders from lecture (#4127, #3980, #4455, all owned by shopper
-user 1) always come out the same. The seed also inserts six documented data
-quality defects for challenge scenarios. Their identifiers and expected
-handling are stored in the `data_quality_cases` table.
-
-## Homework 2 and tracing
-
-[Homework 2](homework/module-1/hw2.md) asks you to implement the authenticated endpoints and add application attributes to traces. The tracing setup is provided through OpenLLMetry and self-hosted Langfuse. The four HW2 functions listed below are intentionally unfinished; starting the server alone does not complete them.
-
-Homework 2 also requires Docker with Compose. Follow the assignment for starting Langfuse and the server, configuring content capture, and verifying the exported spans. The local Langfuse settings are supplied in `.env.example`, and no Langfuse Cloud account is required.
-
-## Repo map
-
-```
-AGENTS.md                 instructions for your coding agent
-CLAUDE.md                 symlink to AGENTS.md
-SPEC.md                   support specification: scope, access matrix, criteria table
-facts.yaml                the facts sheet; every policy number lives here
-data/
-  policies/*.md           policy corpus, rendered from facts.yaml by the seed
-  cartwheel.db            stores, products, users, orders (gitignored; run the seed)
-seed/
-  generate.py             deterministic world generator (--scale dev|full)
-  eligibility.py          the pure refund-eligibility function (the test oracle)
-  policies.py             policy-doc templates
-  validate.py             checks every number in every doc against facts.yaml
-agent/                    support agent scaffold
-  agent.py                system prompt, model wiring, provided tools, tool registration
-  tools.py                HOMEWORK 1: five tool holes
-  auth.py                 auth context + permission checks (complete; do not weaken)
-  db.py                   typed SQLite access layer (complete)
-  helpcenter.py           policy corpus loading + BM25 (complete)
-  cli.py                  chat shell; optional approval flow completed in Module 4
-server/
-  app.py                  HOMEWORK 2: session + message routes; token helpers provided
-observability/
-  docker-compose.yml      self-hosted Langfuse (web, worker, postgres, clickhouse, redis, minio)
-  instrument.py           tracing setup (provided) + HOMEWORK 2: tool span attributes
-scenarios/
-  skill/SKILL.md          instructions that a coding agent follows to generate scenarios
-  validate.py             executable schema and final-dataset checks
-  runner.py               plays scenario JSONL against the endpoint (complete)
-  export_langfuse.py      exports complete scenario traces for Module 2
-analysis/                 MODULE 2: review interface, helper functions, and judge records
-eval_cases/               MODULE 3: reviewed regression and capability cases
-tests/eval/               MODULE 3: unit, integration, and end to end evaluation tests
-replay/                   MODULE 3: repeated evaluation case execution
-monitoring/               MODULE 3: sampling, corrected rates, and score writing
-agent/guards.py           MODULE 4: input, output, and tool guards
-agent/approvals.py        MODULE 4: refund approval and audit records
-promptfooconfig.yaml      MODULE 4: automated adversarial evaluation
-reports/
-  smoke.sql               smoke-report queries against the trace store
-homework/                 student assignments for Modules 1 to 5
-tests/                    offline, no API keys; homework tests are xfail until done
-```
-
-## Module 1 implementation tasks
-
-| Homework | File | Holes |
-| --- | --- | --- |
-| HW1 | `agent/tools.py` | `get_policy`, `search_products`, `list_my_orders`, `cancel_order`, `find_order` |
-| HW2 | `observability/instrument.py` | `record_tool_result`, `_set_permission_denied_attributes` |
-| HW2 | `server/app.py` | `create_session`, `post_message` |
-
-The Module 1 implementation tasks are marked `### YOUR CODE HERE (HW1)` or `### YOUR CODE HERE (HW2)` and have docstrings describing the expected behavior. The supplied contract tests in `tests/test_hw_holes.py` cover the five HW1 tools and HW2 session creation. Homework 2 also asks you to write authentication tests and verify exported spans in Langfuse. Use the test commands in each assignment to check your implementation.
-
-> [!IMPORTANT]
-> The Module 1 handouts are in `homework/module-1/`. The [homework index](homework/README.md) lists all released assignments. A [video walkthrough](https://youtu.be/qO98jDayTHo?si=gLN5FZ3FDiAIs_gG) of how to attempt Homework 1 is also available.
+Starter code, synthetic world, and assignments: [ai-evals-course/cartwheel-homeworks](https://github.com/ai-evals-course/cartwheel-homeworks).

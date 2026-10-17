@@ -4,7 +4,7 @@ Cartwheel is the support agent used throughout "Evaluating and Improving AI Agen
 
 ## Find the relevant instructions
 
-- Read [README.md](README.md) for setup and commands. Run commands from the repository root.
+- Read [docs/COURSE_README.md](docs/COURSE_README.md) for setup and commands. Run commands from the repository root.
 - For homework help, identify the assignment from the request and existing work. If it is unclear, ask which assignment the student is working on. The [homework index](homework/README.md) lists released assignments.
 - For HW1, HW2, or HW3, read the relevant handout in `homework/module-1/` and follow its requirements and deliverables. When the student invokes a handout's interactive walkthrough, follow its pacing and review points. For HW3, also read and follow `scenarios/skill/SKILL.md`; keep query generation separate from application execution and stop for the required human reviews.
 - For repository maintenance, follow the requested change directly. Preserve unfinished homework functions unless implementing them is part of the request.
