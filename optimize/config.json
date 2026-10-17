@@ -8,6 +8,7 @@
   "prices_per_million_tokens_usd": {
     "claude-haiku-5-5": {"input": 0.10, "output": 0.50},
     "claude-opus-5-5": {"input": 4.00, "output": 20.00},
-    "claude-sonnet-5-5": {"input": 2.00, "output": 10.00}
+    "claude-sonnet-5-5": {"input": 2.00, "output": 10.00},
+    "deepseek/deepseek-chat": {"input": 0.15, "output": 0.60, "cached_input": 0.003}
   }
 }
